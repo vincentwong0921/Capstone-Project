@@ -311,7 +311,24 @@ Return All Orders
             "state": "CA",
             "zip": 94539,
             "amount": 729.99,
-            "status": "Sales In Process"
+            "status": "Sales In Process",
+            "order_details": [
+                {
+                    "id": 1,
+                    "inventory_id": 1,
+                    "quantity": 1,
+                    "inventory_details": {
+                        "categories": "Phone",
+                        "brand": "Apple",
+                        "model": "iPhone 14 Pro",
+                        "storage": "128GB",
+                        "color": "Purple",
+                        "condition": "Like New",
+                        "price": 659.99,
+                        "image_url": "i14.jpg"
+                    }
+                }
+            ]
         },
         {
             "id": 2,
@@ -322,12 +339,352 @@ Return All Orders
             "state": "CA",
             "zip": 94587,
             "amount": 559.98,
-            "status": "Order Received"
+            "status": "Order Received",
+            "order_details": [
+                {
+                    "id": 1,
+                    "inventory_id": 2,
+                    "quantity": 1,
+                    "inventory_details": {
+                        "categories": "Phone",
+                        "brand": "Samsung",
+                        "model": "Galaxy S21",
+                        "storage": "256GB",
+                        "color": "Black",
+                        "condition": "Excellent +",
+                        "price": 459.99,
+                        "image_url": "s21.jpg"
+                    }
+                }
+            ]
         }
     ]
+
+### Get all Orders placed by the Current User
+
+Returns all the orders placed by the current user.
+
+* Require Authentication: true
+* Request
+  * Method: GET
+  * URL: /api/spots/current
+  * Body: none
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    [
+        {
+            "id": 1,
+            "user_id": 2,
+            "order_date": "2024-4-4",
+            "address": "123 Fake St",
+            "city": "Fremont",
+            "state": "CA",
+            "zip": 94539,
+            "amount": 729.99,
+            "status": "Sales In Process",
+            "order_details": [
+                {
+                    "id": 1,
+                    "inventory_id": 1,
+                    "quantity": 1,
+                    "inventory_details": {
+                        "categories": "Phone",
+                        "brand": "Apple",
+                        "model": "iPhone 14 Pro",
+                        "storage": "128GB",
+                        "color": "Purple",
+                        "condition": "Like New",
+                        "price": 659.99,
+                        "image_url": "i14.jpg"
+                    }
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "user_id": 2,
+            "order_date": "2024-4-2",
+            "address": "228 Real St",
+            "city": "Union City",
+            "state": "CA",
+            "zip": 94587,
+            "amount": 559.98,
+            "status": "Order Received",
+            "order_details": [
+                {
+                    "id": 1,
+                    "inventory_id": 2,
+                    "quantity": 1,
+                    "inventory_details": {
+                        "categories": "Phone",
+                        "brand": "Samsung",
+                        "model": "Galaxy S21",
+                        "storage": "256GB",
+                        "color": "Black",
+                        "condition": "Excellent +",
+                        "price": 459.99,
+                        "image_url": "s21.jpg"
+                    }
+                }
+            ]
+        }
+    ]
+    ```
+
+### Create an Order
+
+* Require Authentication: true
+* Request
+  * Method: POST
+  * URL: /api/orders
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+
+    {
+        "user_id": 1,
+        "order_date": "2024-04-04",
+        "address": "123 Main St",
+        "city": "Fremont",
+        "state": "CA",
+        "zip": 94538,
+        "amount": 100.00,
+        "status": "Order Received",
+        "order_details": [
+            {
+                "inventory_id": 1,
+                "quantity": 1
+            },
+            {
+                "inventory_id": 2,
+                "quantity": 1
+            }
+        ]
+    }
+    ```
+
+* Successful Response
+  * Status Code: 201
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+        "id": 1,
+        "user_id": 2,
+        "order_date": "2024-04-04",
+        "address": "123 Main St",
+        "city": "Fremont",
+        "state": "CA",
+        "zip": 94538,
+        "amount": 959.00,
+        "status": "Order Received",
+        "order_details":[
+            {
+                "id": 1,
+                "order_id": 1,
+                "inventory_id": 1,
+                "quantity": 1,
+                "inventory_details": {
+                    "id": 1,
+                    "categories": "Phone",
+                    "brand": "Apple",
+                    "model": "iPhone 14",
+                    "storage": "128GB",
+                    "color": "Purple",
+                    "condition": "Like New",
+                    "price": 959.00,
+                    "image_url": "i14.jpg"
+                }
+            },
+            {
+                "more": "orders details..."
+            }
+        ]
+    }
+
+### Edit an Order by order Id
+
+* Require Authentication: true
+* Require proper authorization: User Role must be admin
+* Request
+  * Method: PUT
+  * URL: /api/orders/:orderId
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+        "status": "Sales in process"
+    }
+    ```
+* Successful Response
+  * Status Code: 201
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+        "id": 1,
+        "status": "Sales in process"
+    }
+    ```
+
+### Delete an Order by Order Id
+
+* Require Authentication: true
+* Require proper authorization: User Role must be admin
+* Request
+  * Method: DELETE
+  * URL: /api/orders/:orderId
+  * Body: none
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Order Successfully deleted"
+    }
+
+* Error response: Couldn't find an Order with the specified id
+  * Status Code: 404
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Order couldn't be found"
+    }
+    ```
+
+
+## Cart
+
+###
+
 
 
 
 ## REVIEWS
 
 ### Get all Reviews
+
+* Require Authentication: true
+* Request
+  * Method: GET
+  * URL: /api/reviews
+  * Body: none
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+   ```json
+   [
+        {
+            "id": 1,
+            "review": "Overnight Shipping was worth it!",
+            "stars": 5,
+            "created_at": "2024-4-4",
+            "User": {
+                "id": 2,
+                "first_name": "Vince",
+            }
+        },
+        {
+            "id": 2,
+            "review": "Received a cracked Screen Phone",
+            "stars": 1,
+            "created_at": "2024-4-3",
+            "User": {
+                "id": 3,
+                "first_name": "Gabe",
+            }
+        }
+   ]
+
+### Post a Review
+
+Create and return a new review.
+
+* Require Authentication: true
+* Request
+  * Method: POST
+  * URL: /api/reviews
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "review": "Overnight Shipping was worth it!",
+      "stars": 5,
+    }
+    ```
+
+* Successful Response
+  * Status Code: 201
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "id": 1,
+      "userId": 2,
+      "review": "Overnight Shipping was worth it!",
+      "stars": 5,
+      "createdAt": "2021-11-19 20:39:36",
+    }
+    ```
+
+### Delete a Review
+
+* Require Authentication: true
+* Require proper authorization: Review must belong to the current user/admin
+* Request
+  * Method: DELETE
+  * URL: /api/reviews/:reviewId
+  * Body: none
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Successfully deleted"
+    }
+    ```
+
+* Error response: Couldn't find a Review with the specified id
+  * Status Code: 404
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Review couldn't be found"
+    }
+    ```
