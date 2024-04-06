@@ -26,7 +26,7 @@ module.exports = {
         phone: '2234567890',
         email: 'demo@user.io',
         hashedPassword: bcrypt.hashSync('password2'),
-        role: 'User'
+        role: 'Customer'
       },
       {
         first_name: 'Fake',
@@ -34,7 +34,7 @@ module.exports = {
         phone: '2234567891',
         email: 'user2@user.io',
         hashedPassword: bcrypt.hashSync('password3'),
-        role: 'User'
+        role: 'Customer'
       }
     ], { validate: true });
   },
