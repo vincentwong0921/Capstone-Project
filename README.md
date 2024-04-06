@@ -367,7 +367,7 @@ Returns all the orders placed by the current user.
 * Require Authentication: true
 * Request
   * Method: GET
-  * URL: /api/spots/current
+  * URL: /api/orders/current
   * Body: none
 
 * Successful Response
@@ -456,8 +456,6 @@ Returns all the orders placed by the current user.
         "city": "Fremont",
         "state": "CA",
         "zip": 94538,
-        "amount": 100.00,
-        "status": "Order Received",
         "order_details": [
             {
                 "inventory_id": 1,
@@ -576,10 +574,221 @@ Returns all the orders placed by the current user.
 
 ## Cart
 
-###
+### Get Cart by Cart Id
+
+* Require Authentication: true
+* Request
+  * Method: GET
+  * URL: /api/cart/:cartId
+  * Body: none
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+   ```json
+
+   {
+      "id": 1,
+      "user_id": 1,
+      "cartItems": [
+        {
+          "id": 1,
+          "inventory_id": 1,
+          "quantity": 1,
+          "inventory_details": {
+              "id": 1,
+              "categories": "Phone",
+              "brand": "Apple",
+              "model": "iPhone 14",
+              "storage": "128GB",
+              "color": "Purple",
+              "condition": "Like New",
+              "price": 959.00,
+              "image_url": "i14.jpg"
+          },
+          {
+              "more": "item details"
+          }
+        }
+      ]
+   }
+
+   ```
+
+### Create Cart
+
+* Require Authentication: true
+* Request
+  * Method: GET
+  * URL: /api/cart
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+
+    {
+      "user_id": 1
+    }
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "id": 2,
+      "user_id": 1,
+      "cartItems": []
+    }
+    ```
+
+### Delete Cart by id:
+
+* Require Authentication: true
+* Request
+  * Method: Delete
+  * URL: /api/cart/:cartId
+  * Body: none
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Successfully deleted"
+    }
+    ```
+
+* Error response: Couldn't find a Cart with the specified id
+  * Status Code: 404
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Cart couldn't be found"
+    }
+    ```
 
 
+## Cart Items
 
+### Add an Item to the Cart
+
+* Require Authentication: true
+* Request
+  * Method: POST
+  * URL: /api/cart/:cartId/cart-items
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "inventory_id": 1,
+      "quantity": 1
+    }
+    ```
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "id": 1,
+      "cart_id": 1,
+      "inventory_id": 1,
+      "quantity": 1
+    }
+    ```
+
+### Update Cart Item Quantity
+
+* Require Authentication: true
+* Request
+  * Method: PUT
+  * URL: /api/cart/:cartId/cart-items/:itemId
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+        "quantity": 3
+    }
+    ```
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "id": 1,
+      "cart_id": 1,
+      "inventory_id": 1,
+      "quantity": 3
+    }
+    ```
+
+* Error response: Couldn't find a Cart Item with the specified id
+  * Status Code: 404
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Cart Item couldn't be found"
+    }
+    ```
+
+### Delete a Cart Item by id
+
+* Require Authentication: true
+* Request
+  * Method: DELETE
+  * URL: /api/cart/:cartId/cart-items/:itemId
+  * Body: none
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Successfully deleted"
+    }
+    ```
+
+* Error response: Couldn't find a cart Item with the specified id
+  * Status Code: 404
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Item couldn't be found"
+    }
+    ```
 
 ## REVIEWS
 
