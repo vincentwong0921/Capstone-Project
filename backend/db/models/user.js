@@ -12,6 +12,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      User.hasMany(
+        models.Review,
+        {foreignKey: 'user_id'}
+      )
     }
   }
   User.init(
@@ -49,7 +53,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       },
       role: {
-        type: DataTypes.STRING.BINARY,
+        type: DataTypes.STRING
       }
   }, {
     sequelize,
