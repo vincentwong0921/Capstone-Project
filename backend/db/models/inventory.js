@@ -12,6 +12,10 @@ module.exports = (sequelize, DataTypes) => {
       Inventory.hasOne(
         models.CartItem,
         {foreignKey: 'inventory_id'}
+      ),
+      Inventory.hasOne(
+        models.OrderDetail,
+        {foreignKey: 'inventory_id'}
       )
     }
   }
