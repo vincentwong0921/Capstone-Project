@@ -15,7 +15,9 @@ module.exports = (sequelize, DataTypes) => {
         {foreignKey: 'cart_id'}
       ),
       CartItem.belongsTo(
-        models.Inventory
+        models.Inventory,
+        {foreignKey: 'inventory_id'}
+        /* added this for render */
       )
     }
   }
