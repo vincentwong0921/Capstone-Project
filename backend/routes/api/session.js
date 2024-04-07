@@ -12,11 +12,10 @@ router.get("/", (req, res) => {
     const safeUser = {
       id: user.id,
       email: user.email,
-      username: user.username,
+      first_name: user.first_name,
+      role: user.role
     };
-    return res.json({
-      user: safeUser,
-    });
+    return res.json({ user: safeUser });
   } else return res.json({ user: null });
 });
 
