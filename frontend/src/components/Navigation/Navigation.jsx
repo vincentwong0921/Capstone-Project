@@ -1,10 +1,11 @@
 import './Navigation.css'
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { PiPhoneDuotone } from "react-icons/pi";
 
 
-const Navigation = ({ isLoaded }) => {
-  const user = useSelector((state) => state.session.user);
+const Navigation = () => {
+  // const user = useSelector((state) => state.session.user);
+  // need to add back isLoaded up there
 
   return (
     <div className="NavContainer">
