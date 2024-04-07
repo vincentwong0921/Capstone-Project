@@ -15,6 +15,9 @@ module.exports = {
       },
       {
         user_id: 2
+      },
+      {
+        user_id: 3
       }
     ])
   },
@@ -23,7 +26,7 @@ module.exports = {
     options.tableName = 'Carts';
     const Op = Sequelize.Op;
     return queryInterface.bulkDelete(options, {
-      user_id: { [Op.in]: ["1","2"] }
+      user_id: { [Op.in]: ["1","2","3"] }
     }, {});
   }
 };
