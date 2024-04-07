@@ -11,6 +11,10 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Cart.belongsTo(
         models.User
+      ),
+      Cart.hasMany(
+        models.CartItem,
+        {foreignKey: "cart_id"}
       )
     }
   }

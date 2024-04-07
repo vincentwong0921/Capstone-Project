@@ -11,10 +11,10 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     await Cart.bulkCreate([
       {
-        user_id:1
+        user_id: 1
       },
       {
-        user_id:2
+        user_id: 2
       }
     ])
   },

@@ -17,10 +17,14 @@ module.exports = {
       cart_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        references: {model: 'Carts'},
+        onDelete: 'CASCADE'
       },
       inventory_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        references: {model: 'Inventories'},
+        onDelete: 'CASCADE'
       },
       quantity: {
         type: Sequelize.INTEGER,
