@@ -1,0 +1,11 @@
+.Left {
+    display: flex;
+}
+
+.PhoneIcon {
+    font-size: 50px;
+}
+
+.StoreName {
+    font-weight: bolder;
+}
