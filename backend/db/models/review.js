@@ -13,11 +13,19 @@ module.exports = (sequelize, DataTypes) => {
       Review.belongsTo(
         models.User,
         { foreignKey: 'user_id'}
+      ),
+      Review.belongsTo(
+        models.Order,
+        { foreignKey: 'order_id'}
       )
     }
   }
   Review.init({
     user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    order_id: {
       type: DataTypes.INTEGER,
       allowNull: false
     },

@@ -20,6 +20,12 @@ module.exports = {
         references: {model: 'Users'},
         onDelete: 'CASCADE'
       },
+      order_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {model: 'Orders'},
+        onDelete: 'CASCADE'
+      },
       review: {
         type: Sequelize.STRING,
         allowNull: false

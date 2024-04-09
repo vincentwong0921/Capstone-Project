@@ -3,7 +3,6 @@ const { requireAuth } = require("../../utils/auth");
 const { Inventory } = require("../../db/models");
 const { handleValidationErrors } = require("../../utils/validation");
 const { check } = require("express-validator");
-const { route } = require("./inventories");
 
 const router = express.Router();
 

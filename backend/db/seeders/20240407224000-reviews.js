@@ -11,23 +11,21 @@ module.exports = {
     await Review.bulkCreate([
       {
         user_id: 2,
+        order_id: 2,
         review: 'Overnight Shipping was worth it!',
         stars: 5
       },
       {
-        user_id: 3,
-        review: 'Received a Cracked Screen Device.',
-        stars: 2
-      },
-      {
-        user_id: 3,
-        review: 'RMA without any issue.',
-        stars: 3
-      },
-      {
         user_id: 2,
+        order_id: 3,
         review: 'Absolutely Awesome Phone!',
         stars: 5
+      },
+      {
+        user_id: 3,
+        order_id: 4,
+        review: 'Received a Cracked Screen Device, RMA without issue',
+        stars: 3
       }
     ], { validate: true })
   },
