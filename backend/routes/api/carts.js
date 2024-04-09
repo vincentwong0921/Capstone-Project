@@ -71,6 +71,21 @@ router.post('/', requireAuth, async(req, res) => {
     return res.status(201).json(newCart)
 })
 
+// Add an Item to the Cart
+router.post('/:cartId/cart-items', requireAuth, async(req, res) => {
+    const cart_id = req.params.cartId
+    const user_id = req.user.id
+    const cart = await Cart.findByPk(cart_id)
+    const { inventory_id , quantity } = req.body
+
+    if(!cart) return res.status(404).json({message: "Cart couldn't be found"})
+    if(cart.user_id !== user_id) return res.status(403).json({message: 'Forbidden'})
+
+    const newItem = await CartItem.create({ cart_id: cart.id, inventory_id, quantity })
+    return res.json(newItem)
+})
+
+
 // Delete a Cart
 router.delete('/:cartId', requireAuth, async(req, res) => {
     const user_id = req.user.id
@@ -79,25 +94,10 @@ router.delete('/:cartId', requireAuth, async(req, res) => {
 
     if (!cart) return res.status(404).json({message: "Cart couldn't be found"})
     if (cart.user_id !== user_id) return res.status(403).json({message: 'Forbidden'})
-    
+
     await cart.destroy()
     return res.json({ message: 'Successfully deleted!'})
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

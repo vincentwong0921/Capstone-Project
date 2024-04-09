@@ -7,6 +7,12 @@
 [db-schema]: ./images/Schema.png
 
 
+### full CRUD on Inventories
+### full CRUD on Orders
+### full CRUD On CartItems
+### full CRUD on Reviews
+
+
 ## API Documentation
 
 ## USER AUTHENTICATION/AUTHORIZATION
