@@ -1,18 +1,22 @@
 import './Navigation.css'
-// import { useSelector } from "react-redux";
-import { PiPhoneDuotone } from "react-icons/pi";
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { CgSmartphoneChip } from "react-icons/cg";
+
+const Navigation = ({isLoaded}) => {
+  const user = useSelector((state) => state.session.user);
+	const navigate = useNavigate();
+
+	const toLogin = () => navigate("/login");
+  const toHome = () => navigate("/")
 
 
-const Navigation = () => {
-  // const user = useSelector((state) => state.session.user);
-  // need to add back isLoaded up there
 
   return (
     <div className="NavContainer">
-        <div className='Left'>
-            <PiPhoneDuotone className='PhoneIcon'/>
-            <p className='StoreName'>The Phone Hub</p>
-        </div>
+      <CgSmartphoneChip className='Icon'/>
+      <p className='StoreName' onClick={toHome}>The Phone Hub</p>
+      <button className="LoginButton" onClick={toLogin}><i className="fa-solid fa-user"></i> Log In</button>
     </div>
   );
 };

@@ -1,11 +1,32 @@
-.Left {
+.NavContainer {
+    background-color: black;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.PhoneIcon {
-    font-size: 50px;
+.Icon {
+    font-size: 40px;
+    color: white;
+    margin-left: 15px;
 }
 
 .StoreName {
     font-weight: bolder;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.LoginButton {
+    margin-right: 15px;
+    width: 94px;
+    height: 36px;
+    border-radius: 40px;
+    border: 1px solid white;
+    background-color: black;
+    color: white;
+    font-size: bold;
+    font-weight: 600;
+    cursor: pointer;
 }
