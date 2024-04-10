@@ -5,6 +5,7 @@ const inventoryRouter = require("./inventories.js");
 const reviewRouter = require("./reviews.js")
 const cartRouter = require('./carts.js')
 const cartItemRouter = require('./cartItem.js')
+const orderRouter = require('./orders.js')
 const { restoreUser } = require("../../utils/auth.js");
 
 router.use(restoreUser);
@@ -15,5 +16,6 @@ router.use("/inventories", inventoryRouter);
 router.use("/reviews", reviewRouter);
 router.use('/carts', cartRouter)
 router.use('/cart-items', cartItemRouter)
+router.use('/orders', orderRouter)
 
 module.exports = router;

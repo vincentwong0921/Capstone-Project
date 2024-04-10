@@ -20,9 +20,6 @@ module.exports = {
         references: {model: 'Users'},
         onDelete: 'CASCADE'
       },
-      order_date: {
-        type: Sequelize.DATE
-      },
       address: {
         type: Sequelize.STRING,
         allowNull: false

@@ -29,10 +29,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    order_date: {
-      type: DataTypes.DATE,
-      allowNull: false
-    },
     address: {
       type: DataTypes.STRING,
       allowNull: false

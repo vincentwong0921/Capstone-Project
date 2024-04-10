@@ -12,7 +12,6 @@ module.exports = {
     await Order.bulkCreate([
       {
         user_id: 1,
-        order_date: '2024-04-06',
         address: '345 Real St',
         city: 'Union City',
         state: 'CA',
@@ -22,7 +21,6 @@ module.exports = {
       },
       {
         user_id: 2,
-        order_date: '2024-04-07',
         address: '123 Fake St',
         city: 'Fremont',
         state: 'CA',
@@ -32,7 +30,6 @@ module.exports = {
       },
       {
         user_id: 2,
-        order_date: '2024-04-08',
         address: '585 Jay St',
         city: 'Santa Clara',
         state: 'CA',
@@ -42,7 +39,6 @@ module.exports = {
       },
       {
         user_id: 3,
-        order_date: '2024-03-29',
         address: '2030 Duane Ave',
         city: 'Santa Clara',
         state: 'CA',
