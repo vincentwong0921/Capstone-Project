@@ -1,6 +1,7 @@
 /* TODO: Add sitewide styles */
 html {
     margin: 0 auto; /* Center horizontally */
-    max-width: 1840px;
-    font-family: "Poppins", sans-serif;
+    max-width: 2200px;
+    min-width: 600px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }

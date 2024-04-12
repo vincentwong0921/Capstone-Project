@@ -4,15 +4,32 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 60px;
+  height: 75px;
   margin: 0 auto;
+}
+
+.LogoAndName {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Logo {
+  color: white;
+  font-size: 30px;
+  margin-left: 25px;
 }
 
 .StoreName {
   font-weight: bold;
   color: white;
   font-size: 25px;
-  margin-left: 25px;
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+.StoreName:hover {
+  color: Blue;
 }
 
 .NavContainer li {
@@ -30,7 +47,7 @@
 }
 
 .NavContainer a:hover {
-  color: orange;
+  color: gold;
 }
 
 .LoginButton button {
@@ -43,4 +60,36 @@
   font-size: small;
   font-weight: 600;
   margin-right: 20px;
+}
+
+.LoginButton button:hover {
+  background-color: orange;
+}
+
+.fa-solid.fa-bars {
+  color: white;
+  margin-right: 20px;
+  font-size: 25px;
+}
+
+.CartButton {
+  color: white;
+}
+
+.CartAndSideBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+  margin-right: 15px;
+}
+
+@media (max-width: 600px) {
+  .NavContainer .links {
+    display: none;
+  }
+
+  .StoreName .LoginButton {
+    display: block;
+  }
 }
