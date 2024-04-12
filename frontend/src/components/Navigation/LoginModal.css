@@ -1,0 +1,75 @@
+.LoginFormContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.Welcome {
+    margin-bottom: 15px;
+}
+
+.emailContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.emailContainer > input {
+  border: none;
+  background-color: rgb(237, 237, 237);
+  height: 35px;
+  border-radius: 5px;
+  font-size: 16px;
+  padding-left: 14px;
+}
+
+.passwordContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.passwordContainer > input {
+  border: none;
+  background-color: rgb(237, 237, 237);
+  height: 35px;
+  border-radius: 5px;
+  font-size: 16px;
+  padding-left: 14px;
+  width: 275px;
+}
+
+.LgButton {
+  width: 100%;
+  border: none;
+  background-color: black;
+  color: white;
+  padding: 10px 0;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: medium;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.DemoLogins {
+  display: flex;
+  gap: 40px;
+  margin-top: 10px;
+}
+
+.DemoUserButton,
+.AdminUserButton {
+  border: none;
+  background-color: white;
+  margin-top: 7px;
+  cursor: pointer;
+}
+
+.DemoUserButton:hover {
+  text-decoration: underline;
+}
+
+.errormsg {
+    font-weight: bold;
+    color: red;
+    font-size: 13px;
+}

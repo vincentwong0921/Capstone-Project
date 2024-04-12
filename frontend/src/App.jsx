@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
+import { ModalProvider, Modal } from "./context/Modal";
 import LoginFormPage from './components/LoginFormPage/LoginFormPage';
 import * as sessionActions from './store/session';
 import Navigation from './components/Navigation/Navigation';
@@ -18,8 +19,11 @@ function Layout() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded}/>
-      {isLoaded && <Outlet />}
+      <ModalProvider>
+        <Navigation isLoaded={isLoaded}/>
+        {isLoaded && <Outlet />}
+        <Modal />
+      </ModalProvider>
     </>
   );
 }
