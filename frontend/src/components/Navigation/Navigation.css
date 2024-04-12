@@ -26,6 +26,7 @@
   font-size: 25px;
   margin-left: 15px;
   cursor: pointer;
+  font-family: cursive;
 }
 
 .StoreName:hover {
@@ -38,7 +39,7 @@
 
 .NavContainer .links {
   display: flex;
-  gap: 35px;
+  gap: 55px;
 }
 
 .NavContainer a {

@@ -6,13 +6,21 @@
   color: white;
   font-size: 15px;
   border: 2px solid white;
-  width: 130px;
+  width: 140px;
   height: 30px;
   border-radius: 20px;
 }
 
-
+.ItemCount{
+  font-family: cursive;
+  font-weight: bold;
+  color: white
+}
 
 .CartLogo {
   font-size: 25px;
+}
+
+.ItemCount:hover {
+  color: gold
 }

@@ -33,7 +33,7 @@ function CartButton() {
     <>
         <div className="Cart">
             <PiShoppingCartDuotone className="CartLogo"/>
-            <p>Items - 1</p>
+            <p className="ItemCount">1 Item</p>
         </div>
     </>
   )
