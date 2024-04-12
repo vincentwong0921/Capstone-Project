@@ -13,10 +13,10 @@ const Navigation = ({isLoaded}) => {
     <div className="NavContainer">
       <div className="StoreName">The Phone Hub</div>
       <ul className='links'>
-        <li><a href='#'>Products</a></li>
-        <li><a href='#'>About us</a></li>
-        <li><a href='#'>Store Policy</a></li>
-        <li><a href='#'>Contact</a></li>
+        <li><a href='/products'>Products</a></li>
+        <li><a href='/aboutus'>About us</a></li>
+        <li><a href='/storepolicy'>Store Policy</a></li>
+        <li><a href='/contactus'>Contact Us</a></li>
       </ul>
       <div className='LoginButton'>
         <OpenModalButton
