@@ -84,13 +84,13 @@ const inventoryReducer = (state = initialState, action) => {
             action.inventories.forEach(inventory => invState[inventory.id] = inventory)
             return invState
         }
-        case ADD_ITEM: {
+        case ADD_INVENTORY: {
             return {...state, [action.inventory.id]: action.inventory}
         }
-        case UPDATE_ITEM: {
+        case EDIT_INVENTORY: {
             return {...state, [action.inventory.id]: action.inventory}
         }
-        case DELETE_ITEM: {
+        case REMOVE_INVENTORY: {
             const newInvState = {...state}
             delete newInvState[action.inventoryId]
             return newInvState

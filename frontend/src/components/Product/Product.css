@@ -1,0 +1,14 @@
+.BrandContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    gap: 10px;
+    height: 30px;
+}
+
+.Brands {
+    font-size: 18px;
+    cursor: pointer;
+    color: silver;
+}
