@@ -22,9 +22,10 @@
 
 .SignUpRight > h2 {
     margin: 15px 30px;
-    color: black;
+    color: white;
     font-size: xx-large;
 }
+
 
 .SignUpLeft{
     margin-left: 30px;
@@ -44,9 +45,8 @@
 }
 
 .SignUpForm label {
-    color: black;
+    color: white;
 }
-
 
 .SignUpButton {
     width: 100%;
