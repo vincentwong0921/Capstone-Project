@@ -30,7 +30,7 @@
 }
 
 .StoreName:hover {
-  color: Blue;
+  color: orange;
 }
 
 .NavContainer li {
@@ -49,16 +49,17 @@
 
 .NavContainer a:hover {
   color: gold;
+  font-weight: bold;
 }
 
 .LoginButton button {
-  width: 94px;
-  height: 36px;
+  width: 120px;
+  height: 40px;
   border-radius: 40px;
   border: 1px solid white;
   background-color: black;
   color: white;
-  font-size: small;
+  font-size: 16px;
   font-weight: 600;
   margin-right: 20px;
 }

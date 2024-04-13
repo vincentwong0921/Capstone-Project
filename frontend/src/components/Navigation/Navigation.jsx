@@ -31,7 +31,7 @@ const Navigation = ({isLoaded}) => {
               <CartButton/>
             </div>
             <div>
-              <SideBar/>
+              <SideBar user={user}/>
             </div>
           </div>
         </>

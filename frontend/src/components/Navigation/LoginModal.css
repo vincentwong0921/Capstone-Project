@@ -68,6 +68,11 @@
   text-decoration: underline;
 }
 
+.AdminUserButton:hover {
+  text-decoration: underline;
+}
+
+
 .errormsg {
     font-weight: bold;
     color: red;
