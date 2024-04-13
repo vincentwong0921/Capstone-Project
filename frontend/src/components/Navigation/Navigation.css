@@ -14,6 +14,12 @@
   align-items: center;
 }
 
+
+.fa-brands.fa-whatsapp {
+  color: white;
+  font-size: 25px;
+}
+
 .Logo {
   color: white;
   font-size: 30px;
@@ -27,6 +33,10 @@
   margin-left: 15px;
   cursor: pointer;
   font-family: cursive;
+}
+
+.fa-brands.fa-whatsapp:hover {
+  color: lightgreen;
 }
 
 .StoreName:hover {
@@ -72,6 +82,14 @@
   color: white;
   margin-right: 20px;
   font-size: 25px;
+  cursor: pointer;
+}
+
+.fa-solid.fa-x {
+  color: white;
+  margin-right: 20px;
+  font-size: 25px;
+  cursor: pointer;
 }
 
 .CartButton {
@@ -86,12 +104,63 @@
   margin-right: 15px;
 }
 
+.Open {
+  position: absolute;
+  right: 190px;
+  top: 100px;
+  height: 0px;
+  width: 170px;
+  background-color: lightgrey;
+  border: 1px solid black;
+  border-radius: 10px;
+  overflow:hidden;
+  padding: 10px;
+  height: 170px;
+}
+
+.Open li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.Open li:hover {
+  color: orange;
+  font-weight: bold;
+}
+
+.Open a {
+  color: black;
+}
+
+.Close {
+  display: none
+}
+
+.WelcomeMsg {
+  font-weight: bold;
+}
+
+.LogOutButton {
+  width: 100%;
+  border-radius: 20px;
+  background-color: orange;
+  color: white;
+  height: 30px;
+}
+
 @media (max-width: 600px) {
   .NavContainer .links {
     display: none;
   }
 
   .StoreName .LoginButton {
+    display: block;
+  }
+
+  .DropDownMenu {
     display: block;
   }
 }

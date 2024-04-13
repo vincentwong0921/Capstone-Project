@@ -5,6 +5,7 @@ import { ModalProvider, Modal } from "./context/Modal";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation/Navigation";
 import LandingPage from "./components/LandingPage/LandingPage";
+import Product from "./components/Product/Product";
 
 function Layout() {
   const dispatch = useDispatch();
@@ -35,6 +36,14 @@ const router = createBrowserRouter([
         path: "/",
         element: <LandingPage />,
       },
+      {
+        path: "/products",
+        element: <Product />
+      },
+      {
+        path: "*",
+        element: <h1>Page Not Found</h1>
+      }
     ],
   },
 ]);
