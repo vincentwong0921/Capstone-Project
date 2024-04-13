@@ -26,6 +26,10 @@ function LandingPage() {
         const errs = {};
         errs.password = "Password and Confirm Password are not matching";
         setErrors(errs);
+      } else if (password.length < 6) {
+        const errs = {};
+        errs.password = "Password must be at least 6 characters";
+        setErrors(errs);
       } else {
         const newUser = { first_name, last_name, phone, email, password };
         await dispatch(signUpUser(newUser));
@@ -45,7 +49,7 @@ function LandingPage() {
           <p>Sign Up and Earn up to 18% Rebate!</p>
         </div>
         <div className="SignUpRight">
-          <h2>Let&apos;s Get Started</h2>
+          <h2>Sign Up Now!</h2>
           <form className="SignUpForm" onSubmit={handleSubmit}>
             <label>First Name:</label>
             <input

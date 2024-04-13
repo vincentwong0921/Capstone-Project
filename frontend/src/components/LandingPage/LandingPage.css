@@ -14,11 +14,8 @@
 }
 
 .SignUpRight {
-    background-color: lightsteelblue;
     width: 500px;
     height: 550px;
-    margin-right: 30px;
-    border: 1px solid black;
     border-radius: 20px;
     font-size: 20px;
 }
@@ -46,6 +43,11 @@
     gap: 10px;
 }
 
+.SignUpForm label {
+    color: black;
+}
+
+
 .SignUpButton {
     width: 100%;
     border: none;
@@ -55,6 +57,6 @@
     cursor: pointer;
     border-radius: 5px;
     font-size: medium;
-    font-weight: 500;
+    font-weight: bold;
     margin-top: 10px;
 }
