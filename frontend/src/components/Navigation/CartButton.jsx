@@ -8,10 +8,10 @@ function CartButton() {
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
 
-  const toggleMenu = (e) => {
-    e.stopPropagation(); // Keep from bubbling up to document and triggering closeMenu
-    setShowMenu(!showMenu);
-  };
+  // const toggleMenu = (e) => {
+  //   e.stopPropagation(); // Keep from bubbling up to document and triggering closeMenu
+  //   setShowMenu(!showMenu);
+  // };
 
   useEffect(() => {
     if (!showMenu) return;
@@ -27,7 +27,7 @@ function CartButton() {
     return () => document.removeEventListener("mousedown", closeMenu);
   }, [showMenu, dispatch]);
 
-  const ulClassName = "cart-dropdown" + (showMenu ? "" : " hidden");
+  // const ulClassName = "cart-dropdown" + (showMenu ? "" : " hidden");
 
   return (
     <>
