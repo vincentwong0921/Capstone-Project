@@ -5,7 +5,7 @@ import { ModalProvider, Modal } from "./context/Modal";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation/Navigation";
 import LandingPage from "./components/LandingPage/LandingPage";
-import Product from "./components/Product/Product";
+import ProductPage from "./components/Product/ProductPage";
 
 function Layout() {
   const dispatch = useDispatch();
@@ -38,7 +38,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/products",
-        element: <Product />
+        element: <ProductPage />
       },
       {
         path: "*",
