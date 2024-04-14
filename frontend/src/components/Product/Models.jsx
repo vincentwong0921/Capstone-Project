@@ -1,6 +1,6 @@
 import Items from "./Items";
 import "./Models.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function Models({ selectedBrand, inventoriesList }) {
   const [selectedModel, setSelectedModel] = useState("All Models");
