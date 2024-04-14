@@ -4,11 +4,15 @@ import { useState, useEffect } from 'react'
 
 function Models({ selectedBrand, inventoriesList }) {
   const [selectedModel, setSelectedModel] = useState(null)
-  const items = inventoriesList.filter(inventory => inventory.brand === selectedBrand)
+  let items
+  if(selectedBrand !== "All Brands"){
+    items = inventoriesList.filter(inventory => inventory.brand === selectedBrand)
+  } else {
+    items = inventoriesList
+  }
+
   const modelList = ['All Models', ...new Set(items.map(item => item.model))]
-
   const handleBrandClick = model => setSelectedModel(model)
-
 
   return (
     <>

@@ -1,10 +1,16 @@
 import './Items.css'
 
 function Items({ items, selectedModel }) {
-    console.log(selectedModel)
+    let itemsToRender
+    if(selectedModel === "All Models") {
+        itemsToRender = items
+    } else {
+        itemsToRender = items.filter(item => item.model === selectedModel)
+    }
+
     return (
         <>
-            {items && items.map(item =>
+            {itemsToRender && itemsToRender.map(item =>
                 <div key={item.id}>
                     {item.brand}
                     {item.model}

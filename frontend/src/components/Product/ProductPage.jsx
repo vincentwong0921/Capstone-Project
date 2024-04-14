@@ -7,9 +7,9 @@ import Models from './Models'
 function ProductPage(){
     const dispatch = useDispatch()
     const [ isloaded, setIsLoaded ] = useState(false)
-    const [ selectedBrand, setSelectedBrand ] = useState(null)
+    const [ selectedBrand, setSelectedBrand ] = useState("All Brands")
     const inventoriesList = Object.values(useSelector(state => state.inventory))
-    const brandList = ['All Brands', ...new Set(inventoriesList.map(inventory => inventory.brand))]
+    const brandList = ["All Brands", ...new Set(inventoriesList.map(inventory => inventory.brand))]
     const handleBrandClick = brand => setSelectedBrand(brand)
 
     useEffect(() => {
@@ -34,9 +34,6 @@ function ProductPage(){
             <div className='BottomContainer'>
                     <div>
                         <Models selectedBrand={selectedBrand} inventoriesList={inventoriesList}/>
-                    </div>
-                    <div>
-
                     </div>
             </div>
         </>

@@ -21,8 +21,6 @@ const Navigation = () => {
     return navigate('/')
   }
 
-  console.log(showMenu)
-
   return (
     <div className="NavContainer">
       <div className='LogoAndName'>
