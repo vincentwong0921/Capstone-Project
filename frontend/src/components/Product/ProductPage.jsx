@@ -26,7 +26,7 @@ function ProductPage(){
         <>
             <div className='BrandContainer'>
                 {brandList && brandList.map((brand) => (
-                    <div onClick={() => handleBrandClick(brand)} key={brand} className='Brands'>
+                    <div onClick={() => handleBrandClick(brand)} key={brand} className={selectedBrand === brand ? 'SelectedBrand' : 'Brands'}>
                         {brand}
                     </div>
                 ))}

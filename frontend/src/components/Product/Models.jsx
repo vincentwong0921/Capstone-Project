@@ -20,10 +20,10 @@ function Models({ selectedBrand, inventoriesList }) {
   return (
     <>
       <div className="ModelAndItemContainer">
-        <div>
+        <div className="ModelsContainer">
           {modelList &&
             modelList.map((model) => (
-              <div onClick={() => handleBrandClick(model)} key={model}>
+              <div className={selectedModel === model ? 'SelectedModel' : 'Models'} onClick={() => handleBrandClick(model)} key={model}>
                 {model}
               </div>
             ))}

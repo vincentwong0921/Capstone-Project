@@ -12,7 +12,6 @@ function Items({ items, selectedModel }) {
         <>
             {itemsToRender && itemsToRender.map(item =>
                 <div key={item.id}>
-                    {item.brand}
                     {item.model}
                     {item.carrier}
                     {item.storage}

@@ -1,6 +1,6 @@
 const express = require("express");
 const { requireAuth } = require("../../utils/auth");
-const { Order, OrderDetail, Inventory } = require("../../db/models");
+const { Order, OrderDetail, Inventory, Review } = require("../../db/models");
 const { handleValidationErrors } = require("../../utils/validation");
 const { check } = require("express-validator");
 
@@ -20,6 +20,17 @@ const validateOrder = [
         .exists({ checkFalsy: true })
         .withMessage("Zip Code is required"),
     handleValidationErrors
+]
+
+const validateReview = [
+  check("review")
+      .exists({ checkFalsy: true})
+      .withMessage("Review text is required"),
+  check("stars")
+      .exists({ checkFalsy: true})
+      .isFloat({ min: 1, max: 5 })
+      .withMessage("Stars must be an integer from 1 to 5"),
+  handleValidationErrors,
 ]
 
 // Get All Orders, Role must be Admin
@@ -74,6 +85,28 @@ router.post('/', requireAuth, validateOrder, async(req, res) => {
     }
 
     return res.json(newOrder)
+})
+
+// Post a Review of an Order
+router.post('/:orderId/reviews', requireAuth, validateReview, async(req, res) => {
+    const user_id = req.user.id
+    const orderId = req.params.orderId
+
+    const order = await Order.findByPk(orderId)
+    if(!order) return res.status(404).json({message: "Order couldn't be found"})
+
+    const existingReview = await Review.findOne({
+      where: {
+        order_id: orderId,
+        user_id: user_id
+      }
+    })
+
+    if(existingReview) return res.status(500).json({message: "User already has a review for this Order"})
+
+    const { review , stars } = req.body;
+    const newReview = await Review.create({ user_id, orderId, review, stars })
+    return res.status(201).json(newReview)
 })
 
 // Edit an Order Status - Must be Owner

@@ -1,3 +1,25 @@
 .ModelAndItemContainer {
     display: flex;
 }
+
+.ModelsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-weight: bold;
+    padding: 20px;
+    background-color: black;
+}
+
+.SelectedModel {
+    font-size: 23px;
+    cursor: pointer;
+    color: orange;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.Models {
+    cursor: pointer;
+    color: white;
+}
