@@ -1,6 +1,13 @@
 import './Items.css'
+import { useSelector } from 'react-redux';
+import OpenModalButton from '../OpenModalButton/OpenModalButton';
+import DeleteItemModal from './DeleteItemModal';
+
 
 function Items({ items, selectedModel }) {
+    const user = useSelector((state) => state.session.user);
+    const isAdmin = user?.role === 'Admin'
+
     let itemsToRender
     if(selectedModel === "All Models") {
         itemsToRender = items
@@ -12,13 +19,37 @@ function Items({ items, selectedModel }) {
         <>
             {itemsToRender && itemsToRender.map(item =>
                 <div key={item.id}>
-                    {item.model}
-                    {item.carrier}
-                    {item.storage}
-                    {item.color}
-                    {item.condition}
-                    {item.price}
-                    <img className='InvImage' src={item.image_url}/>
+                    <div className='ItemContainer'>
+                        <div className='InnerContainer'>
+                            <div className='ModelStorage'>
+                                <p>{item.model}</p>
+                                <p>{item.storage}</p>
+                            </div>
+                            <div className=''>
+                                <p>Color: {item.color}</p>
+                                <p>Carrier: {item.carrier}</p>
+                            </div>
+                            <div>
+                                <p>Condition: {item.condition}</p>
+                                <p>Price: ${item.price}</p>
+                            </div>
+                        </div>
+                        <div>
+                            {user && isAdmin ?
+                            <OpenModalButton
+                                buttonText="Delete"
+                                modalComponent={
+                                    <DeleteItemModal
+                                    item={item}
+                                    />
+                                }
+                            /> : null
+                            }
+                        </div>
+                        <div>
+                            <img className='InvImage' src={item.image_url}/>
+                        </div>
+                    </div>
                 </div>
             )}
         </>
