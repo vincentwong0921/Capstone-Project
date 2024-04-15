@@ -31,9 +31,9 @@ function Items({ items, selectedModel }) {
                                 <p>Color: {item.color}</p>
                                 <p>Carrier: {item.carrier}</p>
                             </div>
-                            <div>
+                            <div className=''>
                                 <p>Condition: {item.condition}</p>
-                                <p>Price: ${item.price}</p>
+                                <p>Price: ${item.price.toFixed(2)}</p>
                             </div>
                         </div>
                         <div>

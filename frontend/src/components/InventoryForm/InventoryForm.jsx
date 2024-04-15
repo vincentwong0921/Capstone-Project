@@ -14,7 +14,7 @@ function InventoryForm({ item, formType }) {
   const [carrier, setCarrier] = useState(item?.carrier);
   const [storage, setStorage] = useState(item?.storage);
   const [color, setColor] = useState(item?.color);
-  const [condition, setCondition] = useState(item?.condition);
+  const [condition, setCondition] = useState(item?.condition || 'Brand New(Opened Box)');
   const [price, setPrice] = useState(item?.price);
   const [image_url, setImage_url] = useState(item?.image_url);
   const [errors, setErrors] = useState({});
@@ -30,9 +30,6 @@ function InventoryForm({ item, formType }) {
         navigate('/products')
     } catch (error) {
         const data = await error.json()
-        if (data?.message) {
-            console.log(data)
-        }
         setErrors(data.errors);
     }
   };
@@ -120,7 +117,7 @@ function InventoryForm({ item, formType }) {
         </select>
       </label>
       <label>
-        {errors.price && <p>{errors.price}</p>}
+        {errors && errors.price && <p>{errors.price}</p>}
         <h4>Price: </h4>
         <input
           type="number"
