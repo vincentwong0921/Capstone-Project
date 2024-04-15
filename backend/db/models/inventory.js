@@ -35,7 +35,6 @@ module.exports = (sequelize, DataTypes) => {
       },
       carrier: {
         type: DataTypes.STRING,
-        allowNull: false
       },
       storage: {
         type: DataTypes.STRING,

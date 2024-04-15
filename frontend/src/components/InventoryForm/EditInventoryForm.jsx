@@ -23,7 +23,8 @@ function EditInventoryForm() {
     }, [dispatch, id])
 
     if (!loaded) return <>Loading...</>
-
+    if (!item) return <h1>Page Not Found</h1>
+    
     return (
         <>
             <InventoryForm item={item} formType="Update Inventory" />

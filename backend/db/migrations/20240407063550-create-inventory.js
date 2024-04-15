@@ -28,7 +28,6 @@ module.exports = {
       },
       carrier: {
         type: Sequelize.STRING,
-        allowNull: false
       },
       storage: {
         type: Sequelize.STRING
