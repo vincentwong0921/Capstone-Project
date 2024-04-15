@@ -10,7 +10,7 @@ function EditInventoryForm() {
     const dispatch = useDispatch()
     const [loaded, setLoaded] = useState(false)
     const item = useSelector(state => state.inventory[id])
-    const userRole = useSelector(state => state.session.user.role)
+    const userRole = useSelector(state => state.session?.user?.role)
 
     useEffect(() => {
         if(userRole !== 'Admin') return navigate('/products')
@@ -24,7 +24,7 @@ function EditInventoryForm() {
 
     if (!loaded) return <>Loading...</>
     if (!item) return <h1>Page Not Found</h1>
-    
+
     return (
         <>
             <InventoryForm item={item} formType="Update Inventory" />

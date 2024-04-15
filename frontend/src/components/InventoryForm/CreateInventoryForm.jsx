@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 function CreateInventoryForm() {
-    const userRole = useSelector(state => state.session.user.role)
+    const userRole = useSelector(state => state.session?.user?.role)
     const navigate = useNavigate()
 
     useEffect(() => {
