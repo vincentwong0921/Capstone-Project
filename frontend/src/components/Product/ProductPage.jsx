@@ -1,7 +1,9 @@
 import './ProductPage.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { useState, useEffect } from 'react'
+import { getAllReviews } from '../../store/review'
 import { getAllInventory } from '../../store/inventory'
+import Review from '../Review/Review'
 import Models from './Models'
 
 function ProductPage(){
@@ -9,12 +11,14 @@ function ProductPage(){
     const [ isloaded, setIsLoaded ] = useState(false)
     const [ selectedBrand, setSelectedBrand ] = useState("All Brands")
     const inventoriesList = Object.values(useSelector(state => state.inventory))
+    const reviewList = Object.values(useSelector(state => state.review))
     const brandList = ["All Brands", ...new Set(inventoriesList.map(inventory => inventory.brand))]
     const handleBrandClick = brand => setSelectedBrand(brand)
 
     useEffect(() => {
         const fetch = async () => {
             await dispatch(getAllInventory())
+            await dispatch(getAllReviews())
             setIsLoaded(true)
         }
         fetch()
@@ -34,6 +38,9 @@ function ProductPage(){
             <div className='BottomContainer'>
                     <div>
                         <Models selectedBrand={selectedBrand} inventoriesList={inventoriesList}/>
+                    </div>
+                    <div className='ReviewContainer'>
+                        <Review reviewList={reviewList}/>
                     </div>
             </div>
         </>

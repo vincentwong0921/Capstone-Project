@@ -10,6 +10,7 @@
     background-color: black;
     gap: 15px;
     height: 100px;
+    display: flex;
 }
 
 .SelectedBrand {
@@ -24,4 +25,14 @@
     font-size: 23px;
     cursor: pointer;
     color: white;
+}
+
+.BottomContainer {
+    display: flex;
+}
+
+.ReviewContainer {
+    background-color: black;
+    width: 100%;
+    padding: 13px;
 }

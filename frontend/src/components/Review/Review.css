@@ -1,0 +1,34 @@
+.ReviewsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px
+}
+
+.ReviewsContainer > h1 {
+    color: orange;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: underline;
+}
+
+.ReviewDetails {
+    color: white;
+    border: 1px solid white;
+    border-radius: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.ReviewDetails > p {
+    color: white;
+}
+
+.fa-solid.fa-star {
+    color: orange;
+}

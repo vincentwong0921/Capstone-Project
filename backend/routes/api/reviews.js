@@ -19,7 +19,14 @@ const validateReview = [
 
 //Get all Reviews
 router.get("/", async (req, res) => {
-  const reviews = await Review.findAll();
+  const reviews = await Review.findAll({
+    include: [
+      {
+        model: User,
+        attributes: { exclude: ['last_name', 'phone', 'email', 'role', 'hashedPassword', 'createdAt', 'updatedAt'] },
+      }
+    ]
+  });
   return res.json(reviews);
 });
 
