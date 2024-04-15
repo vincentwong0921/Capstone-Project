@@ -1,13 +1,13 @@
 import "./InventoryForm.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { createInventory, updateInventory } from "../../store/inventory";
 
 function InventoryForm({ item, formType }) {
   const dispatch = useDispatch();
+  const { id } = useParams()
   const navigate = useNavigate()
-  const { id } = useParams();
   const [categories, setCategories] = useState(item?.categories);
   const [brand, setBrand] = useState(item?.brand);
   const [model, setModel] = useState(item?.model);
@@ -23,9 +23,12 @@ function InventoryForm({ item, formType }) {
     try {
         e.preventDefault();
         item = {categories, brand, model, carrier, storage, color, condition, price, image_url}
-        console.log(item)
         if (formType === 'Create Inventory') {
-            await dispatch(createInventory(item))
+          await dispatch(createInventory(item))
+        } else if (formType === 'Update Inventory') {
+          item.id = id
+          console.log(item.carrier)
+          await dispatch(updateInventory(item))
         }
         navigate('/products')
     } catch (error) {

@@ -75,8 +75,12 @@ router.put('/:inventoryId', requireAuth, validateInventory, async(req, res) => {
 
     if (userRole !== "Admin") return res.status(403).json({ message: 'Forbidden'})
 
-    const { categories, brand, model, storage, color, condition, price, image_url } = req.body
-    await inventory.update({ categories, brand, model, storage, color, condition, price, image_url })
+    let { categories, brand, model, carrier, storage, color, condition, price, image_url } = req.body
+    brand = brand[0].toUpperCase() + brand.slice(1).toLowerCase()
+    model = model[0].toUpperCase() + model.slice(1).toLowerCase()
+    color = color[0].toUpperCase() + color.slice(1).toLowerCase()
+
+    await inventory.update({ categories, brand, model, carrier, storage, color, condition, price, image_url })
     return res.json(inventory)
 
 })
