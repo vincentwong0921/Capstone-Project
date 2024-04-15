@@ -25,10 +25,40 @@
     align-items: center;
 }
 
-.ReviewDetails > p {
+.ReviewAndUser {
+    display: flex;
+}
+
+.Reviewdes {
     color: white;
+}
+
+.UserName {
+    font-weight: bold;
+    color: white
+}
+
+.StarAndDate {
+    display: flex;
+    gap: 10px;
 }
 
 .fa-solid.fa-star {
     color: orange;
+}
+
+.Date {
+    color: white;
+}
+
+.StarAndDate button {
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 6px;
+    color: #ffffff;
+    background-color: red;
+    border: 1px solid red;
+    font-weight: bold;
+    height: 25px;
+    width: 80px;
 }
