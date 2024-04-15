@@ -2,7 +2,7 @@ import './Items.css'
 import { useSelector } from 'react-redux';
 import OpenModalButton from '../OpenModalButton/OpenModalButton';
 import DeleteItemModal from './DeleteItemModal';
-
+import { Link } from "react-router-dom";
 
 function Items({ items, selectedModel }) {
     const user = useSelector((state) => state.session.user);
@@ -14,6 +14,8 @@ function Items({ items, selectedModel }) {
     } else {
         itemsToRender = items.filter(item => item.model === selectedModel)
     }
+
+    const editItem = () => navigate(`/inventories/${itemId}`)
 
     return (
         <>
@@ -36,17 +38,24 @@ function Items({ items, selectedModel }) {
                         </div>
                         <div>
                             {user && isAdmin ?
-                            <OpenModalButton
-                                buttonText="Delete"
-                                modalComponent={
-                                    <DeleteItemModal
-                                    item={item}
-                                    />
-                                }
-                            /> : null
+                            <div className='UpdateItemLink'>
+                                <Link to={`/products/${item.id}/edit`}>Update</Link>
+                            </div>
+                            : null}
+                            {user && isAdmin ?
+                            <div className='DeleteItemButton'>
+                                <OpenModalButton
+                                    buttonText="Delete"
+                                    modalComponent={
+                                        <DeleteItemModal
+                                        item={item}
+                                        />
+                                    }
+                                />
+                            </div>: null
                             }
                         </div>
-                        <div>
+                        <div className='ImageContainer'>
                             <img className='InvImage' src={item.image_url}/>
                         </div>
                     </div>

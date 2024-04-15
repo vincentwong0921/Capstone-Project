@@ -13,6 +13,7 @@ const Navigation = () => {
 	const navigate = useNavigate();
   const dispatch = useDispatch()
   const [ showMenu, setShowMenu ] = useState(false)
+  const isAdmin = user?.role === 'Admin'
 
   const openSideBar = () => setShowMenu(!showMenu)
 
@@ -48,8 +49,12 @@ const Navigation = () => {
             <div className={`${showMenu !== false ? 'Open': 'Close'}`}>
                 <div className='WelcomeMsg'>Welcome {user?.first_name}!</div>
                 <li><a href="/orders"></a>My Orders</li>
-                <li><a href='/storepolicy'>Store Policy</a></li>
-                <li><a href='/contactus'>Contact Us</a></li>
+                {isAdmin ? <li><a href='/reviews'>Manage Reviews</a></li>
+                : <li><a href='/storepolicy'>Store Policy</a></li>
+                }
+                {isAdmin ? <li><a href='/products/new'>Add New Product</a></li>
+                : <li><a href='/contactus'>Contact Us</a></li>
+                }
                 <button onClick={logOutUser} className='LogOutButton'>Log Out</button>
             </div>
           </div>

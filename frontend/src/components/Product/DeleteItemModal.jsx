@@ -1,7 +1,7 @@
 import "./DeleteItemModal.css";
 import { useModal } from "../../context/Modal";
 import { useDispatch } from "react-redux";
-import { deleteItem } from "../../store/inventory";
+import { removeInventory } from "../../store/inventory";
 
 function DeleteItemModal({ item }) {
   const dispatch = useDispatch();
@@ -9,7 +9,7 @@ function DeleteItemModal({ item }) {
 
   const confirmDelete = async (e) => {
     e.preventDefault();
-    await dispatch(deleteItem(item.id))
+    await dispatch(removeInventory(item.id))
     closeModal();
   };
 
