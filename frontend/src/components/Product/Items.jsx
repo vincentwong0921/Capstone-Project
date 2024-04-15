@@ -15,8 +15,6 @@ function Items({ items, selectedModel }) {
         itemsToRender = items.filter(item => item.model === selectedModel)
     }
 
-    const editItem = () => navigate(`/inventories/${itemId}`)
-
     return (
         <>
             {itemsToRender && itemsToRender.map(item =>
