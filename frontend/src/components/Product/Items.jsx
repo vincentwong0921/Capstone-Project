@@ -37,7 +37,7 @@ function Items({ items, selectedModel }) {
                         <div>
                             {user && isAdmin ?
                             <div className='UpdateItemLink'>
-                                <Link to={`/products/${item.id}/edit`}>Update</Link>
+                                <Link to={`/products/${item.id}/edit`}>Edit</Link>
                             </div>
                             : null}
                             {user && isAdmin ?

@@ -39,6 +39,7 @@
     width: 450px;
     justify-content: center;
     align-items: center;
+    font-size: 19px;
 }
 
 .Form > label > ::placeholder {
