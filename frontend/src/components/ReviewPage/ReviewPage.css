@@ -1,0 +1,12 @@
+.AllReviewsContainer {
+    display: flex;
+}
+
+.ARP {
+    width: 30%;
+
+}
+
+.AllReviewsDetail {
+    width: 50%;
+}

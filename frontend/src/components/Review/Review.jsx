@@ -6,6 +6,7 @@ import DeleteReviewModal from './DeleteReviewModal';
 function Review({ reviewList }) {
     const user = useSelector((state) => state.session.user);
     const isAdmin = user?.role === 'Admin'
+    const shortReviewList = reviewList.slice(0,5)
 
     const showStars = (stars) => {
         const starIcons = [];
@@ -18,7 +19,7 @@ function Review({ reviewList }) {
     return (
         <div className='ReviewsContainer'>
             <h1>Member Reviews</h1>
-            {reviewList && reviewList.map(review =>
+            {shortReviewList && shortReviewList.map(review =>
                 <div className='ReviewDetails' key={review.id}>
                     <div className='ReviewAndUser'>
                         <p className='Reviewdes'>{review.review}-</p>
@@ -40,6 +41,9 @@ function Review({ reviewList }) {
                     </div>
                 </div>
             )}
+            <div className='GoReviews'>
+                <a href='/reviews'>See All Members Reviews</a>
+            </div>
         </div>
     )
 }

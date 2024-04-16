@@ -25,11 +25,11 @@ function Items({ items, selectedModel }) {
                                 <p>{item.model}</p>
                                 <p>{item.storage}</p>
                             </div>
-                            <div className=''>
+                            <div className='ColorAndCarrier'>
                                 <p>Color: {item.color}</p>
                                 <p>Carrier: {item.carrier}</p>
                             </div>
-                            <div className=''>
+                            <div className='ConditionAndPrice'>
                                 <p>Condition: {item.condition}</p>
                                 <p>Price: ${item.price.toFixed(2)}</p>
                             </div>
