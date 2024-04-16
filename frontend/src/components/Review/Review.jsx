@@ -23,7 +23,7 @@ function Review({ reviewList }) {
                 <div className='ReviewDetails' key={review.id}>
                     <div className='ReviewAndUser'>
                         <p className='Reviewdes'>{review.review}-</p>
-                        <p className='UserName'>{review.User.first_name}</p>
+                        <p className='UserName'> by {review.User.first_name}</p>
                     </div>
                     <div className='StarAndDate'>
                         <p>Star Rating:{showStars(review.stars)}</p>
