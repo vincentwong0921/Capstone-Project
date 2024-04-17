@@ -39,7 +39,6 @@ function InventoryForm({ item, formType }) {
         await dispatch(createInventory(item));
       } else if (formType === "Update Inventory") {
         item.id = id;
-        console.log(item.carrier);
         await dispatch(updateInventory(item));
       }
       navigate("/products");

@@ -1,25 +1,29 @@
 import "./OrderDetail.css";
+import { useSelector } from "react-redux";
+import OpenModalButton from "../OpenModalButton/OpenModalButton";
+import EditOrderModal from "./EditOrderModal";
+import DeleteOrderModal from "./DeleteOrderModal";
 
 function OrderDetail({ detailsToRender }) {
-  console.log(detailsToRender);
+  const user = useSelector((state) => state.session.user);
+  const isAdmin = user?.role === "Admin";
 
   return (
     <>
       {detailsToRender &&
-        detailsToRender.map((detail) => (
-          <div className="SingleOrderContainer" key={detail.id}>
+        detailsToRender.map((order) => (
+          <div className="SingleOrderContainer" key={order.id}>
             <div className="OrderDetails">
-              <p>ORDER ID: {detail.id}</p>
-              <p>ORDER PLACED: {detail.createdAt.slice(0, 10)}</p>
-              <p>TOTAL: ${detail.amount.toFixed(2)}</p>
+              <p>ORDER NUMBER: TPB-{order.id}</p>
+              <p>ORDER PLACED ON: {order.createdAt.slice(0, 10)}</p>
+              <p>TOTAL: ${order.amount.toFixed(2)}</p>
               <p>
-                SHIP TO: {detail.address} {detail.city} {detail.state}{" "}
-                {detail.zip}
+                SHIP TO: {order.address} {order.city} {order.state} {order.zip}
               </p>
             </div>
             <div className="OrderPhoneImgContainer">
               <div>
-                {detail.OrderDetails.map((data, index) => (
+                {order?.OrderDetails?.map((data, index) => (
                   <img
                     key={index}
                     className="OrderPhoneImg"
@@ -28,9 +32,25 @@ function OrderDetail({ detailsToRender }) {
                   />
                 ))}
               </div>
-              <div className="ItemCount">
-                {detail.OrderDetails.length > 1 ? "Items in this Order: " : "Item in this Order: "}
-                {detail.OrderDetails.length}
+              <div className="ItemCounts">
+                {order?.OrderDetails?.length > 1
+                  ? "Items in this Order: "
+                  : "Item in this Order: "}
+                {order?.OrderDetails?.length}
+              </div>
+              <div className="ButtonsContainer">
+                {isAdmin && (
+                  <OpenModalButton
+                    buttonText="Edit Order"
+                    modalComponent={<EditOrderModal order={order} />}
+                  />
+                )}
+                {isAdmin && (
+                  <OpenModalButton
+                    buttonText="Delete Order"
+                    modalComponent={<DeleteOrderModal order={order} />}
+                  />
+                )}
               </div>
             </div>
           </div>
