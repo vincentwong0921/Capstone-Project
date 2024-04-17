@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import sessionReducer from './session';
 import inventoryReducer from './inventory';
 import reviewReducer from './review';
+import orderReducer from './order';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   inventory: inventoryReducer,
-  review: reviewReducer
+  review: reviewReducer,
+  order: orderReducer
 });
 
 let enhancer;

@@ -106,7 +106,7 @@
 .Open {
   position: absolute;
   top: 75px;
-  right: 190px;
+  right: 10px;
   background-color: lightgrey;
   border: 1px solid black;
   border-radius: 10px;
@@ -140,6 +140,10 @@
 
 .WelcomeMsg {
   font-weight: bold;
+  display: flex;
+  text-decoration: underline;
+  justify-content: center;
+  margin-bottom: 8px;
 }
 
 .LogOutButton {

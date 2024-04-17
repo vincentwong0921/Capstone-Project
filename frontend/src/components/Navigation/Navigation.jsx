@@ -50,7 +50,9 @@ const Navigation = () => {
             </div>
             <div className={`${showMenu !== false ? 'Open': 'Close'}`}>
                 <div className='WelcomeMsg'>Welcome {user?.first_name}!</div>
-                <li><a href="/orders"></a>My Orders</li>
+                {isAdmin ? <li><a href='/orders'>Manage Orders</a></li>
+                : <li><a href='/orders'>My Orders</a></li>
+                }
                 {isAdmin ? <li><a href='/reviews'>Manage Reviews</a></li>
                 : <li><a href='/storepolicy'>Store Policy</a></li>
                 }
