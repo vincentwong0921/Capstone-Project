@@ -1,13 +1,19 @@
 import { csrfFetch } from "./csrf"
 
-const LOAD_ORDERS = 'products/LOAD_ORDERS'
-const ADD_ORDER = 'products/ADD_ORDER'
-const EDIT_ORDER = 'products/EDIT_ORDER'
-const REMOVE_ORDER = 'products/REMOVE_ORDER'
+const LOAD_ALL_ORDERS = 'orders/LOAD_ORDERS'
+const LOAD_MY_ORDERS = 'orders/LOAD_MY_ORDERS'
+const ADD_ORDER = 'orders/ADD_ORDER'
+const EDIT_ORDER = 'orders/EDIT_ORDER'
+const REMOVE_ORDER = 'orders/REMOVE_ORDER'
 
 // Actions
-export const loadOrders = orders => ({
-    type: LOAD_ORDERS,
+export const loadAllOrders = orders => ({
+    type: LOAD_ALL_ORDERS,
+    orders
+})
+
+export const loadMyOrders = orders => ({
+    type: LOAD_MY_ORDERS,
     orders
 })
 
@@ -32,7 +38,16 @@ export const getAllOrders= () => async (dispatch) => {
 
     if (res.ok){
         const orders = await res.json()
-        dispatch(loadOrders(orders))
+        dispatch(loadAllOrders(orders))
+    }
+}
+
+export const getMyOrders = () => async (dispatch) => {
+    const res = await csrfFetch('/api/orders/current')
+
+    if (res.ok){
+        const orders = await res.json()
+        dispatch(loadMyOrders(orders))
     }
 }
 
@@ -79,10 +94,15 @@ const initialState = {}
 
 const orderReducer = (state = initialState, action) => {
     switch(action.type) {
-        case LOAD_ORDERS: {
+        case LOAD_ALL_ORDERS: {
             const orderState = {}
             action.orders.forEach(order => orderState[order.id] = order)
             return orderState
+        }
+        case LOAD_MY_ORDERS: {
+            const myOrderState = {}
+            action.orders.forEach(order => myOrderState[order.id] = order)
+            return myOrderState
         }
         case ADD_ORDER: {
             return {...state, [action.order.id]: action.order}

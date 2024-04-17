@@ -39,7 +39,20 @@ router.get("/", requireAuth, async (req, res) => {
   if (userRole !== "Admin")
     return res.status(403).json({ message: "Forbidden" });
 
-  const orders = await Order.findAll();
+  const orders = await Order.findAll({
+    include: [
+      {
+        model: OrderDetail,
+        attribute: { exclude: ["createdAt", "updatedAt"] },
+        include: [
+          {
+            model: Inventory,
+            attributes: { exclude: ["createdAt", "updatedAt"] },
+          },
+        ],
+      },
+    ],
+  });
   return res.json(orders);
 });
 

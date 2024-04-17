@@ -1,0 +1,56 @@
+.Banner {
+    background-image: url("https://images.unsplash.com/photo-1509315703195-529879416a7d?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    gap: 50px;
+    height: 250px;
+    display: flex;
+}
+
+.Orders {
+    border-bottom: 5px solid black;
+    padding-left: 35px;
+}
+
+.OrderContainer {
+    display: flex;
+}
+
+.StatusContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+    font-size: 20px;
+    padding: 20px;
+    border: 5px solid black;
+    border-radius: 10px;
+}
+
+.StatusContainer > li {
+    list-style: none;
+    padding-left: 0;
+    padding-right: 100px;
+    padding-bottom: 10px;
+    padding-left: 35px;
+    cursor: pointer;
+}
+
+.SelectedStatus {
+    color: white;
+    text-decoration: underline;
+    font-weight: bold;
+    background-color: black;
+    width: auto;
+    padding: 10px;
+}
+
+.DetailsContainer {
+    margin-left: 20px;
+    margin-top: 20px;
+}
