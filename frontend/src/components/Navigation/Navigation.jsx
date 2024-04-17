@@ -17,6 +17,8 @@ const Navigation = () => {
 
   const openSideBar = () => setShowMenu(!showMenu)
 
+  const signUp = () => navigate('/')
+
   const logOutUser = async () => {
     await dispatch(logout())
     return navigate('/')
@@ -60,12 +62,13 @@ const Navigation = () => {
           </div>
         </>
       :
-        <div className='LoginButton'>
-          <OpenModalButton
-            buttonText="Log In"
-            modalComponent={<LoginModal />}
-          />
-        </div>
+          <div className='LoginButton'>
+            <OpenModalButton
+              buttonText="Log In"
+              modalComponent={<LoginModal />}
+            />
+            <button onClick={signUp} className='SignUpButton'>Sign Up</button>
+          </div>
       }
     </div>
   );
