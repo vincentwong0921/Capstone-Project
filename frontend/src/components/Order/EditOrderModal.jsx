@@ -1,7 +1,7 @@
 import "./EditOrderModal.css";
 import { useModal } from "../../context/Modal";
 import { useDispatch } from "react-redux";
-import { updateOrder } from "../../store/order";
+import { updateOrder, getAllOrders } from "../../store/order";
 import { useState } from "react";
 
 function EditOrderModal({ order }) {
@@ -22,6 +22,7 @@ function EditOrderModal({ order }) {
     e.preventDefault();
     order = {id, OrderDetails, user_id, address, city, state, zip, amount, status}
     await dispatch(updateOrder(order));
+    await dispatch(getAllOrders())
     closeModal();
   };
 
