@@ -29,7 +29,7 @@ function Items({ items, selectedModel }) {
         itemsToRender = items.filter(item => item.model === selectedModel)
     }
 
-    const AddItem = async( inventoryId ) => {
+    const AddItem = async(inventoryId) => {
         await dispatch(addItemToCart(cart_id, {inventory_id: inventoryId}))
         await dispatch(getUserCart())
     }
@@ -58,7 +58,6 @@ function Items({ items, selectedModel }) {
                         </div>
                         <div>
                             {user && (
-
                                 <button onClick={() => AddItem(item.id)}>Add Item</button>
                             )}
                             {user && isAdmin ?

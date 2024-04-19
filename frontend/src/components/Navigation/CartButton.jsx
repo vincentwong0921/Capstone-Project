@@ -11,7 +11,7 @@ function CartButton() {
   const [loaded, setLoaded] = useState(false)
   const cartItems = useSelector(state => state.cart['1']?.CartItems)
   let count = 0
-  cartItems.map(item => count += item.quantity)
+  cartItems?.map(item => count += item.quantity)
 
   const ulRef = useRef();
 
