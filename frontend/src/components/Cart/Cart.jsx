@@ -5,6 +5,8 @@ function Cart({cartItems}) {
     let total = 0
     cartItems.map(item => total += item.Inventory.price * item.quantity)
 
+
+
     const addOne = () => {}
     const minusOne = () => {}
 
@@ -30,7 +32,7 @@ function Cart({cartItems}) {
                     )}
                 </div>
                 <div className='TotalAndCheckOut'>
-                    <p className='Total'>Subtotal: ${total}</p>
+                    <p className='Total'>Subtotal: ${total.toFixed(2)}</p>
                     <a href='/checkout'>Check out</a>
                 </div>
             </>

@@ -10,7 +10,8 @@ function CartButton() {
   const [showMenu, setShowMenu] = useState(false);
   const [loaded, setLoaded] = useState(false)
   const cartItems = useSelector(state => state.cart['1']?.CartItems)
-  const count = useSelector(state => state.cart['1']?.CartItems?.length)
+  let count = 0
+  cartItems.map(item => count += item.quantity)
 
   const ulRef = useRef();
 
