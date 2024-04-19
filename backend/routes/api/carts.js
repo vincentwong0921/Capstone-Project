@@ -1,6 +1,7 @@
 const express = require("express");
 const { requireAuth } = require("../../utils/auth");
-const { User, Cart, CartItem, Inventory } = require('../../db/models')
+const { User, Cart, CartItem, Inventory } = require('../../db/models');
+const e = require("express");
 
 const router = express.Router()
 
@@ -76,13 +77,25 @@ router.post('/:cartId/cart-items', requireAuth, async(req, res) => {
     const cart_id = req.params.cartId
     const user_id = req.user.id
     const cart = await Cart.findByPk(cart_id)
-    const { inventory_id , quantity } = req.body
+    const { inventory_id  } = req.body
 
     if(!cart) return res.status(404).json({message: "Cart couldn't be found"})
     if(cart.user_id !== user_id) return res.status(403).json({message: 'Forbidden'})
 
-    const newItem = await CartItem.create({ cart_id: cart.id, inventory_id, quantity })
-    return res.json(newItem)
+    const cartItem = await CartItem.findOne({
+        where: {
+            cart_id: cart_id,
+            inventory_id: inventory_id
+        }
+    })
+
+    if (cartItem) {
+        const editedItem = await cartItem.update({quantity: cartItem.quantity + 1})
+        return res.json(editedItem)
+    } else {
+        const newItem = await CartItem.create({ cart_id: cart.id, inventory_id, quantity: 1 })
+        return res.json(newItem)
+    }
 })
 
 

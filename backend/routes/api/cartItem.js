@@ -4,6 +4,19 @@ const { CartItem, Cart } = require('../../db/models')
 
 const router = express.Router()
 
+// get all cart-items of the user
+router.get('/current', requireAuth, async(req, res) => {
+    const user_id = req.user.id
+    const cart = await Cart.findOne({
+        where: {user_id: user_id}
+    })
+    const cartItems = await CartItem.findAll({
+        where: {cart_id: cart.id}
+    })
+
+    return res.json(cartItems)
+})
+
 // Edit the quantity of a cart Item
 router.put('/:itemId', requireAuth, async(req, res) => {
     const cartItemId = req.params.itemId
