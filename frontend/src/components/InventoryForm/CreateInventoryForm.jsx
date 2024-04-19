@@ -20,6 +20,7 @@ function CreateInventoryForm() {
         color: '',
         condition: '',
         price: '',
+        available_units: '',
         image_url: ''
     }
 

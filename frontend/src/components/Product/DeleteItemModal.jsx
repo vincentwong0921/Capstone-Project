@@ -22,7 +22,7 @@ function DeleteItemModal({ item }) {
     <form className="DeleteItemForm">
       <h2>Confirm Delete</h2>
       <div className="ItemDeleteDes">
-        Are you sure you want to delete this item?
+        Are you sure you want to delete this Listing?
       </div>
       <div className="NameAndImage">
         <div className="ItemName">{item.name}</div>

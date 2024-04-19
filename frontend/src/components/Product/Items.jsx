@@ -32,6 +32,7 @@ function Items({ items, selectedModel }) {
                             <div className='ConditionAndPrice'>
                                 <p>Condition: {item.condition}</p>
                                 <p>Price: ${item.price.toFixed(2)}</p>
+                                <p>{item.available_units > 1 ? "Available Units" : "Available Unit" } : {item.available_units}</p>
                             </div>
                         </div>
                         <div>

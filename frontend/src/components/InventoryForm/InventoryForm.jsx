@@ -17,6 +17,7 @@ function InventoryForm({ item, formType }) {
   const [condition, setCondition] = useState(
     item?.condition || "Brand New(Opened Box)"
   );
+  const [available_units, setAvailableUnits] = useState(item?.available_units)
   const [price, setPrice] = useState(item?.price);
   const [image_url, setImage_url] = useState(item?.image_url);
   const [errors, setErrors] = useState({});
@@ -33,6 +34,7 @@ function InventoryForm({ item, formType }) {
         color,
         condition,
         price,
+        available_units,
         image_url,
       };
       if (formType === "Create Inventory") {
@@ -143,6 +145,17 @@ function InventoryForm({ item, formType }) {
               required
               onChange={(e) => setPrice(e.target.value)}
               placeholder="Please enter the price"
+            />
+          </label>
+          <label>
+            {errors && errors.available_units && <p>{errors.available_units}</p>}
+            <h4>Units Available: </h4>
+            <input
+              type="number"
+              value={available_units}
+              required
+              onChange={(e) => setAvailableUnits(e.target.value)}
+              placeholder="Units available..."
             />
           </label>
           <label>
