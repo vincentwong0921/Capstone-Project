@@ -1,6 +1,6 @@
 const express = require("express");
 const { requireAuth } = require("../../utils/auth");
-const { CartItem, Cart } = require('../../db/models')
+const { CartItem, Cart, Inventory } = require('../../db/models')
 
 const router = express.Router()
 
@@ -11,7 +11,13 @@ router.get('/current', requireAuth, async(req, res) => {
         where: {user_id: user_id}
     })
     const cartItems = await CartItem.findAll({
-        where: {cart_id: cart.id}
+        where: {cart_id: cart.id},
+        include: [
+            {
+                model: Inventory,
+                attributes: { exclude: ['createdAt', 'updatedAt'] },
+            }
+        ]
     })
 
     return res.json(cartItems)

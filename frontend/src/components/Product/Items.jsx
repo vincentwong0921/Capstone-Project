@@ -11,12 +11,13 @@ function Items({ items, selectedModel }) {
     const dispatch = useDispatch()
     const user = useSelector((state) => state.session.user);
     const isAdmin = user?.role === 'Admin'
-    const cart_id = useSelector(state => state.cart['1']?.id)
+    const cart_id = Object.keys(useSelector(state => state.cart))[0]
     const [loaded, setLoaded] = useState(false)
 
     useEffect(() => {
         const fetch = async () => {
             await dispatch(getUserCartItems())
+            await dispatch(getUserCart())
             setLoaded(true)
         }
         fetch()

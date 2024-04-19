@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { PiShoppingCartDuotone } from "react-icons/pi";
-import { getUserCart } from "../../store/cart";
+import { getUserCartItems } from "../../store/cartItem";
 import './CartButton.css'
 import Cart from "../Cart/Cart";
 
@@ -9,7 +9,7 @@ function CartButton() {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const [loaded, setLoaded] = useState(false)
-  const cartItems = useSelector(state => state.cart['1']?.CartItems)
+  const cartItems = Object.values(useSelector(state => state.cartItem))
   let count = 0
   cartItems?.map(item => count += item.quantity)
 
@@ -22,7 +22,7 @@ function CartButton() {
 
   useEffect(() => {
     const fetch = async () => {
-      await dispatch(getUserCart())
+      await dispatch(getUserCartItems())
       setLoaded(true)
     }
     fetch()
