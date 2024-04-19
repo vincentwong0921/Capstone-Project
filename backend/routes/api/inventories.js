@@ -20,6 +20,10 @@ const validateInventory = [
     .exists({ checkFalsy: true })
     .isFloat({ min: 1 })
     .withMessage("Price must be greater than 0"),
+  check("available_units")
+    .exists({ checkFalsy: true })
+    .isFloat({ min: 1 })
+    .withMessage("Available units must be greater than 0"),
   check("image_url")
     .exists({ checkFalsy: true })
     .withMessage("Image is required"),
@@ -53,14 +57,14 @@ router.post("/", requireAuth, validateInventory, async (req, res) => {
 
     if (userRole !== "Admin") return res.status(403).json({ message: 'Forbidden'})
 
-    let { categories, brand, model, carrier, storage, color, condition, price, image_url } = req.body
+    let { categories, brand, model, carrier, storage, color, condition, price, available_units, image_url } = req.body
 
     categories = categories[0].toUpperCase() + categories.slice(1).toLowerCase()
     brand = brand[0].toUpperCase() + brand.slice(1).toLowerCase()
     model = model[0].toUpperCase() + model.slice(1).toLowerCase()
     color = color[0].toUpperCase() + color.slice(1).toLowerCase()
 
-    const newInventory = await Inventory.create({ categories, brand, model, carrier, storage, color, condition, price, image_url })
+    const newInventory = await Inventory.create({ categories, brand, model, carrier, storage, color, condition, price, available_units, image_url })
 
     return res.status(201).json(newInventory)
 });
@@ -75,12 +79,12 @@ router.put('/:inventoryId', requireAuth, validateInventory, async(req, res) => {
 
     if (userRole !== "Admin") return res.status(403).json({ message: 'Forbidden'})
 
-    let { categories, brand, model, carrier, storage, color, condition, price, image_url } = req.body
+    let { categories, brand, model, carrier, storage, color, condition, price, available_units, image_url } = req.body
     brand = brand[0].toUpperCase() + brand.slice(1).toLowerCase()
     model = model[0].toUpperCase() + model.slice(1).toLowerCase()
     color = color[0].toUpperCase() + color.slice(1).toLowerCase()
 
-    await inventory.update({ categories, brand, model, carrier, storage, color, condition, price, image_url })
+    await inventory.update({ categories, brand, model, carrier, storage, color, condition, price, available_units, image_url })
     return res.json(inventory)
 
 })
