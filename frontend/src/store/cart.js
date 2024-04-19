@@ -21,7 +21,7 @@ export const removeCart = cartId => ({
 })
 
 // Thunk
-export const getUserCart = cart => async (dispatch) => {
+export const getUserCart = () => async (dispatch) => {
     const res = await csrfFetch('/api/carts/current')
 
     if (res.ok){

@@ -1,5 +1,56 @@
+.CartTitle > h1 {
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid black;
+}
+
 .CartItemImage {
     width: 70px;
     height: 70px;
     object-fit: cover;
+}
+
+.CartItemDetailContainer {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    font-size: 15px;
+    align-items: center;
+    border-bottom: 1px solid black;
+}
+
+.fa-solid.fa-minus,
+.fa-solid.fa-trash,
+.fa-solid.fa-plus {
+    color: black;
+    cursor: pointer;
+}
+
+.fa-solid.fa-trash:hover,
+.fa-solid.fa-minus:hover,
+.fa-solid.fa-plus:hover {
+    color: black;
+    font-size: 20px;
+}
+
+.Total {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.TotalAndCheckOut {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+
+.TotalAndCheckOut > a {
+    font-weight: bold;
+    font-size: 20px;
+    color: black;
 }

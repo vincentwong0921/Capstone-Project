@@ -5,13 +5,15 @@ import inventoryReducer from './inventory';
 import reviewReducer from './review';
 import orderReducer from './order';
 import cartReducer from './cart';
+import cartItemReducer from './cartItem';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   inventory: inventoryReducer,
   review: reviewReducer,
   order: orderReducer,
-  cart: cartReducer
+  cart: cartReducer,
+  cartItem: cartItemReducer
 });
 
 let enhancer;

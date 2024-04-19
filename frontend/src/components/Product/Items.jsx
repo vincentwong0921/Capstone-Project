@@ -1,12 +1,26 @@
 import './Items.css'
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import OpenModalButton from '../OpenModalButton/OpenModalButton';
 import DeleteItemModal from './DeleteItemModal';
 import { Link } from "react-router-dom";
+import { addItemToCart, getUserCartItems } from '../../store/cartItem';
+import { getUserCart } from "../../store/cart";
+import { useState, useEffect } from 'react';
 
 function Items({ items, selectedModel }) {
+    const dispatch = useDispatch()
     const user = useSelector((state) => state.session.user);
     const isAdmin = user?.role === 'Admin'
+    const cart_id = useSelector(state => state.cart['1']?.id)
+    const [loaded, setLoaded] = useState(false)
+
+    useEffect(() => {
+        const fetch = async () => {
+            await dispatch(getUserCartItems())
+            setLoaded(true)
+        }
+        fetch()
+    }, [dispatch])
 
     let itemsToRender
     if(selectedModel === "All Models") {
@@ -14,6 +28,13 @@ function Items({ items, selectedModel }) {
     } else {
         itemsToRender = items.filter(item => item.model === selectedModel)
     }
+
+    const AddItem = (cartId, inventory_id) => {
+        dispatch(addItemToCart(cartId, inventory_id ))
+        dispatch(getUserCart())
+    }
+
+    if(!loaded) return <>Loading...</>
 
     return (
         <>
@@ -36,6 +57,10 @@ function Items({ items, selectedModel }) {
                             </div>
                         </div>
                         <div>
+                            {user && (
+
+                                <button onClick={() => AddItem(cart_id, item.id)}>Add Item</button>
+                            )}
                             {user && isAdmin ?
                             <div className='UpdateItemLink'>
                                 <Link to={`/products/${item.id}/edit`}>Edit</Link>
