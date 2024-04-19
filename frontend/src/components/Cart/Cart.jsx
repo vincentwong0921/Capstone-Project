@@ -2,6 +2,7 @@ import './Cart.css'
 import { editItemInCart, deleteCartItem } from '../../store/cartItem'
 import { useDispatch } from 'react-redux';
 import { getUserCart } from '../../store/cart';
+import { getUserCartItems } from '../../store/cartItem';
 
 
 function Cart({cartItems}) {
@@ -12,10 +13,12 @@ function Cart({cartItems}) {
     const addOne = async (itemId, quantity) => {
         await dispatch(editItemInCart({id: itemId, quantity: quantity + 1}))
         await dispatch(getUserCart())
+        await dispatch(getUserCartItems())
     }
     const minusOne =  async (itemId, quantity) => {
         await dispatch(editItemInCart({id: itemId, quantity: quantity - 1}))
         await dispatch(getUserCart())
+        await dispatch(getUserCartItems())
     }
     const deleteItem = async (itemId) => {
         await dispatch(deleteCartItem(itemId))
