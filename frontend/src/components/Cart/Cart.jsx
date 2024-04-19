@@ -12,12 +12,10 @@ function Cart({cartItems}) {
 
     const addOne = async (itemId, quantity) => {
         await dispatch(editItemInCart({id: itemId, quantity: quantity + 1}))
-        await dispatch(getUserCart())
         await dispatch(getUserCartItems())
     }
     const minusOne =  async (itemId, quantity) => {
         await dispatch(editItemInCart({id: itemId, quantity: quantity - 1}))
-        await dispatch(getUserCart())
         await dispatch(getUserCartItems())
     }
     const deleteItem = async (itemId) => {
