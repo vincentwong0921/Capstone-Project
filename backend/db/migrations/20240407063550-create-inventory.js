@@ -44,6 +44,10 @@ module.exports = {
         type: Sequelize.FLOAT,
         allowNull: false
       },
+      available_units: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      },
       image_url: {
         type: Sequelize.STRING,
         allowNull: false

@@ -51,6 +51,13 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.FLOAT,
         allowNull: false
       },
+      available_units: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: {
+          min: 1
+        }
+      },
       image_url: {
         type: DataTypes.STRING,
         allowNull: false

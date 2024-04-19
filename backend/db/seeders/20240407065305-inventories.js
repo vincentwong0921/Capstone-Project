@@ -22,6 +22,7 @@ module.exports = {
           price: 799.99,
           image_url:
             "https://images.unsplash.com/photo-1663499827419-726641d53ef7?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          available_units: 10
         },
         {
           categories: "Phones",
@@ -34,6 +35,7 @@ module.exports = {
           price: 599.99,
           image_url:
             "https://images.unsplash.com/photo-1694570149728-b1011c2a772b?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          available_units: 10
         },
         {
           categories: "Phones",
@@ -46,6 +48,7 @@ module.exports = {
           price: 459.99,
           image_url:
             "https://images.unsplash.com/photo-1569350691771-34ce8273f865?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          available_units: 10
         },
         {
           categories: "Phones",
@@ -58,6 +61,7 @@ module.exports = {
           price: 429.99,
           image_url:
             "https://images.unsplash.com/photo-1616410072514-e92114cf1a88?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          available_units: 3
         },
         {
           categories: "Phones",
@@ -70,6 +74,7 @@ module.exports = {
           price: 259.99,
           image_url:
             "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          available_units: 5
         },
         {
           categories: "Phones",
@@ -82,6 +87,7 @@ module.exports = {
           price: 359.99,
           image_url:
             "https://images.unsplash.com/photo-1610792516307-ea5acd9c3b00?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          available_units: 8
         },
         {
           categories: "Phones",
@@ -94,6 +100,7 @@ module.exports = {
           price: 899.99,
           image_url:
             "https://images.unsplash.com/photo-1705530292519-ec81f2ace70d?q=80&w=1827&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          available_units: 11
         },
         {
           categories: "Phones",
@@ -106,6 +113,7 @@ module.exports = {
           price: 599.99,
           image_url:
             "https://images.unsplash.com/photo-1644501618169-bab16b6e6efb?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          available_units: 5
         },
         {
           categories: "Phones",
@@ -117,6 +125,7 @@ module.exports = {
           condition: "Fair",
           price: "229.99",
           image_url: "https://images.unsplash.com/photo-1537589376225-5405c60a5bd8?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          available_units: 3
         },
       ],
       { validate: true }
