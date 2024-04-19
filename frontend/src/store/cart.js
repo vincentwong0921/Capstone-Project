@@ -21,8 +21,8 @@ export const removeCart = cartId => ({
 })
 
 // Thunk
-export const getCartById = cart => async (dispatch) => {
-    const res = await csrfFetch(`/api/cart/${cart.id}`)
+export const getUserCart = cart => async (dispatch) => {
+    const res = await csrfFetch('/api/carts/current')
 
     if (res.ok){
         const userCart = await res.json()
@@ -31,7 +31,7 @@ export const getCartById = cart => async (dispatch) => {
 }
 
 export const createCart = cart => async (dispatch) => {
-    const res = await csrfFetch('/api/cart', {
+    const res = await csrfFetch('/api/carts', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(cart)
@@ -45,7 +45,7 @@ export const createCart = cart => async (dispatch) => {
 }
 
 export const deleteCart = cartId => async (dispatch) => {
-    const res = await csrfFetch(`/api/cart/${cartId}`, {
+    const res = await csrfFetch(`/api/carts/${cartId}`, {
         method: 'DELETE'
     })
 
@@ -63,10 +63,10 @@ const cartReducer = (state = initialState, action) => {
         case LOAD_CART: {
             return {...state, [action.cart.id]: action.cart}
         }
-        case ADD_INVENTORY: {
+        case ADD_CART: {
             return {...state, [action.cart.id]: action.cart}
         }
-        case REMOVE_INVENTORY: {
+        case REMOVE_CART: {
             const newCartState = {...state}
             delete newCartState[action.cartId]
             return newCartState
