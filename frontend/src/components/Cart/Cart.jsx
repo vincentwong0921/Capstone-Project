@@ -10,15 +10,18 @@ function Cart({cartItems}) {
     let total = 0
     cartItems.forEach(item => total += item.Inventory?.price * item.quantity)
 
-    const addOne = async (itemId, quantity) => {
+    const addOne = async (itemId, quantity, e) => {
+        e.stopPropagation();
         await dispatch(editItemInCart({id: itemId, quantity: quantity + 1}))
         await dispatch(getUserCartItems())
     }
-    const minusOne =  async (itemId, quantity) => {
+    const minusOne =  async (itemId, quantity, e) => {
+        e.stopPropagation();
         await dispatch(editItemInCart({id: itemId, quantity: quantity - 1}))
         await dispatch(getUserCartItems())
     }
-    const deleteItem = async (itemId) => {
+    const deleteItem = async (itemId, e) => {
+        e.stopPropagation();
         await dispatch(deleteCartItem(itemId))
         await dispatch(getUserCart())
     }
@@ -36,9 +39,9 @@ function Cart({cartItems}) {
                 <div className='CartItemContainer'>
                     {cartItems && cartItems.map(item =>
                         <div key={item.id} className='CartItemDetailContainer'>
-                            {item.quantity > 1 ? <i onClick={() => minusOne(item.id, item.quantity)} className="fa-solid fa-minus"></i> : <i onClick={() => deleteItem(item.id)} className="fa-solid fa-trash"></i>}
+                            {item.quantity > 1 ? <i onClick={(e) => minusOne(item.id, item.quantity, e)} className="fa-solid fa-minus"></i> : <i onClick={(e) => deleteItem(item.id, e)} className="fa-solid fa-trash"></i>}
                             <p>{item.quantity} x {' '}{item.Inventory?.model}</p>
-                            <i onClick={() => addOne(item.id, item.quantity)} className="fa-solid fa-plus"></i>
+                            <i onClick={(e) => addOne(item.id, item.quantity, e)} className="fa-solid fa-plus"></i>
                             <img className='CartItemImage' src={item.Inventory?.image_url}></img>
                             <p>${item.Inventory?.price}</p>
                         </div>
