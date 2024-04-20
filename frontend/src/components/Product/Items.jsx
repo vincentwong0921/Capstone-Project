@@ -52,16 +52,17 @@ function Items({ items, selectedModel }) {
                                 <p>Color: {item.color}</p>
                                 <p>Carrier: {item.carrier}</p>
                             </div>
-                            <div className='ConditionAndPrice'>
+                            <div className='Condition'>
                                 <p>Condition: {item.condition}</p>
-                                <p>Price: ${item.price.toFixed(2)}</p>
-                                <p>{item.available_units > 1 ? "Available Units" : "Available Unit" } : {item.available_units}</p>
+
                             </div>
                         </div>
-                        <div>
+                        <div className='ButtonsContainer'>
+                            <p className='Price'>Price: ${item.price.toFixed(2)}</p>
                             {user && (
-                                <button onClick={() => AddItem(item.id)}>Add Item</button>
+                                <button className='AddCartButton' onClick={() => AddItem(item.id)}>Add</button>
                             )}
+                            <p className='AvalUnits'>{item.available_units > 1 ? "Available Units" : "Available Unit" } : {item.available_units}</p>
                             {user && isAdmin ?
                             <div className='UpdateItemLink'>
                                 <Link to={`/products/${item.id}/edit`}>Edit</Link>

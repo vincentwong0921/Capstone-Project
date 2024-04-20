@@ -30,5 +30,9 @@
 
 .ItemContainer {
     display: flex;
-    width: 75%;
-}
+    flex-direction: column;
+    border-radius: 15px;
+    margin: 10px;
+    width: 100%;
+    padding-left: 10px;
+  }
