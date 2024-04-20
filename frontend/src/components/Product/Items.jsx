@@ -11,7 +11,7 @@ function Items({ items, selectedModel }) {
     const dispatch = useDispatch()
     const user = useSelector((state) => state.session.user);
     const isAdmin = user?.role === 'Admin'
-    const cart_id = Object.keys(useSelector(state => state.cart))[0]
+    const cart_id = Object.values(useSelector(state => state.cart))[0]?.id
     const [loaded, setLoaded] = useState(false)
 
     useEffect(() => {
@@ -33,6 +33,7 @@ function Items({ items, selectedModel }) {
     const AddItem = async(inventoryId) => {
         await dispatch(addItemToCart(cart_id, {inventory_id: inventoryId}))
         await dispatch(getUserCart())
+        await dispatch(getUserCartItems())
     }
 
     if(!loaded) return <>Loading...</>

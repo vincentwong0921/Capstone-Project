@@ -8,7 +8,7 @@ import { getUserCartItems } from '../../store/cartItem';
 function Cart({cartItems}) {
     const dispatch = useDispatch()
     let total = 0
-    cartItems.map(item => total += item.Inventory?.price * item.quantity)
+    cartItems.forEach(item => total += item.Inventory?.price * item.quantity)
 
     const addOne = async (itemId, quantity) => {
         await dispatch(editItemInCart({id: itemId, quantity: quantity + 1}))

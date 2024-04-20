@@ -61,7 +61,7 @@ const initialState = {}
 const cartReducer = (state = initialState, action) => {
     switch(action.type) {
         case LOAD_CART: {
-            return {...state, [action.cart.id]: action.cart}
+            return {[action.cart.id]: action.cart}
         }
         case ADD_CART: {
             return {...state, [action.cart.id]: action.cart}
