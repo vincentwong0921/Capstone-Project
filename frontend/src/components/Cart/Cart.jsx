@@ -40,7 +40,7 @@ function Cart({cartItems}) {
                     {cartItems && cartItems.map(item =>
                         <div key={item.id} className='CartItemDetailContainer'>
                             {item.quantity > 1 ? <i onClick={(e) => minusOne(item.id, item.quantity, e)} className="fa-solid fa-minus"></i> : <i onClick={(e) => deleteItem(item.id, e)} className="fa-solid fa-trash"></i>}
-                            <p>{item.quantity} x {' '}{item.Inventory?.model}</p>
+                            <p>{item.quantity} x {' '}{item.Inventory?.model} {' '}{item.Inventory?.storage}</p>
                             <i onClick={(e) => addOne(item.id, item.quantity, e)} className="fa-solid fa-plus"></i>
                             <img className='CartItemImage' src={item.Inventory?.image_url}></img>
                             <p>${item.Inventory?.price}</p>
