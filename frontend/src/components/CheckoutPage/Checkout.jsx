@@ -1,10 +1,220 @@
-import './Checkout.css'
+import "./Checkout.css";
+import { getUserCartItems } from "../../store/cartItem";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { createOrder } from "../../store/order";
+import { TbCircleNumber1 } from "react-icons/tb";
+import { TbCircleNumber2 } from "react-icons/tb";
+import { editItemInCart, deleteCartItem } from '../../store/cartItem'
+import { getUserCart, createCart, deleteCart } from "../../store/cart";
 
-function Checkout(){
-    return (
-        <h1>Hello</h1>
-    )
+function Checkout() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [loaded, setLoaded] = useState(false);
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("AL");
+  const [zip, setZip] = useState("");
+  const [errors, setErrors] = useState({});
+  // const cartId = Object.values(useSelector(state => state.cart))[0].id
+  const user = useSelector((state) => state.session.user);
+  const cartItems = Object.values(useSelector((state) => state.cartItem));
+  let itemCount = 0;
+  cartItems.forEach((item) => (itemCount += item.quantity));
+
+  let amount = 0
+  cartItems.forEach(item => amount += item.Inventory?.price * item.quantity)
+
+  const addOne = async (itemId, quantity, e) => {
+    e.stopPropagation();
+    await dispatch(editItemInCart({ id: itemId, quantity: quantity + 1 }));
+    await dispatch(getUserCartItems());
+  };
+  const minusOne = async (itemId, quantity, e) => {
+    e.stopPropagation();
+    await dispatch(editItemInCart({ id: itemId, quantity: quantity - 1 }));
+    await dispatch(getUserCartItems());
+  };
+  const deleteItem = async (itemId, e) => {
+    e.stopPropagation();
+    await dispatch(deleteCartItem(itemId));
+    await dispatch(getUserCart());
+  };
+
+  const handleSubmit = async (e) => {
+    try {
+        e.preventDefault();
+        const order = {
+          user_id: user.id,
+          address,
+          city,
+          state,
+          zip,
+          amount,
+          order_details: cartItems,
+        };
+
+        if(zip.length !== 5){
+          setErrors({zip: 'Zip Code must be 5 digits'})
+          return
+        }
+        await dispatch(createOrder(order))
+        navigate('/orders')
+    } catch(error) {
+        const data = await error.json();
+        setErrors(data.errors);
+    }
+  };
+
+  useEffect(() => {
+    const fetch = async () => {
+      await dispatch(getUserCartItems());
+      await dispatch(getUserCart())
+      setLoaded(true);
+    };
+    fetch();
+  }, [dispatch]);
+
+  if (!loaded) return <>Loading...</>;
+
+  return (
+    <div className="CheckOutContainer">
+      <div className="CheckOutHeader">
+        <h1>
+          Checkout ({itemCount} {itemCount > 1 ? "Items" : "Item"}) - Total ${amount.toFixed(2)}
+        </h1>
+      </div>
+      <div className="ReviewItemAndShipping">
+        <div className="NumAndTitle">
+          <TbCircleNumber1 className="One" />
+          <p>Review Items:</p>
+        </div>
+        <div className="CheckOutItem">
+          {cartItems &&
+            cartItems.map((item) => (
+              <div className="CartItemssContainer">
+                <div className="itemInfo">
+                  <p>Quantity: {item.quantity}</p>
+                  <p>Model: {item.Inventory?.model}</p>
+                  <p>Price: $ {item.Inventory?.price.toFixed(2)}</p>
+                  <div className="AddMinusDelete">
+                    {item.Inventory?.available_units > 0 ?
+                            <i onClick={(e) => addOne(item.id, item.quantity, e)} className="fa-solid fa-plus"></i>
+                    : null}
+                    {item.quantity > 1 ? <i onClick={(e) => minusOne(item.id, item.quantity, e)} className="fa-solid fa-minus"></i> : <i onClick={(e) => deleteItem(item.id, e)} className="fa-solid fa-trash"></i>}
+                  </div>
+                </div>
+                <img
+                  className="checkoutItemImg"
+                  src={item.Inventory?.image_url}
+                ></img>
+              </div>
+            ))}
+        </div>
+      </div>
+      <div className="ShippingFormContainer">
+        <div className="AddressTitle">
+          <TbCircleNumber2 className="Two" />
+          <p>Shipping Address:</p>
+        </div>
+        <form className="CheckOutForm" onSubmit={handleSubmit}>
+          <h3>Deliver to: {user.first_name}</h3>
+          <label>
+            <h4>Address: </h4>
+            <input
+              type="text"
+              value={address}
+              required
+              onChange={(e) => setAddress(e.target.value)}
+            />
+          </label>
+          <label>
+            <h4>City: </h4>
+            <input
+              type="text"
+              value={city}
+              required
+              onChange={(e) => setCity(e.target.value)}
+            />
+          </label>
+          <label>
+            <h4>State: </h4>
+            <select
+              type="text"
+              value={state}
+              required
+              onChange={(e) => setState(e.target.value)}
+            >
+              <option value="AL">Alabama</option>
+              <option value="AK">Alaska</option>
+              <option value="AZ">Arizona</option>
+              <option value="AR">Arkansas</option>
+              <option value="CA">California</option>
+              <option value="CO">Colorado</option>
+              <option value="CT">Connecticut</option>
+              <option value="DE">Delaware</option>
+              <option value="DC">District Of Columbia</option>
+              <option value="FL">Florida</option>
+              <option value="GA">Georgia</option>
+              <option value="HI">Hawaii</option>
+              <option value="ID">Idaho</option>
+              <option value="IL">Illinois</option>
+              <option value="IN">Indiana</option>
+              <option value="IA">Iowa</option>
+              <option value="KS">Kansas</option>
+              <option value="KY">Kentucky</option>
+              <option value="LA">Louisiana</option>
+              <option value="ME">Maine</option>
+              <option value="MD">Maryland</option>
+              <option value="MA">Massachusetts</option>
+              <option value="MI">Michigan</option>
+              <option value="MN">Minnesota</option>
+              <option value="MS">Mississippi</option>
+              <option value="MO">Missouri</option>
+              <option value="MT">Montana</option>
+              <option value="NE">Nebraska</option>
+              <option value="NV">Nevada</option>
+              <option value="NH">New Hampshire</option>
+              <option value="NJ">New Jersey</option>
+              <option value="NM">New Mexico</option>
+              <option value="NY">New York</option>
+              <option value="NC">North Carolina</option>
+              <option value="ND">North Dakota</option>
+              <option value="OH">Ohio</option>
+              <option value="OK">Oklahoma</option>
+              <option value="OR">Oregon</option>
+              <option value="PA">Pennsylvania</option>
+              <option value="RI">Rhode Island</option>
+              <option value="SC">South Carolina</option>
+              <option value="SD">South Dakota</option>
+              <option value="TN">Tennessee</option>
+              <option value="TX">Texas</option>
+              <option value="UT">Utah</option>
+              <option value="VT">Vermont</option>
+              <option value="VA">Virginia</option>
+              <option value="WA">Washington</option>
+              <option value="WV">West Virginia</option>
+              <option value="WI">Wisconsin</option>
+              <option value="WY">Wyoming</option>
+            </select>
+          </label>
+          <label>
+          {errors && errors.zip && <p>{errors.zip}</p>}
+            <h4>Zip Code: </h4>
+            <input
+              type="Number"
+              value={zip}
+              required
+              onChange={(e) => setZip(e.target.value)}
+            />
+          </label>
+          <button className="OrderButton">Submit Order!</button>
+        </form>
+      </div>
+    </div>
+  );
 }
 
-
-export default Checkout
+export default Checkout;

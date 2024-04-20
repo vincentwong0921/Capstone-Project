@@ -43,7 +43,10 @@ module.exports = (sequelize, DataTypes) => {
     },
     zip: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        len: [5, 5]
+      }
     },
     amount: {
       type: DataTypes.FLOAT,
