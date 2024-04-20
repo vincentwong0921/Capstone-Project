@@ -9,7 +9,7 @@
     font-weight: bold;
     padding: 20px;
     background-color: black;
-    width: 250px;
+    width: 20%;
     border: 1px solid white;
     margin: 10px;
     border-radius: 15px;
@@ -26,4 +26,9 @@
 .Models {
     cursor: pointer;
     color: white;
+}
+
+.ItemContainer {
+    display: flex;
+    width: 75%;
 }

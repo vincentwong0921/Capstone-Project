@@ -46,9 +46,13 @@
     background-color: black;
 }
 
+.ModelContainer{
+    width: 70%;
+}
+
 .ReviewContainer {
     background-color: black;
-    width: 100%;
+    width: 30%;
     padding: 13px;
     border: 1px solid white;
     margin: 10px;

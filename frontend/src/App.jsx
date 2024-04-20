@@ -10,6 +10,7 @@ import CreateInventoryForm from "./components/InventoryForm/CreateInventoryForm"
 import EditInventoryForm from "./components/InventoryForm/EditInventoryForm";
 import ReviewPage from "./components/ReviewPage/ReviewPage";
 import Order from "./components/Order/Order";
+import Checkout from "./components/CheckoutPage/Checkout";
 
 function Layout() {
   const dispatch = useDispatch();
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <LandingPage />,
+      },
+      {
+        path: "/checkout",
+        element: <Checkout />,
       },
       {
         path: "/orders",

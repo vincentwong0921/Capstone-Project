@@ -28,7 +28,7 @@ function Models({ selectedBrand, inventoriesList }) {
               </div>
             ))}
         </div>
-        <div>
+        <div className="ItemContainer">
           <Items selectedModel={selectedModel} items={items} />
         </div>
       </div>

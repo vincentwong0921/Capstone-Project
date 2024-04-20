@@ -1,17 +1,15 @@
 .ItemContainer {
   display: flex;
-  border: 2px solid white;
+  flex-direction: column;
+  border: 1px solid white;
   border-radius: 15px;
   margin: 10px;
-  height: 180px;
+  width: 100%;
   padding-left: 10px;
 }
 
 .InnerContainer {
-  width: 850px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 .ModelStorage > p,

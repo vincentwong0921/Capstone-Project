@@ -42,7 +42,7 @@ function Items({ items, selectedModel }) {
         <>
             {itemsToRender && itemsToRender.map(item =>
                 <div key={item.id}>
-                    <div className='ItemContainer'>
+                    <div className='ItemsContainer'>
                         <div className='InnerContainer'>
                             <div className='ModelStorage'>
                                 <p>{item.model}</p>

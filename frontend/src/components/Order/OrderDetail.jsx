@@ -24,12 +24,16 @@ function OrderDetail({ detailsToRender }) {
             <div className="OrderPhoneImgContainer">
               <div>
                 {order?.OrderDetails?.map((data, index) => (
-                  <img
-                    key={index}
-                    className="OrderPhoneImg"
-                    src={data.Inventory.image_url}
-                    alt={data.Inventory.name}
-                  />
+                  <div>
+                    <img
+                      key={index}
+                      className="OrderPhoneImg"
+                      src={data.Inventory.image_url}
+                      alt={data.Inventory.name}
+                      />
+                    <p>{data.Inventory.model}</p>
+                    <p>{data.Inventory.storage}</p>
+                  </div>
                 ))}
               </div>
               <div className="ItemCounts">
