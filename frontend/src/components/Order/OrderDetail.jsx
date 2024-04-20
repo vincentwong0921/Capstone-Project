@@ -24,7 +24,7 @@ function OrderDetail({ detailsToRender }) {
             <div className="OrderPhoneImgContainer">
               <div>
                 {order?.OrderDetails?.map((data, index) => (
-                  <div>
+                  <div key={index}>
                     <img
                       key={index}
                       className="OrderPhoneImg"
