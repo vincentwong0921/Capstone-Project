@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { addItemToCart, getUserCartItems } from '../../store/cartItem';
 import { getUserCart } from "../../store/cart";
 import { useState, useEffect } from 'react';
+import { getAllInventory } from '../../store/inventory';
 
 function Items({ items, selectedModel }) {
     const dispatch = useDispatch()
@@ -32,6 +33,7 @@ function Items({ items, selectedModel }) {
 
     const AddItem = async(inventoryId) => {
         await dispatch(addItemToCart(cart_id, {inventory_id: inventoryId}))
+        await dispatch(getAllInventory())
         await dispatch(getUserCart())
         await dispatch(getUserCartItems())
     }
@@ -59,9 +61,9 @@ function Items({ items, selectedModel }) {
                         </div>
                         <div className='ButtonsContainer'>
                             <p className='Price'>Price: ${item.price.toFixed(2)}</p>
-                            {user && (
+                            {user && item.available_units >= 1 ? (
                                 <button className='AddCartButton' onClick={() => AddItem(item.id)}>Add</button>
-                            )}
+                            ): <div className='SoldOut'>Item Sold</div>}
                             <p className='AvalUnits'>{item.available_units > 1 ? "Available Units" : "Available Unit" } : {item.available_units}</p>
                             {user && isAdmin ?
                             <div className='UpdateItemLink'>

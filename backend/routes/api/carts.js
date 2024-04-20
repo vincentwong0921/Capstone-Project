@@ -82,6 +82,11 @@ router.post('/:cartId/cart-items', requireAuth, async(req, res) => {
     if(!cart) return res.status(404).json({message: "Cart couldn't be found"})
     if(cart.user_id !== user_id) return res.status(403).json({message: 'Forbidden'})
 
+    const inventory = await Inventory.findByPk(inventory_id)
+    if(!inventory) return res.status(404).json({message: "Inventory Item couldn't be found"})
+
+    if (inventory.available_units <= 0) return res.status(400).json({message: "Not enough units!"})
+
     const cartItem = await CartItem.findOne({
         where: {
             cart_id: cart_id,
@@ -91,9 +96,11 @@ router.post('/:cartId/cart-items', requireAuth, async(req, res) => {
 
     if (cartItem) {
         const editedItem = await cartItem.update({quantity: cartItem.quantity + 1})
+        await inventory.update({available_units: inventory.available_units - 1})
         return res.json(editedItem)
     } else {
         const newItem = await CartItem.create({ cart_id: cart.id, inventory_id, quantity: 1 })
+        await inventory.update({available_units: inventory.available_units - 1})
         return res.json(newItem)
     }
 })

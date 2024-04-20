@@ -3,7 +3,7 @@ import { editItemInCart, deleteCartItem } from '../../store/cartItem'
 import { useDispatch } from 'react-redux';
 import { getUserCart } from '../../store/cart';
 import { getUserCartItems } from '../../store/cartItem';
-
+import { getAllInventory } from '../../store/inventory';
 
 function Cart({cartItems}) {
     const dispatch = useDispatch()
@@ -14,16 +14,19 @@ function Cart({cartItems}) {
         e.stopPropagation();
         await dispatch(editItemInCart({id: itemId, quantity: quantity + 1}))
         await dispatch(getUserCartItems())
+        await dispatch(getAllInventory())
     }
     const minusOne =  async (itemId, quantity, e) => {
         e.stopPropagation();
         await dispatch(editItemInCart({id: itemId, quantity: quantity - 1}))
         await dispatch(getUserCartItems())
+        await dispatch(getAllInventory())
     }
     const deleteItem = async (itemId, e) => {
         e.stopPropagation();
         await dispatch(deleteCartItem(itemId))
         await dispatch(getUserCart())
+        await dispatch(getAllInventory())
     }
 
     if(!cartItems.length) {

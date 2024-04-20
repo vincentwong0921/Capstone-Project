@@ -38,6 +38,11 @@
   color: orange;
 }
 
+.SoldOut {
+  color: red;
+  font-weight: bold;
+}
+
 .ModelStorage {
   display: flex;
   font-weight: bold;

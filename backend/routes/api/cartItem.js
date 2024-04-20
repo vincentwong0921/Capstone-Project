@@ -35,9 +35,14 @@ router.put('/:itemId', requireAuth, async(req, res) => {
 
     if(cart.user_id !== user_id) return res.status(403).json({message: 'Forbidden'})
 
+    const inventoryId = item.inventory_id
+    const inventory = await Inventory.findByPk(inventoryId)
+
     const { quantity } = req.body
+    const diff = quantity - item.quantity
 
     await item.update({quantity})
+    await inventory.update({available_units: inventory.available_units - diff})
     return res.json(item)
 })
 
@@ -52,8 +57,11 @@ router.delete('/:itemId', requireAuth, async(req, res) => {
     const cart = await Cart.findByPk(item.cart_id)
 
     if(cart.user_id !== user_id) return res.status(403).json({message: 'Forbidden'})
+    const inventoryId = item.inventory_id
+    const inventory = await Inventory.findByPk(inventoryId)
 
     await item.destroy()
+    await inventory.update({available_units: inventory.available_units + 1})
     return res.json({ message: 'Successfully deleted!'})
 })
 
