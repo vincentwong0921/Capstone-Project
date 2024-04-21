@@ -1,12 +1,29 @@
 import "./OrderDetail.css";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import EditOrderModal from "./EditOrderModal";
 import DeleteOrderModal from "./DeleteOrderModal";
+import { getCurrentUserReviews } from "../../store/review";
 
 function OrderDetail({ detailsToRender }) {
+  const dispatch = useDispatch()
+  const [loaded, setLoaded] = useState(false)
   const user = useSelector((state) => state.session.user);
+  const userReviews = Object.values(useSelector(state => state.review))
   const isAdmin = user?.role === "Admin";
+  let count = 0
+
+  useEffect(() => {
+    const fetch = async() => {
+      await dispatch(getCurrentUserReviews())
+      setLoaded(true)
+    }
+    fetch()
+  }, [dispatch])
+
+  if(!loaded) return <>Loading...</>
 
   return (
     <>
@@ -15,32 +32,38 @@ function OrderDetail({ detailsToRender }) {
           <div className="SingleOrderContainer" key={order.id}>
             <div className="OrderDetails">
               <p>ORDER NUMBER: TPB-{order.id}</p>
-              <p>ORDER PLACED ON: {order.createdAt.slice(0, 10)}</p>
+              <p>ORDER DATE: {order.createdAt.slice(0, 10)}</p>
+              <p>ORDER STATUS: {order.status}</p>
               <p>TOTAL: ${order.amount.toFixed(2)}</p>
               <p>
                 SHIP TO: {order.address} {order.city} {order.state} {order.zip}
               </p>
             </div>
             <div className="OrderPhoneImgContainer">
-              <div>
+              <div className="ItemCounts">
+                {order?.OrderDetails.forEach(order => count += order.quantity)}
+                {count > 1
+                  ? "Items in this Order: "
+                  : "Item in this Order: "}
+                {count}
+              </div>
+              <div className="ItemDetails">
                 {order?.OrderDetails?.map((data, index) => (
-                  <div key={index}>
+                  <div className="PhonePicAndModel" key={index}>
                     <img
                       key={index}
                       className="OrderPhoneImg"
                       src={data.Inventory.image_url}
                       alt={data.Inventory.name}
                       />
-                    <p>{data.Inventory.model}</p>
-                    <p>{data.Inventory.storage}</p>
+                    <div className="MSP">
+                      <p>Model: {data.Inventory.model}</p>
+                      <p>Storage: {data.Inventory.storage}</p>
+                      <p>Price: {data.Inventory.price}</p>
+                      <p>Quantity: {data.quantity}</p>
+                    </div>
                   </div>
                 ))}
-              </div>
-              <div className="ItemCounts">
-                {order?.OrderDetails?.length > 1
-                  ? "Items in this Order: "
-                  : "Item in this Order: "}
-                {order?.OrderDetails?.length}
               </div>
               <div className="ButtonsContainer">
                 {isAdmin && (

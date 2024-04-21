@@ -28,15 +28,34 @@
 .OrderPhoneImgContainer {
     display: flex;
     padding-left: 10px;
-    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.ItemDetails {
+    display: flex;
+    gap: 10px;
 }
 
 .ItemCounts {
     display: flex;
     font-size: 18px;
     color: black;
-    align-items: end;
+    align-items: center;
     margin-bottom: 10px;
     font-family: cursive;
     font-weight: bold;
+    margin-right: 10px;
+
+}
+
+.PhonePicAndModel {
+    display: flex;
+    width: 350px;
+}
+
+.MSP {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
 }

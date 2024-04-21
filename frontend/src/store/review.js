@@ -1,6 +1,7 @@
 import { csrfFetch } from "./csrf"
 
 const LOAD_REVIEW = 'products/LOAD_REVIEW'
+const LOAD_USER_REVIEWS = 'products/LOAD_USER_REVIEWS'
 const ADD_REVIEW = 'products/ADD_REVIEW'
 const EDIT_REVIEW = 'products/EDIT_REVIEW'
 const REMOVE_REVIEW = 'products/REMOVE_REVIEW'
@@ -8,6 +9,11 @@ const REMOVE_REVIEW = 'products/REMOVE_REVIEW'
 // Actions
 export const loadReviews = reviews => ({
     type: LOAD_REVIEW,
+    reviews
+})
+
+export const loadUserReviews = reviews => ({
+    type: LOAD_USER_REVIEWS,
     reviews
 })
 
@@ -35,6 +41,16 @@ export const getAllReviews = () => async (dispatch) => {
         dispatch(loadReviews(reviews))
     }
 }
+
+export const getCurrentUserReviews = () => async (dispatch) => {
+    const res = await csrfFetch('/api/reviews/current')
+
+    if (res.ok){
+        const reviews = await res.json()
+        dispatch(loadReviews(reviews))
+    }
+}
+
 
 export const createReview = (orderId, review) => async (dispatch) => {
     const res = await csrfFetch(`/api/orders/${orderId}/reviews`, {
@@ -83,6 +99,11 @@ const reviewReducer = (state = initialState, action) => {
             const reviewState = {}
             action.reviews.forEach(review => reviewState[review.id] = review)
             return reviewState
+        }
+        case LOAD_USER_REVIEWS: {
+            const userReviewState = {}
+            action.reviews.forEach(review => userReviewState[review.id] = review)
+            return userReviewState
         }
         case ADD_REVIEW: {
             return {...state, [action.review.id]: action.review}
