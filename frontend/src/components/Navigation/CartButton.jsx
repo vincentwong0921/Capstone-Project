@@ -11,7 +11,7 @@ function CartButton() {
   const [loaded, setLoaded] = useState(false)
   const cartItems = Object.values(useSelector(state => state.cartItem))
   let count = 0
-  cartItems?.map(item => count += item.quantity)
+  cartItems?.forEach(item => count += item.quantity)
 
   const ulRef = useRef();
 
@@ -49,9 +49,11 @@ function CartButton() {
 
   return (
     <>
-        <div onClick={toggleMenu} className="Cart">
-            <PiShoppingCartDuotone className="CartLogo"/>
-            <p className="ItemCount">{count ? count: ''} {count > 1 ? "items" : "item"}</p>
+        <div  className="Cart">
+            <div className="LogoAndCount" onClick={toggleMenu}>
+              <PiShoppingCartDuotone className="CartLogo"/>
+              <p className="ItemCount">{count ? count: ''} {count > 1 ? "items" : "item"}</p>
+            </div>
             {showMenu && (
               <div className={ulClassName} ref={ulRef}>
                 <Cart cartItems={cartItems}/>

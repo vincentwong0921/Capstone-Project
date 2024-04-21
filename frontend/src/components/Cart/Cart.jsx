@@ -1,7 +1,6 @@
 import './Cart.css'
 import { editItemInCart, deleteCartItem } from '../../store/cartItem'
 import { useDispatch } from 'react-redux';
-import { getUserCart } from '../../store/cart';
 import { getUserCartItems } from '../../store/cartItem';
 import { getAllInventory } from '../../store/inventory';
 
@@ -10,20 +9,17 @@ function Cart({cartItems}) {
     let total = 0
     cartItems.forEach(item => total += item.Inventory?.price * item.quantity)
 
-    const addOne = async (itemId, quantity, e) => {
-        e.stopPropagation();
+    const addOne = async (itemId, quantity) => {
         await dispatch(editItemInCart({id: itemId, quantity: quantity + 1}))
         await dispatch(getUserCartItems())
         await dispatch(getAllInventory())
     }
-    const minusOne =  async (itemId, quantity, e) => {
-        e.stopPropagation();
+    const minusOne =  async (itemId, quantity) => {
         await dispatch(editItemInCart({id: itemId, quantity: quantity - 1}))
         await dispatch(getUserCartItems())
         await dispatch(getAllInventory())
     }
-    const deleteItem = async (itemId, e) => {
-        e.stopPropagation();
+    const deleteItem = async (itemId) => {
         await dispatch(deleteCartItem(itemId))
         await dispatch(getUserCartItems())
         await dispatch(getAllInventory())
@@ -42,10 +38,10 @@ function Cart({cartItems}) {
                 <div className='CartItemContainer'>
                     {cartItems && cartItems.map(item =>
                         <div key={item.id} className='CartItemDetailContainer'>
-                            {item.quantity > 1 ? <i onClick={(e) => minusOne(item.id, item.quantity, e)} className="fa-solid fa-minus"></i> : <i onClick={(e) => deleteItem(item.id, e)} className="fa-solid fa-trash"></i>}
+                            {item.quantity > 1 ? <i onClick={() => minusOne(item.id, item.quantity)} className="fa-solid fa-minus"></i> : <i onClick={() => deleteItem(item.id)} className="fa-solid fa-trash"></i>}
                             <p>{item.quantity} x {' '}{item.Inventory?.model} {' '}{item.Inventory?.storage}</p>
                             {item.Inventory?.available_units > 0 ?
-                            <i onClick={(e) => addOne(item.id, item.quantity, e)} className="fa-solid fa-plus"></i>
+                            <i onClick={() => addOne(item.id, item.quantity)} className="fa-solid fa-plus"></i>
                             : null}
 
                             <img className='CartItemImage' src={item.Inventory?.image_url}></img>
