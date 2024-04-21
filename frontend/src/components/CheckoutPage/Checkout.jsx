@@ -18,7 +18,7 @@ function Checkout() {
   const [state, setState] = useState("AL");
   const [zip, setZip] = useState("");
   const [errors, setErrors] = useState({});
-  // const cartId = Object.values(useSelector(state => state.cart))[0].id
+  const cartId = Object.values(useSelector(state => state.cart))[0]?.id
   const user = useSelector((state) => state.session.user);
   const cartItems = Object.values(useSelector((state) => state.cartItem));
   let itemCount = 0;
@@ -27,18 +27,15 @@ function Checkout() {
   let amount = 0
   cartItems.forEach(item => amount += item.Inventory?.price * item.quantity)
 
-  const addOne = async (itemId, quantity, e) => {
-    e.stopPropagation();
+  const addOne = async (itemId, quantity) => {
     await dispatch(editItemInCart({ id: itemId, quantity: quantity + 1 }));
     await dispatch(getUserCartItems());
   };
-  const minusOne = async (itemId, quantity, e) => {
-    e.stopPropagation();
+  const minusOne = async (itemId, quantity) => {
     await dispatch(editItemInCart({ id: itemId, quantity: quantity - 1 }));
     await dispatch(getUserCartItems());
   };
-  const deleteItem = async (itemId, e) => {
-    e.stopPropagation();
+  const deleteItem = async (itemId) => {
     await dispatch(deleteCartItem(itemId));
     await dispatch(getUserCart());
   };
@@ -61,6 +58,9 @@ function Checkout() {
           return
         }
         await dispatch(createOrder(order))
+        await dispatch(deleteCart(cartId))
+        await dispatch(createCart({user_id: user.id}))
+        await dispatch(getUserCartItems())
         navigate('/orders')
     } catch(error) {
         const data = await error.json();
@@ -94,16 +94,17 @@ function Checkout() {
         <div className="CheckOutItem">
           {cartItems &&
             cartItems.map((item) => (
-              <div className="CartItemssContainer">
+              <div key={item.id} className="CartItemssContainer">
                 <div className="itemInfo">
                   <p>Quantity: {item.quantity}</p>
                   <p>Model: {item.Inventory?.model}</p>
+                  <p>Carrier: {item.Inventory?.carrier}</p>
                   <p>Price: $ {item.Inventory?.price.toFixed(2)}</p>
                   <div className="AddMinusDelete">
                     {item.Inventory?.available_units > 0 ?
-                            <i onClick={(e) => addOne(item.id, item.quantity, e)} className="fa-solid fa-plus"></i>
+                            <i onClick={() => addOne(item.id, item.quantity)} className="fa-solid fa-plus"></i>
                     : null}
-                    {item.quantity > 1 ? <i onClick={(e) => minusOne(item.id, item.quantity, e)} className="fa-solid fa-minus"></i> : <i onClick={(e) => deleteItem(item.id, e)} className="fa-solid fa-trash"></i>}
+                    {item.quantity > 1 ? <i onClick={() => minusOne(item.id, item.quantity)} className="fa-solid fa-minus"></i> : <i onClick={() => deleteItem(item.id)} className="fa-solid fa-trash"></i>}
                   </div>
                 </div>
                 <img

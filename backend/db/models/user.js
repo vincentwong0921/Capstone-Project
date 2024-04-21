@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
         models.Review,
         {foreignKey: 'user_id'}
       ),
-      User.hasOne(
+      User.hasMany(
         models.Cart,
         {foreignKey: 'user_id'}
       )
