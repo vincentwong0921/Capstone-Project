@@ -6,24 +6,25 @@ import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import EditOrderModal from "./EditOrderModal";
 import DeleteOrderModal from "./DeleteOrderModal";
 import { getCurrentUserReviews } from "../../store/review";
+import SubmitReviewModal from "./SubmitReviewModal";
 
 function OrderDetail({ detailsToRender }) {
-  const dispatch = useDispatch()
-  const [loaded, setLoaded] = useState(false)
+  const dispatch = useDispatch();
+  const [loaded, setLoaded] = useState(false);
   const user = useSelector((state) => state.session.user);
-  const userReviews = Object.values(useSelector(state => state.review))
+  const userReviews = Object.values(useSelector((state) => state.review));
   const isAdmin = user?.role === "Admin";
-  let count = 0
+  let count = 0;
 
   useEffect(() => {
-    const fetch = async() => {
-      await dispatch(getCurrentUserReviews())
-      setLoaded(true)
-    }
-    fetch()
-  }, [dispatch])
+    const fetch = async () => {
+      await dispatch(getCurrentUserReviews());
+      setLoaded(true);
+    };
+    fetch();
+  }, [dispatch]);
 
-  if(!loaded) return <>Loading...</>
+  if (!loaded) return <>Loading...</>;
 
   return (
     <>
@@ -41,11 +42,16 @@ function OrderDetail({ detailsToRender }) {
             </div>
             <div className="OrderPhoneImgContainer">
               <div className="ItemCounts">
-                {order?.OrderDetails.forEach(order => count += order.quantity)}
-                {count > 1
-                  ? "Items in this Order: "
-                  : "Item in this Order: "}
-                {count}
+                {order?.OrderDetails.forEach(
+                  (order) => (count += order.quantity)
+                )}
+                <p>{count > 1 ? "Items in this Order: " : "Item in this Order: "}{count}</p>
+                {userReviews.find((review) => review.order_id === order.id) ? (
+                  null
+                ) : <OpenModalButton
+                buttonText="Create Review"
+                modalComponent={<SubmitReviewModal order={order}/>}
+              />}
               </div>
               <div className="ItemDetails">
                 {order?.OrderDetails?.map((data, index) => (
@@ -55,7 +61,7 @@ function OrderDetail({ detailsToRender }) {
                       className="OrderPhoneImg"
                       src={data.Inventory.image_url}
                       alt={data.Inventory.name}
-                      />
+                    />
                     <div className="MSP">
                       <p>Model: {data.Inventory.model}</p>
                       <p>Storage: {data.Inventory.storage}</p>
@@ -65,16 +71,16 @@ function OrderDetail({ detailsToRender }) {
                   </div>
                 ))}
               </div>
-              <div className="ButtonsContainer">
+              <div className="ButtonsssContainer">
                 {isAdmin && (
                   <OpenModalButton
-                    buttonText="Edit Order"
+                    buttonText="Edit"
                     modalComponent={<EditOrderModal order={order} />}
                   />
                 )}
                 {isAdmin && (
                   <OpenModalButton
-                    buttonText="Delete Order"
+                    buttonText="Delete"
                     modalComponent={<DeleteOrderModal order={order} />}
                   />
                 )}

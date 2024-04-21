@@ -28,16 +28,19 @@
 .OrderPhoneImgContainer {
     display: flex;
     padding-left: 10px;
-    flex-wrap: wrap;
 }
 
 .ItemDetails {
     display: flex;
     gap: 10px;
+    flex-wrap: wrap;
+    width: 83%;
 }
 
 .ItemCounts {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     font-size: 18px;
     color: black;
     align-items: center;
@@ -45,12 +48,12 @@
     font-family: cursive;
     font-weight: bold;
     margin-right: 10px;
-
+    width: 12%;
 }
 
 .PhonePicAndModel {
     display: flex;
-    width: 350px;
+    width: 430px;
 }
 
 .MSP {
@@ -58,4 +61,19 @@
     flex-direction: column;
     justify-content: center;
     gap: 10px;
+}
+
+.ButtonsssContainer {
+    display: flex;
+    flex-direction: column;
+    width: 5%;
+    padding-right: 0px;
+}
+
+.ButtonsssContainer > button {
+    color: white;
+    background-color: black;
+    width: 70px;
+    border-radius: 10px;
+    font-weight: bold;
 }

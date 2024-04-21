@@ -10,3 +10,7 @@
 .AllReviewsDetail {
     width: 50%;
 }
+
+.ReviewAndUser > p {
+    color: black;
+}

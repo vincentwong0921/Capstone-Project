@@ -103,14 +103,14 @@ router.post('/', requireAuth, validateOrder, async(req, res) => {
 // Post a Review of an Order
 router.post('/:orderId/reviews', requireAuth, validateReview, async(req, res) => {
     const user_id = req.user.id
-    const orderId = req.params.orderId
+    const order_id = req.params.orderId
 
-    const order = await Order.findByPk(orderId)
+    const order = await Order.findByPk(order_id)
     if(!order) return res.status(404).json({message: "Order couldn't be found"})
 
     const existingReview = await Review.findOne({
       where: {
-        order_id: orderId,
+        order_id: order_id,
         user_id: user_id
       }
     })
@@ -118,7 +118,7 @@ router.post('/:orderId/reviews', requireAuth, validateReview, async(req, res) =>
     if(existingReview) return res.status(500).json({message: "User already has a review for this Order"})
 
     const { review , stars } = req.body;
-    const newReview = await Review.create({ user_id, orderId, review, stars })
+    const newReview = await Review.create({ user_id, order_id, review, stars })
     return res.status(201).json(newReview)
 })
 
