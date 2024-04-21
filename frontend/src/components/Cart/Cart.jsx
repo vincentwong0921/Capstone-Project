@@ -25,7 +25,7 @@ function Cart({cartItems}) {
     const deleteItem = async (itemId, e) => {
         e.stopPropagation();
         await dispatch(deleteCartItem(itemId))
-        await dispatch(getUserCart())
+        await dispatch(getUserCartItems())
         await dispatch(getAllInventory())
     }
 
@@ -47,7 +47,7 @@ function Cart({cartItems}) {
                             {item.Inventory?.available_units > 0 ?
                             <i onClick={(e) => addOne(item.id, item.quantity, e)} className="fa-solid fa-plus"></i>
                             : null}
-                            
+
                             <img className='CartItemImage' src={item.Inventory?.image_url}></img>
                             <p>${item.Inventory?.price}</p>
                         </div>
