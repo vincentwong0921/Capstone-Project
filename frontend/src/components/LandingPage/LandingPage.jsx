@@ -3,6 +3,7 @@ import { useState } from "react";
 import { signUpUser } from "../../store/session";
 import "./LandingPage.css";
 import { useNavigate } from "react-router-dom";
+import { createCart } from "../../store/cart";
 
 function LandingPage() {
   const dispatch = useDispatch();
@@ -31,8 +32,9 @@ function LandingPage() {
         errs.password = "Password must be at least 6 characters";
         setErrors(errs);
       } else {
-        const newUser = { first_name, last_name, phone, email, password };
-        await dispatch(signUpUser(newUser));
+        const userInfo = { first_name, last_name, phone, email, password };
+        const newUser = await dispatch(signUpUser(userInfo));
+        await dispatch(createCart(newUser.id))
         navigate("/products");
       }
     } catch (error) {
