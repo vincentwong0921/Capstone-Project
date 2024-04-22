@@ -54,13 +54,13 @@ function ReviewPage() {
                     </p>
                   </div>
                   <div className="Rvbuttons">
-                    {isAdmin || review.user_id === user.id ? (
+                    {isAdmin || review.user_id === user?.id ? (
                       <OpenModalButton
                         buttonText="Edit"
                         modalComponent={<EditReviewModal preReview={review} />}
                       />
                     ) : null}
-                    {isAdmin || review.user_id === user.id ? (
+                    {isAdmin || review.user_id === user?.id ? (
                       <OpenModalButton
                         buttonText="Delete"
                         modalComponent={<DeleteReviewModal review={review} />}

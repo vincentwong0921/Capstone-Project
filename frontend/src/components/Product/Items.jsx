@@ -21,6 +21,7 @@ function Items({ items, selectedModel }) {
             await dispatch(getUserCart())
             setLoaded(true)
         }
+        if(!user) return
         fetch()
     }, [dispatch])
 
