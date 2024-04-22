@@ -20,8 +20,6 @@ function ReviewPage() {
     return starIcons;
   };
 
-  console.log(reviewList)
-
   useEffect(() => {
     const fetch = async () => {
       await dispatch(getAllReviews());
@@ -35,33 +33,34 @@ function ReviewPage() {
   return (
     <>
       <div className="AllReviewsContainer">
-        <img
-          className="ARP"
-          src="https://images.unsplash.com/photo-1585909695284-32d2985ac9c0?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        />
-        <div className="AllReviewsDetail">
-          <h2>The Phone Hub Member Reviews</h2>
-          {reviewList &&
-            reviewList.map((review) => (
-              <div className="ReviewDetails" key={review.id}>
-                <div className="ReviewAndUser">
-                  <p className="Reviewdes">{review.review}-</p>
-                  <p className="UserName">{review.User.first_name}</p>
+          <div className="LeftReview">
+            <h2>From customers</h2>
+            <p>Reviews from people who've ordered here</p>
+          </div>
+          <div className="RightReview">
+            {reviewList &&
+              reviewList.map((review) => (
+                <div className="EachReview" key={review.id}>
+                  <div className="ReviewAndUser">
+                    <p className="UserName">{review.User.first_name} - </p>
+                    <p className="Reviewdes">Comment: {review.review}</p>
+                  </div>
+                  <div className="StarAndDate">
+                    <p>Star Rating:{showStars(review.stars)}</p>
+                    <p className="Date">
+                      Date Posted:{review.createdAt.slice(0, 10)}
+                    </p>
+                    {isAdmin && (
+                      <OpenModalButton
+                        buttonText="Delete"
+                        modalComponent={<DeleteReviewModal review={review} />}
+                      />
+                    )}
+                  </div>
                 </div>
-                <div className="StarAndDate">
-                  <p>Star Rating:{showStars(review.stars)}</p>
-                  <p className="Date">{review.createdAt.slice(0, 10)}</p>
-                  {isAdmin && (
-                    <OpenModalButton
-                      buttonText="Delete"
-                      modalComponent={<DeleteReviewModal review={review} />}
-                    />
-                  )}
-                </div>
-              </div>
-            ))}
+              ))}
+          </div>
         </div>
-      </div>
     </>
   );
 }

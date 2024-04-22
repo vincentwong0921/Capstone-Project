@@ -53,9 +53,7 @@ const Navigation = () => {
                 {isAdmin ? <li><a href='/orders'>Manage Orders</a></li>
                 : <li><a href='/orders'>My Orders</a></li>
                 }
-                {isAdmin ? <li><a href='/reviews'>Manage Reviews</a></li>
-                : <li><a href='/reviews'>My reviews</a></li>
-                }
+                <li><a href='/reviews'>Member Reviews</a></li>
                 {isAdmin ? <li><a href='/products/new'>Add New Product</a></li>
                 : <li><a href='/contactus'>Contact Us</a></li>
                 }
