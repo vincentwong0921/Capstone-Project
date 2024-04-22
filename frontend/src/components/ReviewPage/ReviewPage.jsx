@@ -36,7 +36,7 @@ function ReviewPage() {
       <div className="AllReviewsContainer">
         <div className="LeftReview">
           <h2>From customers</h2>
-          <p>Reviews from people who've ordered here</p>
+          <p>Reviews from people who have ordered here</p>
         </div>
         <div className="RightReview">
           {reviewList &&
