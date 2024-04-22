@@ -74,3 +74,13 @@
     display: flex;
     gap: 20px;
 }
+
+.Rvbuttons > button {
+    width: 80px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    border-radius: 25px;
+    font-weight: bold;
+    height: 25px;
+}
