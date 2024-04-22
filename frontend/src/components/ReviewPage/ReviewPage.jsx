@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { getAllReviews } from "../../store/review";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import DeleteReviewModal from "../Review/DeleteReviewModal";
+import EditReviewModal from './EditReviewModal'
 
 function ReviewPage() {
   const user = useSelector((state) => state.session.user);
@@ -33,34 +34,44 @@ function ReviewPage() {
   return (
     <>
       <div className="AllReviewsContainer">
-          <div className="LeftReview">
-            <h2>From customers</h2>
-            <p>Reviews from people who've ordered here</p>
-          </div>
-          <div className="RightReview">
-            {reviewList &&
-              reviewList.map((review) => (
-                <div className="EachReview" key={review.id}>
-                  <div className="ReviewAndUser">
-                    <p className="UserName">{review.User.first_name} - </p>
-                    <p className="Reviewdes">Comment: {review.review}</p>
-                  </div>
-                  <div className="StarAndDate">
+        <div className="LeftReview">
+          <h2>From customers</h2>
+          <p>Reviews from people who've ordered here</p>
+        </div>
+        <div className="RightReview">
+          {reviewList &&
+            reviewList.map((review) => (
+              <div className="EachReview" key={review.id}>
+                <div className="ReviewAndUserr">
+                  <p className="UserName">{review.User?.first_name} - </p>
+                  <p className="Reviewdes">Comment: {review.review}</p>
+                </div>
+                <div className="SDB">
+                  <div className="StarAndDatee">
                     <p>Star Rating:{showStars(review.stars)}</p>
-                    <p className="Date">
+                    <p className="DatePosted">
                       Date Posted:{review.createdAt.slice(0, 10)}
                     </p>
-                    {isAdmin && (
+                  </div>
+                  <div className="Rvbuttons">
+                    {isAdmin || review.user_id === user.id ? (
+                      <OpenModalButton
+                        buttonText="Edit"
+                        modalComponent={<EditReviewModal preReview={review} />}
+                      />
+                    ) : null}
+                    {isAdmin || review.user_id === user.id ? (
                       <OpenModalButton
                         buttonText="Delete"
                         modalComponent={<DeleteReviewModal review={review} />}
                       />
-                    )}
+                    ) : null}
                   </div>
                 </div>
-              ))}
-          </div>
+              </div>
+            ))}
         </div>
+      </div>
     </>
   );
 }

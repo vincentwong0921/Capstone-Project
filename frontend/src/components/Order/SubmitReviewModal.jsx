@@ -35,7 +35,7 @@ function SubmitReviewModal({ order }) {
 
   return (
     <form className="reviewform" onSubmit={handleSubmit}>
-      <h3>How was your experience?</h3>
+      <h3>How was your experience with us?</h3>
 
       {errors.review && <span className="errormsg">{errors.review}</span>}
       <label>

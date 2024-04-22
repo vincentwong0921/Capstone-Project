@@ -63,13 +63,14 @@ router.get('/:reviewId', async(req, res) => {
 
 //Edit a Review by review Id
 router.put('/:reviewId', requireAuth, validateReview, async(req, res) => {
+    const userRole = req.user.role;
     const reviewId = req.params.reviewId
     const user_id = req.user.id
     const { review, stars } = req.body;
     const userReview = await Review.findByPk(reviewId)
 
     if (!userReview) return res.status(404).json({message: "Review couldn't be found"})
-    if (userReview.user_id !== user_id) return res.status(403).json({message: 'Forbidden'})
+    if (userReview.user_id !== user_id && userRole !== 'Admin') return res.status(403).json({message: 'Forbidden'})
 
     await userReview.update({ review, stars })
     return res.json(userReview)

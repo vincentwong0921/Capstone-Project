@@ -22,7 +22,7 @@ function DeleteReviewModal({ review }) {
     <form className="DeleteReviewForm">
       <h2>Confirm Delete</h2>
       <div>
-        Are you sure you want to delete this item?
+        Are you sure you want to delete this review?
       </div>
       <div>
         <button onClick={confirmDelete}>
