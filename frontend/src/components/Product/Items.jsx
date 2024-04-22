@@ -53,7 +53,7 @@ function Items({ items, selectedModel }) {
             <div className="ItemsContainer">
               <div className="InnerContainer">
                 <div className="ModelStorage">
-                  <p>{item.model}</p>
+                  <p className="ItemModel">{item.model}</p>
                   <p>{item.storage}</p>
                 </div>
                 <div className="ColorAndCarrier">

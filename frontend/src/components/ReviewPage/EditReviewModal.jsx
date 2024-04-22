@@ -61,7 +61,7 @@ function EditReviewModal({ preReview }) {
                     className="fa-solid fa-star"
                     style={{
                       color:
-                        currentRating <= (hover || stars) ? "#000000" : "#e4e5e9",
+                        currentRating <= (hover || stars) ? "#ffa500" : "#ffffff",
                     }}
                     onMouseEnter={() => setHover(currentRating)}
                     onMouseLeave={() => setHover(null)}

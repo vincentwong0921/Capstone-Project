@@ -28,14 +28,18 @@
   width: 20%;
 }
 
-.ModelStorage > p,
+.ModelStorage > p {
+  color: orange;
+  font-size: 23px;
+}
+
 .ColorAndCarrier > p {
   color: white;
 }
 
 .Condition > p {
   font-weight: bold;
-  color: orange;
+  color: grey;
 }
 
 .SoldOut {
@@ -73,15 +77,20 @@
   font-weight: bold;
 }
 
-.Price,
+
 .AvalUnits {
+  color: grey;
+  font-weight: bold;
+}
+
+.Price {
   color: orange;
   font-weight: bold;
 }
 
 .UpdateItemLink > a {
   text-decoration: none;
-  color: white;
+  color: grey;
 }
 
 .AddCartButton {
