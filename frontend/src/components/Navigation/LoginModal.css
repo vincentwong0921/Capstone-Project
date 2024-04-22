@@ -15,7 +15,6 @@
 
 .emailContainer > input {
   border: none;
-  background-color: rgb(237, 237, 237);
   height: 35px;
   border-radius: 5px;
   font-size: 16px;
@@ -29,7 +28,7 @@
 
 .passwordContainer > input {
   border: none;
-  background-color: rgb(237, 237, 237);
+
   height: 35px;
   border-radius: 5px;
   font-size: 16px;
@@ -59,9 +58,9 @@
 .DemoUserButton,
 .AdminUserButton {
   border: none;
-  background-color: white;
   margin-top: 7px;
   cursor: pointer;
+  background-color: transparent;
 }
 
 .DemoUserButton:hover {
@@ -71,7 +70,6 @@
 .AdminUserButton:hover {
   text-decoration: underline;
 }
-
 
 .errormsg {
     font-weight: bold;

@@ -49,7 +49,23 @@
     font-weight: bold;
     margin-right: 10px;
     width: 12%;
+    gap: 10px;
 }
+
+.ItemCounts > button {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    border-radius: 15px;
+    width: 150px;
+    height: 30px;
+}
+
+.ItemCounts > button:hover {
+    color: orange;
+    font-weight: bold;
+}
+
 
 .PhonePicAndModel {
     display: flex;

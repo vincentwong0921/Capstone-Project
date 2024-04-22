@@ -36,13 +36,12 @@ function SubmitReviewModal({ order }) {
   return (
     <form className="reviewform" onSubmit={handleSubmit}>
       <h3>How was your experience with us?</h3>
-
       {errors.review && <span className="errormsg">{errors.review}</span>}
       <label>
         <textarea
           value={review}
           onChange={(e) => setReview(e.target.value)}
-          placeholder="Leave your review here..."
+          placeholder="Share with us your valuable review!"
         />
       </label>
 

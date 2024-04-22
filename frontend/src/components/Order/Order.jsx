@@ -1,17 +1,21 @@
 import './Order.css'
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getAllOrders, getMyOrders } from '../../store/order';
 import OrderDetail from './OrderDetail';
 
 function Order() {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const [ isloaded, setIsLoaded ] = useState(false)
     const [ selectedStatus, setSelectedStatus ] = useState('All Orders')
-    const userRole = useSelector(state => state.session.user.role)
+    const user = useSelector(state => state.session.user);
+    const userRole = user ? user.role : null;
     const orderList = Object.values(useSelector(state => state.order))
     const statusList = ['All Orders', ...new Set(orderList.map(order => order.status))]
     const statusClick = status => setSelectedStatus(status)
+
 
     let detailsToRender
     if(selectedStatus === 'All Orders') {
@@ -19,6 +23,12 @@ function Order() {
     } else {
         detailsToRender = orderList.filter(order => order.status === selectedStatus)
     }
+
+    useEffect(() => {
+        if (!user) {
+            navigate('/');
+        }
+    }, [navigate, user]);
 
     useEffect(() => {
         const fetch = async () => {
