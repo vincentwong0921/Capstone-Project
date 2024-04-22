@@ -24,11 +24,11 @@ function DeleteReviewModal({ review }) {
       <div>
         Are you sure you want to delete this review?
       </div>
-      <div>
-        <button onClick={confirmDelete}>
+      <div className="RvFormButtons">
+        <button className="DeleteReviewButton" onClick={confirmDelete}>
           Yes (Delete Review)
         </button>
-        <button onClick={nope}>
+        <button className="NopeButton" onClick={nope}>
           No (Keep Review)
         </button>
       </div>

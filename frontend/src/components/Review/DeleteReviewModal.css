@@ -1,0 +1,32 @@
+.DeleteReviewForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.RvFormButtons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.DeleteReviewButton,
+.NopeButton {
+    border: none;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    border-radius: 15px;
+    font-size: medium;
+    width: 200px;
+    height: 50px;
+}
+
+.DeleteReviewButton:hover,
+.NopeButton:hover {
+    color: orange;
+    font-weight: bold;
+}
