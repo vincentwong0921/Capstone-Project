@@ -22,6 +22,7 @@ function Checkout() {
   const [state, setState] = useState("AL");
   const [zip, setZip] = useState("");
   const [errors, setErrors] = useState({});
+  const [shipping_method, setShippingMethod] = useState("standard");
   const cartId = Object.values(useSelector((state) => state.cart))[0]?.id;
   const user = useSelector((state) => state.session.user);
   const cartItems = Object.values(useSelector((state) => state.cartItem));
@@ -140,8 +141,53 @@ function Checkout() {
           <TbCircleNumber2 className="Two" />
           <p>Shipping Method:</p>
         </div>
-        <div>
-
+        <div className="ShippingMFormContainer">
+          <form className="ShippingMForm">
+            <label>
+              <input
+                type="radio"
+                name="shipping_method"
+                value="standard"
+                className="ShippingMethods"
+                checked={shipping_method === 'standard'}
+                onClick={(e) => setShippingMethod(e.target.value)}
+              />
+              Standard Shipping - $9.99
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="shipping_method"
+                value="prority"
+                className="ShippingMethods"
+                checked={shipping_method === 'prority'}
+                onClick={(e) => setShippingMethod(e.target.value)}
+              />
+              USPS Priority Shipping - $15.99
+            </label>{" "}
+            <label>
+              <input
+                type="radio"
+                name="shipping_method"
+                value="fedex2ndday"
+                className="ShippingMethods"
+                checked={shipping_method === 'fedex2ndday'}
+                onClick={(e) => setShippingMethod(e.target.value)}
+              />
+              Fedex 2nd day - $23.99
+            </label>{" "}
+            <label>
+              <input
+                type="radio"
+                name="shipping_method"
+                value="fedexovernight"
+                className="ShippingMethods"
+                checked={shipping_method === 'fedexovernight'}
+                onClick={(e) => setShippingMethod(e.target.value)}
+              />
+              Fedex Standard Overnight - $35.99
+            </label>
+          </form>
         </div>
       </div>
       <div className="Payment">
@@ -149,8 +195,14 @@ function Checkout() {
           <TbCircleNumber3 className="Three" />
           <p>Payment Method:</p>
         </div>
-        <div>
-
+        <div className="PaymentDetails">
+            <div className="PD">
+              <p>Paying with American Express 2024</p>
+              <p>Billing address: Same as Shipping address.</p>
+            </div>
+            <div onClick={() => window.alert('Feature coming soon!')} className="ChangePayment">
+              <p>Change Payment Method / Billing Address</p>
+            </div>
         </div>
       </div>
       <div className="ShippingFormContainer">
@@ -159,7 +211,7 @@ function Checkout() {
           <p>Shipping Address:</p>
         </div>
         <form className="CheckOutForm" onSubmit={handleSubmit}>
-          <h3>Deliver to: {user.first_name}</h3>
+          <h3>Confirm your address</h3>
           <label>
             <h4>Address: </h4>
             <input
@@ -239,8 +291,8 @@ function Checkout() {
               <option value="WY">Wyoming</option>
             </select>
           </label>
+            {errors && errors.zip && <p className="errormsg">{errors.zip}</p>}
           <label>
-            {errors && errors.zip && <p>{errors.zip}</p>}
             <h4>Zip Code: </h4>
             <input
               type="Number"
@@ -249,7 +301,7 @@ function Checkout() {
               onChange={(e) => setZip(e.target.value)}
             />
           </label>
-          <button className="OrderButton">Submit Order!</button>
+          <button className="OrderButton">Place your Order!</button>
         </form>
       </div>
     </div>

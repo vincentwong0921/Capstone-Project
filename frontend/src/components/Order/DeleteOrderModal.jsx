@@ -24,7 +24,7 @@ function DeleteOrderModal({ order }) {
           <div className="DeleteMsg">
             Are you sure you want to cancel this order?
           </div>
-          <div className="DeleteItemButtons">
+          <div className="DeleteOrderButtons">
             <button className="DeleteButton" onClick={confirmDelete}>
               Yes (Delete Order)
             </button>

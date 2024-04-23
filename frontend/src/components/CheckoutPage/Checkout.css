@@ -8,6 +8,8 @@
     margin-top: 10px;
     border: 5px solid black;
     border-radius: 15px;
+    width: 80%;
+    margin: 10px auto;
 }
 
 .CheckOutHeader {
@@ -19,19 +21,26 @@
     justify-content: center;
 }
 
-.ShippingFormContainer, .ReviewItemAndShipping {
+.ReviewItemAndShipping {
     border-bottom: 5px solid black;
     display: flex;
+    align-items: center;
 }
 
+.ShippingFormContainer {
+    display: flex;
+    padding-bottom: 15px;
+    height: 550px;
+    align-items: center;
+}
 
 .CheckOutForm {
     display: flex;
     flex-direction: column;
-    width: 450px;
-    justify-content: center;
-    align-items: center;
-    font-size: 15px;
+    justify-content: flex-start;
+    font-size: 20px;
+    align-items: flex-start;
+
 }
 
 .CheckOutForm > label {
@@ -45,10 +54,11 @@
     align-self: center;
     padding-left: 10px;
     border-radius: 20px;
-    height: 30px;
+    height: 45px;
     border: 3px solid black;
-    width: 100%;
     display: flex;
+    font-size: 15px;
+    width: 100%;
 }
 
 .AddressTitle {
@@ -132,5 +142,81 @@
     gap: 10px;
     font-size: 25px;
     padding-bottom: 15px;
+}
+
+.ShippingMForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.ShippingAndTwo {
+    width: 25%;
+}
+
+.ShippingMethodContainer {
+    display: flex;
     border-bottom: 5px solid black;
+    align-items: center;
+}
+
+.Payment {
+    display: flex;
+    border-bottom: 5px solid black;
+    height: 200px;
+    align-items: center;
+}
+
+.ShippingMForm > label {
+    font-size: 25px;
+    font-family: cursive;
+}
+
+.PaymentAndThree {
+    width: 25%;
+}
+
+.PaymentDetails {
+    display: flex;
+    gap: 30px;
+}
+
+.PD > p {
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.PD {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.ChangePayment {
+    padding-top: 20px;
+}
+
+.ChangePayment > p {
+    font-size: 15px;
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.CheckOutForm > h3 {
+    color: blue;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.OrderButton {
+    height: 50px;
+    width: 200px;
+    border: 3px solid black;
+    border-radius: 25px;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
 }
