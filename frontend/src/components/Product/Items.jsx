@@ -83,19 +83,21 @@ function Items({ items, selectedModel }) {
                     : "Available Unit"}{" "}
                   : {item.available_units}
                 </p>
-                {user && isAdmin ? (
-                  <div className="UpdateItemLink">
-                    <Link to={`/products/${item.id}/edit`}>Edit</Link>
-                  </div>
-                ) : null}
-                {user && isAdmin ? (
-                  <div className="DeleteItemButton">
-                    <OpenModalButton
-                      buttonText="Delete"
-                      modalComponent={<DeleteItemModal item={item} />}
-                    />
-                  </div>
-                ) : null}
+                <div className="editdeletecontainer">
+                  {user && isAdmin ? (
+                    <div className="UpdateItemLink">
+                      <Link to={`/products/${item.id}/edit`}>Edit</Link>
+                    </div>
+                  ) : null}
+                  {user && isAdmin ? (
+                    <div className="DeleteItemButton">
+                      <OpenModalButton
+                        buttonText="Delete"
+                        modalComponent={<DeleteItemModal item={item} />}
+                      />
+                    </div>
+                  ) : null}
+                </div>
               </div>
               <div className="ImageContainer">
                 <img className="InvImage" src={item.image_url} />

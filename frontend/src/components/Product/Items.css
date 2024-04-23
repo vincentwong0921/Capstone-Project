@@ -90,7 +90,7 @@
 
 .UpdateItemLink > a {
   text-decoration: none;
-  color: grey;
+  color: white;
 }
 
 .AddCartButton {
@@ -112,4 +112,9 @@
   font-weight: bold;
   height: 25px;
   width: 80px;
+}
+
+.editdeletecontainer {
+  display: flex;
+  gap: 15px;
 }
