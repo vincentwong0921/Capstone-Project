@@ -14,7 +14,6 @@ function OrderDetail({ detailsToRender }) {
   const user = useSelector((state) => state.session.user);
   const userReviews = Object.values(useSelector((state) => state.review));
   const isAdmin = user?.role === "Admin";
-  let count = 0;
 
   useEffect(() => {
     const fetch = async () => {
@@ -29,68 +28,72 @@ function OrderDetail({ detailsToRender }) {
   return (
     <>
       {detailsToRender &&
-        detailsToRender.map((order) => (
-          <div className="SingleOrderContainer" key={order.id}>
-            <div className="OrderDetails">
-              <p>ORDER NUMBER: TPB-{order.id}</p>
-              <p>ORDER DATE: {order.createdAt.slice(0, 10)}</p>
-              <p>ORDER STATUS: {order.status}</p>
-              {console.log(order)}
-              <p>TOTAL: ${order.amount.toFixed(2)}</p>
-              <p>
-                SHIP TO: {order.address} {order.city} {order.state} {order.zip}
-              </p>
-            </div>
-            <div className="OrderPhoneImgContainer">
-              <div className="ItemCounts">
-                {order?.OrderDetails.forEach(
-                  (order) => (count += order.quantity)
-                )}
-                <p>{count > 1 ? "Items in this Order: " : "Item in this Order: "}{count}</p>
-                {userReviews.find((review) => review.order_id === order.id) ? (
-                  null
-                ) : <OpenModalButton
-                buttonText="Create Review"
-                modalComponent={<SubmitReviewModal order={order}/>}
-              />}
+        detailsToRender.map((order) => {
+          let count = 0
+          order.OrderDetails.forEach((orderDetail) => {
+            count += orderDetail.quantity;
+          });
+
+          return (
+            <div className="SingleOrderContainer" key={order.id}>
+              <div className="OrderDetails">
+                <p>ORDER NUMBER: TPB-{order.id}</p>
+                <p>ORDER DATE: {order.createdAt.slice(0, 10)}</p>
+                <p>ORDER STATUS: {order.status}</p>
+                <p>TOTAL: ${order.amount.toFixed(2)}</p>
+                <p>
+                  SHIP TO: {order.address} {order.city} {order.state} {order.zip}
+                </p>
               </div>
-              <div className="ItemDetails">
-                {order?.OrderDetails?.map((data, index) => (
-                  <div className="PhonePicAndModel" key={index}>
-                    <img
-                      key={index}
-                      className="OrderPhoneImg"
-                      src={data.Inventory.image_url}
-                      alt={data.Inventory.name}
-                    />
-                    <div className="MSP">
-                      <p>Model: {data.Inventory.model}</p>
-                      <p>Storage: {data.Inventory.storage}</p>
-                      <p>Price: ${data.Inventory.price}</p>
-                      <p>Quantity: {data.quantity}</p>
+              <div className="OrderPhoneImgContainer">
+                <div className="ItemCounts">
+                  <p>{count > 1 ? "Items in this Order: " : "Item in this Order: "}{count}</p>
+                  {userReviews.find((review) => review.order_id === order.id) ? (
+                    null
+                  ) : <OpenModalButton
+                    buttonText="Create Review"
+                    modalComponent={<SubmitReviewModal order={order}/>}
+                  />}
+                </div>
+                <div className="ItemDetails">
+                  {order?.OrderDetails?.map((data, index) => (
+                    <div className="PhonePicAndModel" key={index}>
+                      <img
+                        key={index}
+                        className="OrderPhoneImg"
+                        src={data.Inventory.image_url}
+                        alt={data.Inventory.name}
+                      />
+                      <div className="MSP">
+                        <p>Model: {data.Inventory.model}</p>
+                        <p>Storage: {data.Inventory.storage}</p>
+                        <p>Price: ${data.Inventory.price}</p>
+                        <p>Quantity: {data.quantity}</p>
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </div>
-              <div className="ButtonsssContainer">
-                {isAdmin && (
-                  <OpenModalButton
-                    buttonText="Edit"
-                    modalComponent={<EditOrderModal order={order} />}
-                  />
-                )}
-                {isAdmin && (
-                  <OpenModalButton
-                    buttonText="Delete"
-                    modalComponent={<DeleteOrderModal order={order} />}
-                  />
-                )}
+                  ))}
+                </div>
+                <div className="ButtonsssContainer">
+                  {isAdmin && (
+                    <OpenModalButton
+                      buttonText="Edit"
+                      modalComponent={<EditOrderModal order={order} />}
+                    />
+                  )}
+                  {isAdmin && (
+                    <OpenModalButton
+                      buttonText="Delete"
+                      modalComponent={<DeleteOrderModal order={order} />}
+                    />
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
     </>
   );
+
 }
 
 export default OrderDetail;
