@@ -109,7 +109,6 @@ function Checkout() {
           <TbCircleNumber1 className="One" />
           <p>Review Items:</p>
           {errors && errors.items && <p className="errormsg">{errors.items}</p>}
-          {errors && errors.zip && <p className="errormsg">{errors.zip}</p>}
         </div>
         <div className="CheckOutItem">
           {cartItems &&
@@ -227,7 +226,7 @@ function Checkout() {
         </div>
         <div className="CO">
           <form className="CheckOutForm" onSubmit={handleSubmit}>
-            <h3>Confirm your address</h3>
+            <h3>Confirm the address</h3>
             <label>
               <h4>Address: </h4>
               <input
