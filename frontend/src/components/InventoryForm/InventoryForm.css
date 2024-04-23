@@ -5,7 +5,7 @@
     background-position: center;
     display: flex;
     height: 90vh;
-    gap: 750px;
+    gap: 550px;
     justify-content: center;
 }
 
@@ -36,7 +36,6 @@
 .Form {
     display: flex;
     flex-direction: column;
-    width: 450px;
     justify-content: center;
     align-items: center;
     font-size: 19px;
@@ -49,7 +48,7 @@
 .Form > label {
     display: flex;
     gap: 10px;
-    width: 300px;
+    width: 500px;
 }
 
 .Form > label > select,
@@ -57,7 +56,7 @@
     align-self: center;
     padding-left: 10px;
     border-radius: 20px;
-    height: 30px;
+    height: 35px;
     border: 2px solid black;
     width: 100%;
     display: flex;

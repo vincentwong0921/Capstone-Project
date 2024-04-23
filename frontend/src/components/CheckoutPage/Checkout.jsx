@@ -4,9 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { createOrder } from "../../store/order";
-import { TbCircleNumber1 } from "react-icons/tb";
-import { TbCircleNumber2 } from "react-icons/tb";
-import { editItemInCart, deleteCartItem } from '../../store/cartItem'
+import {
+  TbCircleNumber1,
+  TbCircleNumber2,
+  TbCircleNumber3,
+  TbCircleNumber4,
+} from "react-icons/tb";
+import { editItemInCart, deleteCartItem } from "../../store/cartItem";
 import { getUserCart, createCart, deleteCart } from "../../store/cart";
 
 function Checkout() {
@@ -18,14 +22,16 @@ function Checkout() {
   const [state, setState] = useState("AL");
   const [zip, setZip] = useState("");
   const [errors, setErrors] = useState({});
-  const cartId = Object.values(useSelector(state => state.cart))[0]?.id
+  const cartId = Object.values(useSelector((state) => state.cart))[0]?.id;
   const user = useSelector((state) => state.session.user);
   const cartItems = Object.values(useSelector((state) => state.cartItem));
   let itemCount = 0;
   cartItems.forEach((item) => (itemCount += item.quantity));
 
-  let amount = 0
-  cartItems.forEach(item => amount += item.Inventory?.price * item.quantity)
+  let amount = 0;
+  cartItems.forEach(
+    (item) => (amount += item.Inventory?.price * item.quantity)
+  );
 
   const addOne = async (itemId, quantity) => {
     await dispatch(editItemInCart({ id: itemId, quantity: quantity + 1 }));
@@ -42,36 +48,36 @@ function Checkout() {
 
   const handleSubmit = async (e) => {
     try {
-        e.preventDefault();
-        const order = {
-          user_id: user.id,
-          address,
-          city,
-          state,
-          zip,
-          amount,
-          order_details: cartItems,
-        };
+      e.preventDefault();
+      const order = {
+        user_id: user.id,
+        address,
+        city,
+        state,
+        zip,
+        amount,
+        order_details: cartItems,
+      };
 
-        if(zip.length !== 5){
-          setErrors({zip: 'Zip Code must be 5 digits'})
-          return
-        }
-        await dispatch(createOrder(order))
-        await dispatch(deleteCart(cartId))
-        await dispatch(createCart({user_id: user.id}))
-        await dispatch(getUserCartItems())
-        navigate('/orders')
-    } catch(error) {
-        const data = await error.json();
-        setErrors(data.errors);
+      if (zip.length !== 5) {
+        setErrors({ zip: "Zip Code must be 5 digits" });
+        return;
+      }
+      await dispatch(createOrder(order));
+      await dispatch(deleteCart(cartId));
+      await dispatch(createCart({ user_id: user.id }));
+      await dispatch(getUserCartItems());
+      navigate("/orders");
+    } catch (error) {
+      const data = await error.json();
+      setErrors(data.errors);
     }
   };
 
   useEffect(() => {
     const fetch = async () => {
       await dispatch(getUserCartItems());
-      await dispatch(getUserCart())
+      await dispatch(getUserCart());
       setLoaded(true);
     };
     fetch();
@@ -83,7 +89,8 @@ function Checkout() {
     <div className="CheckOutContainer">
       <div className="CheckOutHeader">
         <h1>
-          Checkout ({itemCount} {itemCount > 1 ? "Items" : "Item"}) - Total ${amount.toFixed(2)}
+          Checkout ({itemCount} {itemCount > 1 ? "Items" : "Item"}) - Total $
+          {amount.toFixed(2)}
         </h1>
       </div>
       <div className="ReviewItemAndShipping">
@@ -101,10 +108,23 @@ function Checkout() {
                   <p>Carrier: {item.Inventory?.carrier}</p>
                   <p>Price: $ {item.Inventory?.price.toFixed(2)}</p>
                   <div className="AddMinusDelete">
-                    {item.Inventory?.available_units > 0 ?
-                            <i onClick={() => addOne(item.id, item.quantity)} className="fa-solid fa-plus"></i>
-                    : null}
-                    {item.quantity > 1 ? <i onClick={() => minusOne(item.id, item.quantity)} className="fa-solid fa-minus"></i> : <i onClick={() => deleteItem(item.id)} className="fa-solid fa-trash"></i>}
+                    {item.Inventory?.available_units > 0 ? (
+                      <i
+                        onClick={() => addOne(item.id, item.quantity)}
+                        className="fa-solid fa-plus"
+                      ></i>
+                    ) : null}
+                    {item.quantity > 1 ? (
+                      <i
+                        onClick={() => minusOne(item.id, item.quantity)}
+                        className="fa-solid fa-minus"
+                      ></i>
+                    ) : (
+                      <i
+                        onClick={() => deleteItem(item.id)}
+                        className="fa-solid fa-trash"
+                      ></i>
+                    )}
                   </div>
                 </div>
                 <img
@@ -115,9 +135,27 @@ function Checkout() {
             ))}
         </div>
       </div>
+      <div className="ShippingMethodContainer">
+        <div className="ShippingAndTwo">
+          <TbCircleNumber2 className="Two" />
+          <p>Shipping Method:</p>
+        </div>
+        <div>
+
+        </div>
+      </div>
+      <div className="Payment">
+        <div className="PaymentAndThree">
+          <TbCircleNumber3 className="Three" />
+          <p>Payment Method:</p>
+        </div>
+        <div>
+
+        </div>
+      </div>
       <div className="ShippingFormContainer">
         <div className="AddressTitle">
-          <TbCircleNumber2 className="Two" />
+          <TbCircleNumber4 className="Four" />
           <p>Shipping Address:</p>
         </div>
         <form className="CheckOutForm" onSubmit={handleSubmit}>
@@ -202,7 +240,7 @@ function Checkout() {
             </select>
           </label>
           <label>
-          {errors && errors.zip && <p>{errors.zip}</p>}
+            {errors && errors.zip && <p>{errors.zip}</p>}
             <h4>Zip Code: </h4>
             <input
               type="Number"

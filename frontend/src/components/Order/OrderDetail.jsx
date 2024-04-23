@@ -35,6 +35,7 @@ function OrderDetail({ detailsToRender }) {
               <p>ORDER NUMBER: TPB-{order.id}</p>
               <p>ORDER DATE: {order.createdAt.slice(0, 10)}</p>
               <p>ORDER STATUS: {order.status}</p>
+              {console.log(order)}
               <p>TOTAL: ${order.amount.toFixed(2)}</p>
               <p>
                 SHIP TO: {order.address} {order.city} {order.state} {order.zip}
@@ -65,7 +66,7 @@ function OrderDetail({ detailsToRender }) {
                     <div className="MSP">
                       <p>Model: {data.Inventory.model}</p>
                       <p>Storage: {data.Inventory.storage}</p>
-                      <p>Price: {data.Inventory.price}</p>
+                      <p>Price: ${data.Inventory.price}</p>
                       <p>Quantity: {data.quantity}</p>
                     </div>
                   </div>

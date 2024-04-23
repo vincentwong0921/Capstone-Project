@@ -84,6 +84,8 @@
     flex-direction: column;
     width: 5%;
     padding-right: 0px;
+    gap: 10px;
+    justify-content: center;
 }
 
 .ButtonsssContainer > button {
@@ -91,5 +93,12 @@
     background-color: black;
     width: 70px;
     border-radius: 10px;
+    height: 30px;
+    border-radius: 25px;
+    font-family: cursive;
+}
+
+.ButtonsssContainer > button:hover {
+    color: orange;
     font-weight: bold;
 }

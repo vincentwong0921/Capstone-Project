@@ -16,7 +16,7 @@ module.exports = {
         city: 'Union City',
         state: 'CA',
         zip: '94587',
-        amount: 595.99,
+        amount: 1059.98,
         status: 'Order Received'
       },
       {
@@ -25,7 +25,7 @@ module.exports = {
         city: 'Fremont',
         state: 'CA',
         zip: '94538',
-        amount: 999.99,
+        amount: 599.99,
         status: 'Order Received'
       },
       {
@@ -34,7 +34,7 @@ module.exports = {
         city: 'Santa Clara',
         state: 'CA',
         zip: '95051',
-        amount: 245.99,
+        amount: 459.99,
         status: 'Sales In Process'
       },
       {
@@ -43,7 +43,7 @@ module.exports = {
         city: 'Santa Clara',
         state: 'CA',
         zip: '95051',
-        amount: 498.99,
+        amount: 429.99,
         status: 'Order Shipped'
       }
     ], { validate: true })
