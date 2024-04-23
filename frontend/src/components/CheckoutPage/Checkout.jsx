@@ -4,12 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { createOrder } from "../../store/order";
-import {
-  TbCircleNumber1,
-  TbCircleNumber2,
-  TbCircleNumber3,
-  TbCircleNumber4,
-} from "react-icons/tb";
+import { TbCircleNumber1, TbCircleNumber2, TbCircleNumber3, TbCircleNumber4,} from "react-icons/tb";
 import { editItemInCart, deleteCartItem } from "../../store/cartItem";
 import { getUserCart, createCart, deleteCart } from "../../store/cart";
 
@@ -33,6 +28,12 @@ function Checkout() {
   cartItems.forEach(
     (item) => (amount += item.Inventory?.price * item.quantity)
   );
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/");
+    }
+  }, [navigate, user]);
 
   const addOne = async (itemId, quantity) => {
     await dispatch(editItemInCart({ id: itemId, quantity: quantity + 1 }));

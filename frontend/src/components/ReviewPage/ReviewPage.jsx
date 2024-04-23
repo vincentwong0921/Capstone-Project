@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { getAllReviews } from "../../store/review";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import DeleteReviewModal from "../Review/DeleteReviewModal";
-import EditReviewModal from './EditReviewModal'
+import EditReviewModal from "./EditReviewModal";
 
 function ReviewPage() {
   const user = useSelector((state) => state.session.user);
