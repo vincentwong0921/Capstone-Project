@@ -29,7 +29,6 @@ function Checkout() {
   let itemCount = 0;
   cartItems.forEach((item) => (itemCount += item.quantity));
 
-
   let amount = 0;
   cartItems.forEach(
     (item) => (amount += item.Inventory?.price * item.quantity)
@@ -38,8 +37,6 @@ function Checkout() {
   useEffect(() => {
     if (!user) {
       navigate("/");
-    } else if(!cartItems.length) {
-      navigate('/products')
     }
   }, [navigate, user, cartItems]);
 
@@ -72,6 +69,10 @@ function Checkout() {
       if (zip.length !== 5) {
         setErrors({ zip: "Zip Code must be 5 digits" });
         return;
+      }
+      if(cartItems.length === 0){
+        setErrors({ items: "No items in your shopping cart!"})
+        return
       }
       await dispatch(createOrder(order));
       await dispatch(deleteCart(cartId));
@@ -107,6 +108,8 @@ function Checkout() {
         <div className="NumAndTitle">
           <TbCircleNumber1 className="One" />
           <p>Review Items:</p>
+          {errors && errors.items && <p className="errormsg">{errors.items}</p>}
+          {errors && errors.zip && <p className="errormsg">{errors.zip}</p>}
         </div>
         <div className="CheckOutItem">
           {cartItems &&
@@ -159,7 +162,7 @@ function Checkout() {
                 value="standard"
                 className="ShippingMethods"
                 checked={shipping_method === "standard"}
-                onClick={(e) => setShippingMethod(e.target.value)}
+                onChange={(e) => setShippingMethod(e.target.value)}
               />
               Standard Shipping - $9.99
             </label>
@@ -170,7 +173,7 @@ function Checkout() {
                 value="prority"
                 className="ShippingMethods"
                 checked={shipping_method === "prority"}
-                onClick={(e) => setShippingMethod(e.target.value)}
+                onChange={(e) => setShippingMethod(e.target.value)}
               />
               USPS Priority Shipping - $15.99
             </label>{" "}
@@ -181,7 +184,7 @@ function Checkout() {
                 value="fedex2ndday"
                 className="ShippingMethods"
                 checked={shipping_method === "fedex2ndday"}
-                onClick={(e) => setShippingMethod(e.target.value)}
+                onChange={(e) => setShippingMethod(e.target.value)}
               />
               Fedex 2nd day - $23.99
             </label>{" "}
@@ -192,7 +195,7 @@ function Checkout() {
                 value="fedexovernight"
                 className="ShippingMethods"
                 checked={shipping_method === "fedexovernight"}
-                onClick={(e) => setShippingMethod(e.target.value)}
+                onChange={(e) => setShippingMethod(e.target.value)}
               />
               Fedex Standard Overnight - $35.99
             </label>
