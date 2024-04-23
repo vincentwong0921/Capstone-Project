@@ -4,7 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { createOrder } from "../../store/order";
-import { TbCircleNumber1, TbCircleNumber2, TbCircleNumber3, TbCircleNumber4,} from "react-icons/tb";
+import {
+  TbCircleNumber1,
+  TbCircleNumber2,
+  TbCircleNumber3,
+  TbCircleNumber4,
+} from "react-icons/tb";
 import { editItemInCart, deleteCartItem } from "../../store/cartItem";
 import { getUserCart, createCart, deleteCart } from "../../store/cart";
 
@@ -150,7 +155,7 @@ function Checkout() {
                 name="shipping_method"
                 value="standard"
                 className="ShippingMethods"
-                checked={shipping_method === 'standard'}
+                checked={shipping_method === "standard"}
                 onClick={(e) => setShippingMethod(e.target.value)}
               />
               Standard Shipping - $9.99
@@ -161,7 +166,7 @@ function Checkout() {
                 name="shipping_method"
                 value="prority"
                 className="ShippingMethods"
-                checked={shipping_method === 'prority'}
+                checked={shipping_method === "prority"}
                 onClick={(e) => setShippingMethod(e.target.value)}
               />
               USPS Priority Shipping - $15.99
@@ -172,7 +177,7 @@ function Checkout() {
                 name="shipping_method"
                 value="fedex2ndday"
                 className="ShippingMethods"
-                checked={shipping_method === 'fedex2ndday'}
+                checked={shipping_method === "fedex2ndday"}
                 onClick={(e) => setShippingMethod(e.target.value)}
               />
               Fedex 2nd day - $23.99
@@ -183,7 +188,7 @@ function Checkout() {
                 name="shipping_method"
                 value="fedexovernight"
                 className="ShippingMethods"
-                checked={shipping_method === 'fedexovernight'}
+                checked={shipping_method === "fedexovernight"}
                 onClick={(e) => setShippingMethod(e.target.value)}
               />
               Fedex Standard Overnight - $35.99
@@ -197,13 +202,16 @@ function Checkout() {
           <p>Payment Method:</p>
         </div>
         <div className="PaymentDetails">
-            <div className="PD">
-              <p>Paying with American Express 2024</p>
-              <p>Billing address: Same as Shipping address.</p>
-            </div>
-            <div onClick={() => window.alert('Feature coming soon!')} className="ChangePayment">
-              <p>Change Payment Method / Billing Address</p>
-            </div>
+          <div className="PD">
+            <p>Paying with American Express 2024</p>
+            <p>Billing address: Same as Shipping address.</p>
+          </div>
+          <div
+            onClick={() => window.alert("Feature coming soon!")}
+            className="ChangePayment"
+          >
+            <p>Change Payment Method / Billing Address</p>
+          </div>
         </div>
       </div>
       <div className="ShippingFormContainer">
@@ -211,99 +219,101 @@ function Checkout() {
           <TbCircleNumber4 className="Four" />
           <p>Shipping Address:</p>
         </div>
-        <form className="CheckOutForm" onSubmit={handleSubmit}>
-          <h3>Confirm your address</h3>
-          <label>
-            <h4>Address: </h4>
-            <input
-              type="text"
-              value={address}
-              required
-              onChange={(e) => setAddress(e.target.value)}
-            />
-          </label>
-          <label>
-            <h4>City: </h4>
-            <input
-              type="text"
-              value={city}
-              required
-              onChange={(e) => setCity(e.target.value)}
-            />
-          </label>
-          <label>
-            <h4>State: </h4>
-            <select
-              type="text"
-              value={state}
-              required
-              onChange={(e) => setState(e.target.value)}
-            >
-              <option value="AL">Alabama</option>
-              <option value="AK">Alaska</option>
-              <option value="AZ">Arizona</option>
-              <option value="AR">Arkansas</option>
-              <option value="CA">California</option>
-              <option value="CO">Colorado</option>
-              <option value="CT">Connecticut</option>
-              <option value="DE">Delaware</option>
-              <option value="DC">District Of Columbia</option>
-              <option value="FL">Florida</option>
-              <option value="GA">Georgia</option>
-              <option value="HI">Hawaii</option>
-              <option value="ID">Idaho</option>
-              <option value="IL">Illinois</option>
-              <option value="IN">Indiana</option>
-              <option value="IA">Iowa</option>
-              <option value="KS">Kansas</option>
-              <option value="KY">Kentucky</option>
-              <option value="LA">Louisiana</option>
-              <option value="ME">Maine</option>
-              <option value="MD">Maryland</option>
-              <option value="MA">Massachusetts</option>
-              <option value="MI">Michigan</option>
-              <option value="MN">Minnesota</option>
-              <option value="MS">Mississippi</option>
-              <option value="MO">Missouri</option>
-              <option value="MT">Montana</option>
-              <option value="NE">Nebraska</option>
-              <option value="NV">Nevada</option>
-              <option value="NH">New Hampshire</option>
-              <option value="NJ">New Jersey</option>
-              <option value="NM">New Mexico</option>
-              <option value="NY">New York</option>
-              <option value="NC">North Carolina</option>
-              <option value="ND">North Dakota</option>
-              <option value="OH">Ohio</option>
-              <option value="OK">Oklahoma</option>
-              <option value="OR">Oregon</option>
-              <option value="PA">Pennsylvania</option>
-              <option value="RI">Rhode Island</option>
-              <option value="SC">South Carolina</option>
-              <option value="SD">South Dakota</option>
-              <option value="TN">Tennessee</option>
-              <option value="TX">Texas</option>
-              <option value="UT">Utah</option>
-              <option value="VT">Vermont</option>
-              <option value="VA">Virginia</option>
-              <option value="WA">Washington</option>
-              <option value="WV">West Virginia</option>
-              <option value="WI">Wisconsin</option>
-              <option value="WY">Wyoming</option>
-            </select>
-          </label>
+        <div className="CO">
+          <form className="CheckOutForm" onSubmit={handleSubmit}>
+            <h3>Confirm your address</h3>
+            <label>
+              <h4>Address: </h4>
+              <input
+                type="text"
+                value={address}
+                required
+                onChange={(e) => setAddress(e.target.value)}
+              />
+            </label>
+            <label>
+              <h4>City: </h4>
+              <input
+                type="text"
+                value={city}
+                required
+                onChange={(e) => setCity(e.target.value)}
+              />
+            </label>
+            <label>
+              <h4>State: </h4>
+              <select
+                type="text"
+                value={state}
+                required
+                onChange={(e) => setState(e.target.value)}
+              >
+                <option value="AL">Alabama</option>
+                <option value="AK">Alaska</option>
+                <option value="AZ">Arizona</option>
+                <option value="AR">Arkansas</option>
+                <option value="CA">California</option>
+                <option value="CO">Colorado</option>
+                <option value="CT">Connecticut</option>
+                <option value="DE">Delaware</option>
+                <option value="DC">District Of Columbia</option>
+                <option value="FL">Florida</option>
+                <option value="GA">Georgia</option>
+                <option value="HI">Hawaii</option>
+                <option value="ID">Idaho</option>
+                <option value="IL">Illinois</option>
+                <option value="IN">Indiana</option>
+                <option value="IA">Iowa</option>
+                <option value="KS">Kansas</option>
+                <option value="KY">Kentucky</option>
+                <option value="LA">Louisiana</option>
+                <option value="ME">Maine</option>
+                <option value="MD">Maryland</option>
+                <option value="MA">Massachusetts</option>
+                <option value="MI">Michigan</option>
+                <option value="MN">Minnesota</option>
+                <option value="MS">Mississippi</option>
+                <option value="MO">Missouri</option>
+                <option value="MT">Montana</option>
+                <option value="NE">Nebraska</option>
+                <option value="NV">Nevada</option>
+                <option value="NH">New Hampshire</option>
+                <option value="NJ">New Jersey</option>
+                <option value="NM">New Mexico</option>
+                <option value="NY">New York</option>
+                <option value="NC">North Carolina</option>
+                <option value="ND">North Dakota</option>
+                <option value="OH">Ohio</option>
+                <option value="OK">Oklahoma</option>
+                <option value="OR">Oregon</option>
+                <option value="PA">Pennsylvania</option>
+                <option value="RI">Rhode Island</option>
+                <option value="SC">South Carolina</option>
+                <option value="SD">South Dakota</option>
+                <option value="TN">Tennessee</option>
+                <option value="TX">Texas</option>
+                <option value="UT">Utah</option>
+                <option value="VT">Vermont</option>
+                <option value="VA">Virginia</option>
+                <option value="WA">Washington</option>
+                <option value="WV">West Virginia</option>
+                <option value="WI">Wisconsin</option>
+                <option value="WY">Wyoming</option>
+              </select>
+            </label>
             {errors && errors.zip && <p className="errormsg">{errors.zip}</p>}
-          <label>
-            <h4>Zip Code: </h4>
-            <input
-              type="Number"
-              value={zip}
-              required
-              onChange={(e) => setZip(e.target.value)}
-            />
-          </label>
-          <button className="OrderButton">Place your Order!</button>
-        </form>
+            <label>
+              <h4>Zip Code: </h4>
+              <input
+                type="Number"
+                value={zip}
+                required
+                onChange={(e) => setZip(e.target.value)}
+              />
+            </label>
+            <button className="OrderButton">Place your Order!</button>
+          </form>
+        </div>
       </div>
     </div>
   );

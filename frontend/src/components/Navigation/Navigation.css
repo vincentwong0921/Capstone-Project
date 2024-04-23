@@ -154,7 +154,7 @@
   height: 30px;
 }
 
-@media (max-width: 1250px) {
+@media (max-width: 1300px) {
   .NavContainer .links {
     display: none;
   }

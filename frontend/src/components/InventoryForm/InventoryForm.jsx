@@ -136,8 +136,8 @@ function InventoryForm({ item, formType }) {
               <option value="Repair Stock">Repair Stock</option>
             </select>
           </label>
+            {errors && errors.price && <p className="errormsg">{errors.price}</p>}
           <label>
-            {errors && errors.price && <p>{errors.price}</p>}
             <h4>Price: </h4>
             <input
               type="number"
@@ -147,8 +147,8 @@ function InventoryForm({ item, formType }) {
               placeholder="Please enter the price"
             />
           </label>
+            {errors && errors.available_units && <p className="errormsg">{errors.available_units}</p>}
           <label>
-            {errors && errors.available_units && <p>{errors.available_units}</p>}
             <h4>Units Available: </h4>
             <input
               type="number"

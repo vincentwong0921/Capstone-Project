@@ -2,6 +2,7 @@ import "./DeleteItemModal.css";
 import { useModal } from "../../context/Modal";
 import { useDispatch } from "react-redux";
 import { removeInventory } from "../../store/inventory";
+import { getUserCartItems } from "../../store/cartItem";
 
 function DeleteItemModal({ item }) {
   const dispatch = useDispatch();
@@ -10,6 +11,7 @@ function DeleteItemModal({ item }) {
   const confirmDelete = async (e) => {
     e.preventDefault();
     await dispatch(removeInventory(item.id))
+    await dispatch(getUserCartItems())
     closeModal();
   };
 

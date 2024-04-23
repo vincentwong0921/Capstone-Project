@@ -208,6 +208,7 @@
     color: blue;
     font-weight: bold;
     font-size: 30px;
+    width: 1000px;
 }
 
 .OrderButton {
@@ -219,4 +220,8 @@
     color: white;
     font-weight: bold;
     font-size: 15px;
+}
+
+.CO {
+    display: flex;
 }
