@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { removeInventory } from "../../store/inventory";
 import { getUserCartItems } from "../../store/cartItem";
 
-function DeleteItemModal({ item }) {
+function DeleteItemModal({setSelectedModel, setSelectedBrand, item }) {
   const dispatch = useDispatch();
   const { closeModal } = useModal();
 
@@ -12,6 +12,8 @@ function DeleteItemModal({ item }) {
     e.preventDefault();
     await dispatch(removeInventory(item.id))
     await dispatch(getUserCartItems())
+    setSelectedBrand('All Brands')
+    setSelectedModel('All Models')
     closeModal();
   };
 

@@ -2,7 +2,7 @@ import Items from "./Items";
 import "./Models.css";
 import { useState, useEffect } from "react";
 
-function Models({ selectedBrand, inventoriesList }) {
+function Models({setSelectedBrand, selectedBrand, inventoriesList }) {
   const [selectedModel, setSelectedModel] = useState("All Models");
   let items;
   if (selectedBrand !== "All Brands") {
@@ -29,7 +29,7 @@ function Models({ selectedBrand, inventoriesList }) {
             ))}
         </div>
         <div className="ItemContainer">
-          <Items selectedModel={selectedModel} items={items} />
+          <Items setSelectedBrand={setSelectedBrand} setSelectedModel={setSelectedModel} selectedModel={selectedModel} items={items} />
         </div>
       </div>
     </>

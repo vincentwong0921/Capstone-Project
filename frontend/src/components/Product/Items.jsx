@@ -8,7 +8,7 @@ import { getUserCart } from "../../store/cart";
 import { useState, useEffect } from "react";
 import { getAllInventory } from "../../store/inventory";
 
-function Items({ items, selectedModel }) {
+function Items({setSelectedModel, setSelectedBrand, items, selectedModel }) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
   const isAdmin = user?.role === "Admin";
@@ -93,7 +93,7 @@ function Items({ items, selectedModel }) {
                     <div className="DeleteItemButton">
                       <OpenModalButton
                         buttonText="Delete"
-                        modalComponent={<DeleteItemModal item={item} />}
+                        modalComponent={<DeleteItemModal setSelectedBrand={setSelectedBrand} setSelectedModel={setSelectedModel} item={item} />}
                       />
                     </div>
                   ) : null}

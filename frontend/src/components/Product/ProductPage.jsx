@@ -37,7 +37,7 @@ function ProductPage(){
             </div>
             <div className='BottomContainer'>
                     <div className='ModelContainer'>
-                        <Models selectedBrand={selectedBrand} inventoriesList={inventoriesList}/>
+                        <Models setSelectedBrand={setSelectedBrand} selectedBrand={selectedBrand} inventoriesList={inventoriesList}/>
                     </div>
                     <div className='ReviewContainer'>
                         <Review reviewList={reviewList}/>
