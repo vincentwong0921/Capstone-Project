@@ -29,6 +29,7 @@ function Checkout() {
   let itemCount = 0;
   cartItems.forEach((item) => (itemCount += item.quantity));
 
+
   let amount = 0;
   cartItems.forEach(
     (item) => (amount += item.Inventory?.price * item.quantity)
@@ -37,8 +38,10 @@ function Checkout() {
   useEffect(() => {
     if (!user) {
       navigate("/");
+    } else if(!cartItems.length) {
+      navigate('/products')
     }
-  }, [navigate, user]);
+  }, [navigate, user, cartItems]);
 
   const addOne = async (itemId, quantity) => {
     await dispatch(editItemInCart({ id: itemId, quantity: quantity + 1 }));
