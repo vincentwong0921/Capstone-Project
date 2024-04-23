@@ -27,7 +27,7 @@ function Items({setSelectedModel, setSelectedBrand, items, selectedModel }) {
     } else {
       fetch();
     }
-  }, [dispatch]);
+  }, [dispatch, user]);
 
   let itemsToRender;
   if (selectedModel === "All Models") {
