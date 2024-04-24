@@ -4,7 +4,7 @@
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
-        height: 90vh;
+        height: 95vh;
         margin: 0;
         padding: 0;
         display: flex;
@@ -14,7 +14,7 @@
 }
 
 .SignUpRight {
-    width: 500px;
+    width: 600px;
     height: 550px;
     border-radius: 20px;
     font-size: 20px;
