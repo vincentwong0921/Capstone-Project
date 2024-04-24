@@ -59,7 +59,7 @@ function Order() {
                     ))}
                 </div>
                 <div className='DetailsContainer'>
-                    <OrderDetail detailsToRender={detailsToRender}/>
+                    <OrderDetail setSelectedStatus={setSelectedStatus} detailsToRender={detailsToRender}/>
                 </div>
             </div>
         </>

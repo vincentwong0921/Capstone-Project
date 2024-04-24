@@ -3,13 +3,14 @@ import { useModal } from "../../context/Modal";
 import { useDispatch } from "react-redux";
 import { removeOrder } from '../../store/order';
 
-function DeleteOrderModal({ order }) {
+function DeleteOrderModal({ setSelectedStatus, order }) {
     const dispatch = useDispatch();
     const { closeModal } = useModal();
 
     const confirmDelete = async (e) => {
       e.preventDefault();
       await dispatch(removeOrder(order.id));
+      setSelectedStatus('All Orders')
       closeModal();
     };
 

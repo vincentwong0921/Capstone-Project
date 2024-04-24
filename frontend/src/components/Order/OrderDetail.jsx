@@ -8,7 +8,7 @@ import DeleteOrderModal from "./DeleteOrderModal";
 import { getCurrentUserReviews } from "../../store/review";
 import SubmitReviewModal from "./SubmitReviewModal";
 
-function OrderDetail({ detailsToRender }) {
+function OrderDetail({ setSelectedStatus, detailsToRender }) {
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
   const user = useSelector((state) => state.session.user);
@@ -83,7 +83,7 @@ function OrderDetail({ detailsToRender }) {
                   {isAdmin && (
                     <OpenModalButton
                       buttonText="Delete"
-                      modalComponent={<DeleteOrderModal order={order} />}
+                      modalComponent={<DeleteOrderModal setSelectedStatus={setSelectedStatus} order={order} />}
                     />
                   )}
                 </div>
