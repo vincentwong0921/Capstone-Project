@@ -46,9 +46,11 @@ function Order() {
 
     return (
         <>
-            <div className='Banner'></div>
-            <div className='Orders'>
-                {userRole === 'Admin' ? <h1>Manage Orders</h1> : <h1>My Orders</h1>}
+            <div>
+                <div className='Banner'></div>
+                <div className='Orders'>
+                    {userRole === 'Admin' ? <h1>Manage Orders</h1> : <h1>My Orders</h1>}
+                </div>
             </div>
             <div className='OrderContainer'>
                 <div className='StatusContainer'>

@@ -105,16 +105,14 @@
 
 .Open {
   position: absolute;
-  top: 75px;
-  right: 10px;
+  top: 74px;
+  right: 12px;
   background-color: lightgrey;
-  border: 1px solid black;
   border-radius: 10px;
   overflow: hidden;
   padding: 10px;
-  max-height: 170px;
-  width: 180px;
-  transition: max-height 0.3s ease;
+  width: 200px;
+  height: auto;
 }
 
 .Open li {
@@ -123,6 +121,7 @@
   justify-content: center;
   padding: 10px;
   cursor: pointer;
+  font-size: 18px;
 }
 
 .Open li:hover {
@@ -144,6 +143,7 @@
   text-decoration: underline;
   justify-content: center;
   margin-bottom: 8px;
+  font-size: 20px;
 }
 
 .LogOutButton {

@@ -46,7 +46,7 @@
 .CheckOutForm > label {
     display: flex;
     gap: 10px;
-    width: 300px;
+    width: 600px;
 }
 
 .CheckOutForm > label > select,
@@ -171,6 +171,7 @@
 
 .ShippingMForm > label {
     font-size: 25px;
+    font-weight: bold;
 }
 
 .PaymentAndThree {
@@ -183,13 +184,13 @@
 }
 
 .PD > p {
-    font-weight: bold;
     font-size: 25px;
 }
 
 .PD {
     padding-top: 15px;
     padding-bottom: 15px;
+
 }
 
 .ChangePayment {
@@ -207,7 +208,10 @@
     color: blue;
     font-weight: bold;
     font-size: 30px;
-    width: 1000px;
+}
+
+.DelAdd {
+    align-self: center;
 }
 
 .OrderButton {
@@ -219,8 +223,20 @@
     color: white;
     font-weight: bold;
     font-size: 15px;
+    align-self: center;
 }
 
 .CO {
     display: flex;
+}
+
+.CreditCard {
+    display: flex;
+    gap: 10px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.selectState {
+    text-align: center;
 }

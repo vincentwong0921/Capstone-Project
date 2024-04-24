@@ -1,6 +1,5 @@
 .SingleOrderContainer {
     border: 3px solid black;
-    border-radius: 10px;
     margin-bottom: 10px;
 }
 
@@ -19,7 +18,7 @@
     background-color: lightgrey;
     justify-content: space-around;
     margin-bottom: 10px;
-    border-bottom: 2px solid black;
+    border-bottom: 3px solid black;
     font-size: 18px;
     font-weight: bold;
     padding: 10px

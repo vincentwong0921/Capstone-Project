@@ -208,7 +208,10 @@ function Checkout() {
         </div>
         <div className="PaymentDetails">
           <div className="PD">
-            <p>Paying with American Express 2024</p>
+            <div className="CreditCard">
+              <p>Paying with American Express 2024</p>
+              <i className="fa-regular fa-credit-card"></i>
+            </div>
             <p>Billing address: Same as Shipping address.</p>
           </div>
           <div
@@ -226,7 +229,7 @@ function Checkout() {
         </div>
         <div className="CO">
           <form className="CheckOutForm" onSubmit={handleSubmit}>
-            <h3>Confirm the address</h3>
+            <h3 className="DelAdd">Delivery Address:</h3>
             <label>
               <h4>Address: </h4>
               <input
@@ -251,6 +254,7 @@ function Checkout() {
                 type="text"
                 value={state}
                 required
+                className="selectState"
                 onChange={(e) => setState(e.target.value)}
               >
                 <option value="AL">Alabama</option>

@@ -1,0 +1,38 @@
+.EditOrderForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.EditOrderForm > h2 {
+    font-size: 33px;
+    margin-bottom: 0px;
+}
+
+.OrderStatus {
+    font-size: 25px;
+}
+
+.EditOrderForm > label > select {
+    border-radius: 30px;
+    height: 30px;
+    text-align: center;
+    border: 3px solid black;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.ConfirmEdit {
+    margin-top: 20px;
+    border-radius: 25px;
+    height: 30px;
+    width: 100px;
+    background-color: black;
+    color: white;
+}
+
+.ConfirmEdit:hover {
+    font-weight: bold;
+    color: orange;
+}

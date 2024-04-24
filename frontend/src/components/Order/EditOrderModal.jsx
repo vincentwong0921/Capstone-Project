@@ -30,7 +30,7 @@ function EditOrderModal({ order }) {
     <form className="EditOrderForm">
       <h2>Process Order</h2>
       <label>
-        <h4>Order Status: </h4>
+        <h4 className="OrderStatus">Order Status: </h4>
         <select
           type="text"
           value={status}
