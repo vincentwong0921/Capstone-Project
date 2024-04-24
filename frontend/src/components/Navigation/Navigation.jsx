@@ -32,9 +32,9 @@ const Navigation = () => {
       </div>
       <ul className='links'>
         <li><a href='/products'>Products</a></li>
-        <li><a href='/aboutus'>About us</a></li>
-        <li><a href='/storepolicy'>Store Policy</a></li>
-        <li><a href='/contactus'>Contact Us</a></li>
+        <li><a href='/products'>About us</a></li>
+        <li><a href='/products'>Store Policy</a></li>
+        <li><a href='/products'>Contact Us</a></li>
         <li><i onClick={() => window.alert('Feature Coming Soon!') } className="fa-brands fa-whatsapp"></i></li>
       </ul>
       {user ?
