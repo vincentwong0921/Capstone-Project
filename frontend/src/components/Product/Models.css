@@ -5,7 +5,7 @@
 .ModelsContainer {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 50px;
     font-weight: bold;
     padding: 20px;
     background-color: black;
@@ -13,10 +13,11 @@
     border: 1px solid white;
     margin: 10px;
     border-radius: 15px;
+    font-size: 20px;
 }
 
 .SelectedModel {
-    font-size: 23px;
+    font-size: 30px;
     cursor: pointer;
     color: orange;
     font-weight: bold;

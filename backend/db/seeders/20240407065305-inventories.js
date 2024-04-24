@@ -92,7 +92,7 @@ module.exports = {
         {
           categories: "Phones",
           brand: "Samsung",
-          model: "Galaxy S24 Ultra",
+          model: "Galaxy S24 Ultra 5G",
           carrier: "GSM Unlocked",
           storage: "512GB",
           color: "Titanium Yellow",
