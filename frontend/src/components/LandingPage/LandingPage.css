@@ -23,6 +23,8 @@
 .SignUpRight > h2 {
     margin: 15px 30px;
     font-size: xx-large;
+    text-align: center;
+    font-size: 50px;
 }
 
 
@@ -47,6 +49,11 @@
     color: white;
 }
 
+.SignUpForm > input {
+    height: 30px;
+    border-radius: 10px;
+}
+
 .SignUpButton {
     width: 100%;
     border: none;
@@ -58,4 +65,8 @@
     font-size: medium;
     font-weight: bold;
     margin-top: 10px;
+}
+
+.SignUpButton:hover {
+    color: orange;
 }

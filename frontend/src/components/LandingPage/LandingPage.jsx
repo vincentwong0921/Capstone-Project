@@ -51,7 +51,7 @@ function LandingPage() {
           <p>Sign Up and Earn up to 18% Rebate!</p>
         </div>
         <div className="SignUpRight">
-          <h2>Sign Up Now!</h2>
+          <h2 className="SignUpNow">Sign Up Now!</h2>
           <form className="SignUpForm" onSubmit={handleSubmit}>
             <label>First Name:</label>
             <input
