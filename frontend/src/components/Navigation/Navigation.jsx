@@ -32,9 +32,9 @@ const Navigation = () => {
       </div>
       <ul className='links'>
         <li><a href='/products'>Products</a></li>
-        <li><a href='/products'>About us</a></li>
-        <li><a href='/products'>Store Policy</a></li>
-        <li><a href='/products'>Contact Us</a></li>
+        <li>About us</li>
+        <li>Store Policy</li>
+        <li>Contact Us</li>
         <li><i onClick={() => window.alert('Feature Coming Soon!') } className="fa-brands fa-whatsapp"></i></li>
       </ul>
       {user ?
@@ -55,7 +55,7 @@ const Navigation = () => {
                 }
                 <li><a href='/reviews'>Member Reviews</a></li>
                 {isAdmin ? <li><a href='/products/new'>Add New Product</a></li>
-                : <li><a href='/contactus'>Contact Us</a></li>
+                : <li>Contact Us</li>
                 }
                 <button onClick={logOutUser} className='LogOutButton'>Log Out</button>
             </div>

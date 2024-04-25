@@ -124,6 +124,15 @@
   font-size: 18px;
 }
 
+.links > li {
+  color: white;
+}
+
+.links > li:hover {
+  color: orange;
+  font-weight: bold;
+}
+
 .Open li:hover {
   color: orange;
   font-weight: bold;
