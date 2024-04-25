@@ -30,7 +30,7 @@ function OrderDetail({ setSelectedStatus, detailsToRender }) {
       {detailsToRender &&
         detailsToRender.map((order) => {
           let count = 0
-          order?.OrderDetails.forEach((orderDetail) => {
+          order?.OrderDetails?.forEach((orderDetail) => {
             count += orderDetail?.quantity;
           });
 
