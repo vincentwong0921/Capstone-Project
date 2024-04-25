@@ -19,6 +19,9 @@ function EditReviewModal({ preReview }) {
           if (review.length < 10) {
             errs.review = "Minimum 10 characters for a review!!";
             setErrors(errs);
+          } else if (!stars) {
+            errs.stars = 'Please select star rating'
+            setErrors(errs)
           } else {
             const editReview = { review, stars };
             editReview.id = preReview.id
@@ -75,7 +78,6 @@ function EditReviewModal({ preReview }) {
           <div>
             <button
               className="submitreviewbutton"
-              disabled={review.length < 10 || !stars}
             >
               Submit
             </button>
