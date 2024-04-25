@@ -10,10 +10,22 @@ const router = express.Router();
 const validateSignup = [
   check("first_name")
     .exists({ checkFalsy: true })
-    .withMessage("First Name is required"),
+    .withMessage("First Name is required")
+    .custom((value) => {
+      if(value.trim().length === 0){
+        throw new Error('Invalid First Name')
+      }
+      return true
+    }),
   check("last_name")
     .exists({ checkFalsy: true })
-    .withMessage("Last Name is required"),
+    .withMessage("Last Name is required")
+    .custom((value) => {
+      if(value.trim().length === 0){
+        throw new Error('Invalid First Name')
+      }
+      return true
+    }),
   check("phone")
     .exists({ checkFalsy: true })
     .isLength({ min: 10, max: 10 })
