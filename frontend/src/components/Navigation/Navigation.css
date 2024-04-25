@@ -74,6 +74,7 @@
 
 .LoginButton button:hover {
   background-color: orange;
+  color: white;
 }
 
 .fa-solid.fa-bars {
@@ -162,6 +163,7 @@
   color: white;
   height: 30px;
 }
+
 
 @media (max-width: 1300px) {
   .NavContainer .links {
