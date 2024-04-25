@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { updateOrder, getAllOrders } from "../../store/order";
 import { useState } from "react";
 
-function EditOrderModal({ order }) {
+function EditOrderModal({setSelectedStatus, order }) {
   const dispatch = useDispatch();
   const { closeModal } = useModal();
   const [status, setStatus] = useState(order.status);
@@ -23,6 +23,7 @@ function EditOrderModal({ order }) {
     order = {id, OrderDetails, user_id, address, city, state, zip, amount, status}
     await dispatch(updateOrder(order));
     await dispatch(getAllOrders())
+    setSelectedStatus('All Orders')
     closeModal();
   };
 

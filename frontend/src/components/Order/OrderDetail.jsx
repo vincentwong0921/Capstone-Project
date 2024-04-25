@@ -30,7 +30,7 @@ function OrderDetail({ setSelectedStatus, detailsToRender }) {
       {detailsToRender &&
         detailsToRender.map((order) => {
           let count = 0
-          order.OrderDetails.forEach((orderDetail) => {
+          order?.OrderDetails.forEach((orderDetail) => {
             count += orderDetail.quantity;
           });
 
@@ -77,7 +77,7 @@ function OrderDetail({ setSelectedStatus, detailsToRender }) {
                   {isAdmin && (
                     <OpenModalButton
                       buttonText="Edit"
-                      modalComponent={<EditOrderModal order={order} />}
+                      modalComponent={<EditOrderModal setSelectedStatus={setSelectedStatus} order={order} />}
                     />
                   )}
                   {isAdmin && (
