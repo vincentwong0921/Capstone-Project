@@ -9,10 +9,22 @@ const router = express.Router();
 const validateOrder = [
     check("address")
         .exists({ checkFalsy: true })
-        .withMessage("Address is required"),
+        .withMessage("Address is required")
+        .custom((value) => {
+          if (value.trim().length === 0) {
+            throw new Error("Invalid Address");
+          }
+          return true;
+        }),
     check("city")
         .exists({ checkFalsy: true })
-        .withMessage("City is required"),
+        .withMessage("City is required")
+        .custom((value) => {
+          if (value.trim().length === 0) {
+            throw new Error("Invalid City");
+          }
+          return true;
+        }),
     check("state")
         .exists({ checkFalsy: true })
         .withMessage("State is required"),

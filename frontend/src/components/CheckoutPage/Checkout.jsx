@@ -230,6 +230,7 @@ function Checkout() {
         <div className="CO">
           <form className="CheckOutForm" onSubmit={handleSubmit}>
             <h3 className="DelAdd">Delivery Address:</h3>
+            {errors && errors.address && <p className="errormsg">{errors.address}</p>}
             <label>
               <h4>Address: </h4>
               <input
@@ -239,6 +240,7 @@ function Checkout() {
                 onChange={(e) => setAddress(e.target.value)}
               />
             </label>
+            {errors && errors.city && <p className="errormsg">{errors.city}</p>}
             <label>
               <h4>City: </h4>
               <input
