@@ -31,7 +31,7 @@ function OrderDetail({ setSelectedStatus, detailsToRender }) {
         detailsToRender.map((order) => {
           let count = 0
           order?.OrderDetails.forEach((orderDetail) => {
-            count += orderDetail.quantity;
+            count += orderDetail?.quantity;
           });
 
           return (
