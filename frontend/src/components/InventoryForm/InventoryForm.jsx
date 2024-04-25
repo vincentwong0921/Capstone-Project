@@ -59,6 +59,9 @@ function InventoryForm({ item, formType }) {
               ? "Create a New Item"
               : "Update The Item"}
           </h2>
+          {errors.categories && (
+              <p className="errormsg">{errors.categories}</p>
+            )}
           <label>
             <h4>Category: </h4>
             <input
@@ -69,6 +72,9 @@ function InventoryForm({ item, formType }) {
               placeholder="Phone, Tablet, Accessories"
             />
           </label>
+          {errors.brand && (
+              <p className="errormsg">{errors.brand}</p>
+            )}
           <label>
             <h4>Brand: </h4>
             <input
@@ -79,6 +85,9 @@ function InventoryForm({ item, formType }) {
               placeholder="Apple, Samsung, Pixel.."
             />
           </label>
+          {errors.model && (
+              <p className="errormsg">{errors.model}</p>
+            )}
           <label>
             <h4>Model: </h4>
             <input
@@ -107,6 +116,9 @@ function InventoryForm({ item, formType }) {
               placeholder="128GB, 256GB..."
             />
           </label>
+          {errors.color && (
+              <p className="errormsg">{errors.color}</p>
+            )}
           <label>
             <h4>Color: </h4>
             <input
