@@ -1,0 +1,31 @@
+.StorePolicy {
+    background:
+        linear-gradient(to bottom, rgba(149, 142, 142, 0.6), rgba(131, 123, 123, 0.6)),
+        url('https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=2304&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.PO, .RMA, .OPTF, .DES {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+}
+
+.POh2, .RMAh2, .OPTFh2, .DESh2 {
+    color: black;
+    font-size: 45px;
+}
+
+.POp, .RMAp, .OPTFp, .DESp {
+    font-size: 25px;
+    color: white;
+}

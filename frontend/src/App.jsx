@@ -13,6 +13,7 @@ import Order from "./components/Order/Order";
 import Checkout from "./components/CheckoutPage/Checkout";
 import ContactUs from "./components/ContactUs/ContactUs";
 import AboutUs from "./components/AboutUs/AboutUs";
+import StorePolicy from "./components/StorePolicy/StorePolicy";
 
 function Layout() {
   const dispatch = useDispatch();
@@ -74,6 +75,10 @@ const router = createBrowserRouter([
       {
         path: "/reviews",
         element: <ReviewPage />
+      },
+      {
+        path: "/storepolicy",
+        element: <StorePolicy />
       },
       {
         path: "*",
