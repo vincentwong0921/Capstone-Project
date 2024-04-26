@@ -34,7 +34,7 @@ const Navigation = () => {
         <li><a href='/products'>Products</a></li>
         <li>About us</li>
         <li>Store Policy</li>
-        <li>Contact Us</li>
+        <li><a href='/contactus'>Contact Us</a></li>
         <li><i onClick={() => window.alert('Feature Coming Soon!') } className="fa-brands fa-whatsapp"></i></li>
       </ul>
       {user ?
@@ -55,7 +55,7 @@ const Navigation = () => {
                 }
                 <li><a href='/reviews'>Member Reviews</a></li>
                 {isAdmin ? <li><a href='/products/new'>Add New Product</a></li>
-                : <li>Contact Us</li>
+                : <li><a href='/contactus'>Contact Us</a></li>
                 }
                 <button onClick={logOutUser} className='LogOutButton'>Log Out</button>
             </div>

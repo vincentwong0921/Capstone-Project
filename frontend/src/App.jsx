@@ -11,6 +11,7 @@ import EditInventoryForm from "./components/InventoryForm/EditInventoryForm";
 import ReviewPage from "./components/ReviewPage/ReviewPage";
 import Order from "./components/Order/Order";
 import Checkout from "./components/CheckoutPage/Checkout";
+import ContactUs from "./components/ContactUs/ContactUs";
 
 function Layout() {
   const dispatch = useDispatch();
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "/checkout",
         element: <Checkout />,
+      },
+      {
+        path: "/contactus",
+        element: <ContactUs />,
       },
       {
         path: "/orders",
