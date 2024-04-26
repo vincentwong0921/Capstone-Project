@@ -12,6 +12,7 @@ import ReviewPage from "./components/ReviewPage/ReviewPage";
 import Order from "./components/Order/Order";
 import Checkout from "./components/CheckoutPage/Checkout";
 import ContactUs from "./components/ContactUs/ContactUs";
+import AboutUs from "./components/AboutUs/AboutUs";
 
 function Layout() {
   const dispatch = useDispatch();
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <LandingPage />,
+      },
+      {
+        path: "/aboutus",
+        element: <AboutUs />,
       },
       {
         path: "/checkout",
