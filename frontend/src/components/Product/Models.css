@@ -1,39 +1,45 @@
 .ModelAndItemContainer {
-    display: flex;
+  display: flex;
 }
 
 .ModelsContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
-    font-weight: bold;
-    padding: 20px;
-    background-color: black;
-    width: 20%;
-    border: 1px solid white;
-    margin: 10px;
-    border-radius: 15px;
-    font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  font-weight: bold;
+  padding: 20px;
+  background-color: black;
+  width: 20%;
+  border: 1px solid white;
+  margin: 10px;
+  border-radius: 15px;
+  font-size: 20px;
 }
 
 .SelectedModel {
-    font-size: 30px;
-    cursor: pointer;
-    color: orange;
-    font-weight: bold;
-    text-decoration: underline;
+  font-size: 30px;
+  cursor: pointer;
+  color: orange;
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 .Models {
-    cursor: pointer;
-    color: white;
+  cursor: pointer;
+  color: white;
 }
 
 .ItemContainer {
-    display: flex;
-    flex-direction: column;
-    border-radius: 15px;
-    margin: 10px;
-    width: 100%;
-    padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  margin: 10px;
+  width: 100%;
+  padding-left: 10px;
+}
+
+@media (max-width: 1300px) {
+  .ModelsContainer {
+    display: none;
   }
+}

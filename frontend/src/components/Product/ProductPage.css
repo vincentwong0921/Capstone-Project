@@ -1,59 +1,64 @@
 .BrandContainer {
-    background:
-        url("https://images.unsplash.com/photo-1561414927-6d86591d0c4f?q=80&w=2573&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: black;
-    gap: 50px;
-    height: 100px;
-    display: flex;
+  background: url("https://images.unsplash.com/photo-1561414927-6d86591d0c4f?q=80&w=2573&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  gap: 50px;
+  height: 100px;
+  display: flex;
 }
 
 .SelectedBrand {
-    display: flex;
-    font-size: 23px;
-    cursor: pointer;
-    color: black;
-    font-weight: bold;
-    text-decoration: underline;
-    justify-content: center;
-    align-items: center;
-    width: 230px;
-    height: 50px;
-    border-radius: 20px;
+  display: flex;
+  font-size: 23px;
+  cursor: pointer;
+  color: black;
+  font-weight: bold;
+  text-decoration: underline;
+  justify-content: center;
+  align-items: center;
+  width: 230px;
+  height: 50px;
+  border-radius: 20px;
 }
 
 .Brands {
-    display: flex;
-    text-decoration: underline;
-    align-items: center;
-    justify-content: center;
-    font-size: 23px;
-    cursor: pointer;
-    color: white;
-    text-align: center;
-    border-radius: 20px;
-    width: 230px;
-    height: 50px;
+  display: flex;
+  text-decoration: underline;
+  align-items: center;
+  justify-content: center;
+  font-size: 23px;
+  cursor: pointer;
+  color: white;
+  text-align: center;
+  border-radius: 20px;
+  width: 230px;
+  height: 50px;
 }
 
 .BottomContainer {
-    display: flex;
-    background-color: black;
+  display: flex;
+  background-color: black;
 }
 
-.ModelContainer{
-    width: 70%;
+.ModelContainer {
+  width: 70%;
 }
 
 .ReviewContainer {
-    background-color: black;
-    width: 30%;
-    padding: 13px;
-    margin: 10px;
-    border-radius: 15px;
+  background-color: black;
+  width: 30%;
+  padding: 13px;
+  margin: 10px;
+  border-radius: 15px;
+}
+
+@media (max-width: 1300px) {
+  .ReviewContainer {
+    display: none;
+  }
 }

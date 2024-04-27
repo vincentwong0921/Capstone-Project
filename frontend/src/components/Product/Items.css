@@ -11,8 +11,9 @@
   flex-direction: column;
   width: 45%;
   padding: 10px;
-  gap:20px;
+  gap: 10px;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .ImageContainer {
@@ -22,6 +23,7 @@
 .ButtonsContainer {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   flex-direction: column;
   gap: 10px;
   padding-right: 20px;
@@ -31,15 +33,18 @@
 .ModelStorage > p {
   color: orange;
   font-size: 23px;
+  word-wrap: break-word;
 }
 
 .ColorAndCarrier > p {
   color: white;
+  word-wrap: break-word;
 }
 
 .Condition > p {
   font-weight: bold;
   color: grey;
+  word-wrap: break-word;
 }
 
 .SoldOut {
@@ -62,7 +67,6 @@
   border-left: 1px solid white;
 }
 
-
 .UpdateItemLink {
   cursor: pointer;
   border: 1px solid;
@@ -76,7 +80,6 @@
   font-size: 14px;
   font-weight: bold;
 }
-
 
 .AvalUnits {
   color: red;
