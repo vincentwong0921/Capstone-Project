@@ -16,7 +16,7 @@
 
 .SignUpRight {
     width: 600px;
-    height: 550px;
+    height: 750px;
     border-radius: 20px;
     font-size: 20px;
     overflow: hidden;
@@ -57,7 +57,7 @@
     border-radius: 10px;
 }
 
-.SignUpButton {
+.SNButton {
     width: 100%;
     border: none;
     background-color: black;
@@ -70,6 +70,6 @@
     margin-top: 10px;
 }
 
-.SignUpButton:hover {
+.SNButton:hover {
     color: orange;
 }

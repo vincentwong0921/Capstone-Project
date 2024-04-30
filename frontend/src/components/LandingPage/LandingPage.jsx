@@ -102,7 +102,7 @@ function LandingPage() {
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
             />
-            <button type="submit" className="SignUpButton">
+            <button type="submit" className="SNButton">
               Sign Up Now!
             </button>
           </form>
