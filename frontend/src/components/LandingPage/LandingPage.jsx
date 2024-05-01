@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { signUpUser } from "../../store/session";
 import "./LandingPage.css";
 import { useNavigate } from "react-router-dom";
@@ -18,7 +18,9 @@ function LandingPage() {
 
   const user = useSelector((store) => store.session.user);
 
-  if (user) navigate('/products')
+  useEffect(() => {
+    if (user) navigate('/products')
+  }, [])
 
   const handleSubmit = async (e) => {
     e.preventDefault();

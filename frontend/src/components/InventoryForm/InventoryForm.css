@@ -7,7 +7,7 @@
     height: 90vh;
     gap: 550px;
     justify-content: center;
-    overflow: hidden;
+    overflow: scroll;
 }
 
 .Right {
