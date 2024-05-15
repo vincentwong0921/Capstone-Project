@@ -2,10 +2,12 @@ import { useModal } from "../../context/Modal";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { login } from "../../store/session";
+import { useNavigate } from 'react-router-dom';
 import "./LoginModal.css";
 
 function LoginModal() {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const { closeModal } = useModal();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,6 +17,7 @@ function LoginModal() {
     e.preventDefault();
     try {
       await dispatch(login({ email, password }));
+      navigate('/products')
       closeModal();
     } catch (res) {
         const data = await res.json()
@@ -32,6 +35,7 @@ function LoginModal() {
         password: "password2",
       })
     );
+    navigate('/products')
     closeModal();
   };
 
@@ -43,6 +47,7 @@ function LoginModal() {
         password: "password",
       })
     );
+    navigate('/products')
     closeModal();
   };
 
