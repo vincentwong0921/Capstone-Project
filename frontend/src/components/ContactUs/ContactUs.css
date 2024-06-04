@@ -25,3 +25,38 @@
     justify-content: center;
     align-items: center;
 }
+
+.PhoneNum, .LiveChat {
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+
+.ContactMe {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.Linkedin {
+    font-size: 40px;
+    cursor: pointer;
+    color: blue;
+}
+
+.GitHub {
+    font-size: 100px;
+    cursor: pointer;
+}
+
+.MyName {
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.Email {
+    font-size: 40px;
+    color: orange;
+    cursor: pointer;
+}
